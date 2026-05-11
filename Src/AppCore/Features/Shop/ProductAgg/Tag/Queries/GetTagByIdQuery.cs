@@ -1,9 +1,6 @@
-﻿using AppCore.Data;
+using AppCore.Data;
 using Framework.ResultHelper;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace AppCore.Features.Shop.ProductAgg.Tag.Queries;
 
@@ -15,12 +12,11 @@ public class GetTagByIdQuery
 public class TagDto
 {
     public long Id { get; set; }
-    public string Name { get; set; } = string.Empty;
+    public string Title { get; set; } = string.Empty;
     public string? Slug { get; set; }
-    public string? Description { get; set; }
     public bool IsActive { get; set; }
     public DateTime CreatedAt { get; set; }
-    public DateTime UpdatedAt { get; set; }
+    public DateTime? UpdatedAt { get; set; }
 }
 
 public class GetTagByIdHandler
@@ -32,18 +28,16 @@ public class GetTagByIdHandler
         _context = context;
     }
 
-
     public async Task<ResultOperation<TagDto>> Handle(GetTagByIdQuery query)
     {
         var tag = await _context.ProductTags
             .AsNoTracking()
-            .Where(t => t.Id == query.Id && !t.IsDelete)
+            .Where(t => t.Id == query.Id && !t.IsDeleted)
             .Select(t => new TagDto
             {
                 Id = t.Id,
-                Name = t.Name,
+                Title = t.Title,
                 Slug = t.Slug,
-                Description = t.Description,
                 IsActive = t.IsActive,
                 CreatedAt = t.CreatedAt,
                 UpdatedAt = t.UpdatedAt

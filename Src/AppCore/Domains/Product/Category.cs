@@ -1,0 +1,18 @@
+using AppCore.Domains.Common;
+
+namespace AppCore.Domains.Product;
+
+public class Category : AuditableEntity
+{
+    public long? ParentId { get; set; }
+    public string Code { get; set; } = string.Empty;
+    public string Name { get; set; } = string.Empty;
+    public string Slug { get; set; } = string.Empty;
+    public string? Description { get; set; }
+    public string? ImageUrl { get; set; }
+    public int DisplayOrder { get; set; }
+    public bool IsActive { get; set; } = true;
+    public Category? Parent { get; set; }
+    public ICollection<Category> Children { get; set; } = new List<Category>();
+    public ICollection<ProductCategory> ProductCategories { get; set; } = new List<ProductCategory>();
+}

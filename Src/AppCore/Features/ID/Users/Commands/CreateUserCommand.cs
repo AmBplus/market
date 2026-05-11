@@ -1,94 +1,104 @@
-﻿using System;
-using System.Collections.Generic;
+using System.Security.Cryptography;
 using System.Text;
-
-namespace AppCore.Features.ID.Users.Commands;
 using AppCore.Data;
-using AppCore.Domains.Entities.ID;
+using AppCore.Domains.Identity;
 using Framework.ResultHelper;
 using Microsoft.EntityFrameworkCore;
 
+namespace AppCore.Features.Identity.Users.Commands;
 
 public class CreateUserCommand
 {
-    public required string UserName { get; set; }
+    public string UserName { get; set; } = string.Empty;
     public string? Email { get; set; }
-    public required string Password { get; set; }
-    public string? Mobile { get; set; }
-    public string? FirstName { get; set; }
-    public string? LastName { get; set; }
-    public string? FatherName { get; set; }
-    public string? NationalId { get; set; }
-    public string? PassportNumber { get; set; }
-    public string? Nationality { get; set; }
-    public DateTime? BirthDate { get; set; }
-    public string? Address { get; set; }
-    public bool IsActive { get; set; } = true;
-    public long? CreatedBy { get; set; }
+    public string? PhoneNumber { get; set; }
+    public string FirstName { get; set; } = string.Empty;
+    public string LastName { get; set; } = string.Empty;
+    public string Password { get; set; } = string.Empty;
+    public string? NationalCode { get; set; }
+    public List<long> RoleIds { get; set; } = new();
 }
 
 public class CreateUserHandler
 {
     private readonly AppDbContext _context;
+    public CreateUserHandler(AppDbContext context) => _context = context;
 
-    public CreateUserHandler(AppDbContext context)
+    public async Task<ResultOperation> Handle(CreateUserCommand command, CancellationToken ct)
     {
-        _context = context;
-    }
+        if (string.IsNullOrWhiteSpace(command.UserName))
+            return ResultOperation.ToFailedResult("نام کاربری الزامی است");
 
-    public async Task<ResultOperation<long>> Handle(CreateUserCommand command)
-    {
-        // بررسی تکراری نبودن username
-        var userNameExists = await _context.Users
-            .AnyAsync(u => u.UserName == command.UserName && !u.IsDelete);
+        if (string.IsNullOrWhiteSpace(command.Password))
+            return ResultOperation.ToFailedResult("رمز عبور الزامی است");
 
-        if (userNameExists)
-            return ResultOperation<long>.ToFailedResult("این نام کاربری قبلاً ثبت شده است.");
+        if (string.IsNullOrWhiteSpace(command.FirstName))
+            return ResultOperation.ToFailedResult("نام الزامی است");
 
-        // بررسی تکراری نبودن موبایل
-        if (!string.IsNullOrWhiteSpace(command.Mobile))
-        {
-            var mobileExists = await _context.Users
-                .AnyAsync(u => u.Mobile == command.Mobile && !u.IsDelete);
+        if (string.IsNullOrWhiteSpace(command.LastName))
+            return ResultOperation.ToFailedResult("نام خانوادگی الزامی است");
 
-            if (mobileExists)
-                return ResultOperation<long>.ToFailedResult("این شماره موبایل قبلاً ثبت شده است.");
-        }
+        var exists = await _context.Users.AnyAsync(u => u.UserName == command.UserName, ct);
+        if (exists)
+            return ResultOperation.ToFailedResult("نام کاربری تکراری است");
 
-        // بررسی تکراری نبودن ایمیل
         if (!string.IsNullOrWhiteSpace(command.Email))
         {
-            var emailExists = await _context.Users
-                .AnyAsync(u => u.Email == command.Email && !u.IsDelete);
-
+            var emailExists = await _context.Users.AnyAsync(u => u.Email == command.Email, ct);
             if (emailExists)
-                return ResultOperation<long>.ToFailedResult("این ایمیل قبلاً ثبت شده است.");
+                return ResultOperation.ToFailedResult("ایمیل تکراری است");
         }
 
-        var user = new AppUser
+        var (hash, salt) = HashPassword(command.Password);
+
+        var user = new User
         {
             UserName = command.UserName,
             Email = command.Email,
-            PasswordHash = command.Password, // Must Be Hashed
-            Mobile = command.Mobile,
+            PhoneNumber = command.PhoneNumber,
             FirstName = command.FirstName,
             LastName = command.LastName,
-            FatherName = command.FatherName,
-            NationalId = command.NationalId,
-            PassportNumber = command.PassportNumber,
-            Nationality = command.Nationality,
-            BirthDate = command.BirthDate,
-            Address = command.Address,
-            IsActive = command.IsActive,
-            CreatedAt = DateTime.UtcNow,
-            UpdatedAt = DateTime.UtcNow,
-            CreatedBy = command.CreatedBy,
-            UpdatedBy = command.CreatedBy
+            PasswordHash = hash,
+            PasswordSalt = salt,
+            NationalCode = command.NationalCode,
+            IsActive = true
         };
 
-        await _context.Users.AddAsync(user);
-        await _context.SaveChangesAsync();
+        _context.Add(user);
+        await _context.SaveChangesAsync(ct);
 
-        return ResultOperation<long>.ToSuccessResult("کاربر با موفقیت ایجاد شد.", user.Id);
+        if (command.RoleIds is { Count: > 0 })
+        {
+            var validRoles = await _context.Roles
+                .Where(r => command.RoleIds.Contains(r.Id) && r.IsActive)
+                .Select(r => r.Id)
+                .ToListAsync(ct);
+
+            foreach (var roleId in validRoles)
+            {
+                _context.Add(new UserRole
+                {
+                    UserId = user.Id,
+                    RoleId = roleId,
+                    AssignedAt = DateTime.UtcNow
+                });
+            }
+
+            await _context.SaveChangesAsync(ct);
+        }
+
+        return ResultOperation.ToSuccessResult("کاربر با موفقیت ایجاد شد");
+    }
+
+    private static (string Hash, string Salt) HashPassword(string password)
+    {
+        var saltBytes = RandomNumberGenerator.GetBytes(16);
+        var salt = Convert.ToBase64String(saltBytes);
+
+        using var sha256 = SHA256.Create();
+        var hashBytes = sha256.ComputeHash(Encoding.UTF8.GetBytes(password + salt));
+        var hash = Convert.ToBase64String(hashBytes);
+
+        return (hash, salt);
     }
 }

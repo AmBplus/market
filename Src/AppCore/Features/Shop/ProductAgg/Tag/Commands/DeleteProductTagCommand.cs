@@ -1,4 +1,3 @@
-﻿// AppCore/Features/Shop/ProductAgg/Tag/Commands/DeleteTagCommand.cs
 using AppCore.Data;
 using Framework.ResultHelper;
 using Microsoft.EntityFrameworkCore;
@@ -23,13 +22,12 @@ public class DeleteTagHandler
     public async Task<ResultOperation> Handle(DeleteTagCommand command)
     {
         var tag = await _context.ProductTags
-            .FirstOrDefaultAsync(t => t.Id == command.Id && !t.IsDelete);
+            .FirstOrDefaultAsync(t => t.Id == command.Id && !t.IsDeleted);
 
         if (tag is null)
             return ResultOperation.ToFailedResult("تگ مورد نظر یافت نشد.");
 
-        tag.IsDelete = true;
-        tag.UpdatedAt = DateTime.UtcNow;
+        tag.IsDeleted = true;
         tag.UpdatedBy = command.DeletedBy;
 
         await _context.SaveChangesAsync();

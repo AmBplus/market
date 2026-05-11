@@ -1,10 +1,9 @@
 using AppCore.Data;
-using AppCore.Domains.Entities.Shop.ProductAgg;
+using AppCore.Domains.Shop;
 using Framework.ResultHelper;
 using Microsoft.EntityFrameworkCore;
 
 namespace AppCore.Features.Shop.ProductAgg.ColorServices.Commands;
-
 
 public record ColorCreateCommand(
     string Title,
@@ -23,39 +22,25 @@ public class ColorCreateHandler
 
     public async Task<ResultOperation<long>> Handle(ColorCreateCommand command)
     {
-        // بررسی تکراری نبودن Title
         var titleExists = await _context.Colors
-            .AnyAsync(c => c.Title == command.Title && !c.IsDelete);
+            .AnyAsync(c => c.Title == command.Title && !c.IsDeleted);
 
         if (titleExists)
             return ResultOperation<long>.ToFailedResult("این عنوان قبلاً ثبت شده است.");
 
-        // بررسی تکراری نبودن ColorCode
         var colorCodeExists = await _context.Colors
-            .AnyAsync(c => c.ColorCode == command.ColorCode && !c.IsDelete);
+            .AnyAsync(c => c.ColorCode == command.ColorCode && !c.IsDeleted);
 
         if (colorCodeExists)
             return ResultOperation<long>.ToFailedResult("این کد رنگ قبلاً ثبت شده است.");
-
-        // بررسی وجود کاربر ایجاد کننده
-        if (command.CreateBy.HasValue)
-        {
-            var userExists = await _context.Users
-                .AnyAsync(u => u.Id == command.CreateBy && !u.IsDelete);
-
-            if (!userExists)
-                return ResultOperation<long>.ToFailedResult("کاربر مورد نظر برای ایجاد یافت نشد.");
-        }
 
         var color = new Color
         {
             Title = command.Title,
             ColorCode = command.ColorCode,
-            CreateBy = command.CreateBy ?? 0,
-            CreateAt = DateTime.UtcNow,
-            UpdatedAt = DateTime.UtcNow,
-            IsDelete = false,
-            IsActive = true
+            IsDeleted = false,
+            IsActive = true,
+            CreatedBy = command.CreateBy
         };
 
         await _context.Colors.AddAsync(color);
