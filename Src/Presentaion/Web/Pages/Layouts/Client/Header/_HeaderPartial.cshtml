@@ -1,0 +1,630 @@
+﻿@using Framework.Aspc.Security
+@using Web.Services.Authenticate
+@inject UserInfo CurrentUser
+<header class="position-fixed bg-white top-0 start-0 end-0">
+
+@*     <partial name="Layouts/Client/Header/Components/_BannerDesktopScreenPartial" /> *@
+
+
+
+    <div class="mobile-top-header d-flex align-items-center d-lg-none py-3 mx-4 justify-content-between border-b-gray-100 ">
+        <i class="icon-menu mobile-hamburgerMenubtn"></i>
+        <a class="">
+            <img src="~/common/img/logo/logo.svg" height="24" asp-append-version=true/>
+        </a>
+        <div class="d-flex align-items-center">
+            @if (CurrentUser.IsAuthenticated)
+            {
+                <div class="header-profile position-relative">
+                    <div class="header-profilebtn pointer d-flex align-items-center p-2 radius-medium">
+                        <i class="icon-profile"></i>
+                        <span class="mx-1 text-strong-3">@CurrentUser.FullNameInfo</span>
+                        <i class="icon-dropdown"></i>
+                    </div>
+                    <div class="header-profile-Dropdown pb-2 radius-medium bg-white position-absolute">
+                        <div>
+                            <a class="py-4 mx-4 border-b-gray-100 d-flex align-items-center justify-content-between color-gray-700 ">
+                                <span class="text-strong-3">@CurrentUser.FullNameInfo</span>
+                                <i class="icon-chevronLeft "></i>
+                            </a>
+                        </div>
+                        <div>
+                            <div class="d-flex align-items-center px-4 py-2 border-b-gray-100 color-gray-700">
+                                <i class="icon-signOut me-1 ms-5"></i>
+                                <a  href="/auth/logout" class="btn btn-link p-0 text-strong-3">خروج از حساب کاربری</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+            else
+            {
+                <a class="d-flex align-items-center gap-2" href="/auth/login">
+                    <i class="icon-signIn "></i>
+                    ورود
+                </a>
+            }
+            <a class="icon-cart p-2  color-gray-700"></a>
+        </div>
+    </div>
+
+    <div class="header-top position-relative">
+     @*    <partial name="Layouts/Client/Header/Components/_BannerMobileScreenPartial" /> *@
+        <div class=" bg-white container-4xl d-flex justify-content-between py-3 px-4">
+            <div class="d-flex flex-grow-1">
+                <a class="ms-5 d-none d-lg-flex align-items-center" href="/">
+                    <img src="~/common/img/logo/logo.svg" asp-append-version=true />
+                </a>
+
+                <div class="search w-p-100 h-11 radius-medium bg-gray-100 d-flex align-items-center px-lg-4 px-2 position-relative">
+                    <i class="icon-search color-gray-400"></i>
+                    <input class="header-search-input w-p-100 mx-2 mx-lg-4 bg-transparent text-medium" type="text"
+                           placeholder="جستجو" />
+
+                    <div class="header-search-result position-absolute end-0 start-0 top-0 px-4 pb-4 pt-11 bg-white radius-medium">
+                        <div class="header-search-result-container">
+                            <img class="w-p-100 radius-medium mt-7" src="~/client/assets/images/search-result.jpg" />
+                            <div class="d-flex color-gray-700  align-items-center text-strong-3 py-4">
+                                <i class="icon-searchTrend color-gray-400 ms-4"></i>
+                                جستجوهای پرطرفدار
+                            </div>
+
+                            <div class="swiper searchTrends-swiper">
+                                <div class="swiper-wrapper">
+                                    <div class="swiper-slide">
+                                        <a class="d-flex align-items-center py-2 gap-1  text-strong-2 border-gray-200 pe-3 ps-1 radius-u h-10">
+                                            سرم ویتامین c
+                                            <i class="icon-chevronLeft icon-fs-large "></i>
+                                        </a>
+                                    </div>
+                                    <div class="swiper-slide">
+                                        <a class="d-flex align-items-center text-strong-2 border-gray-200 pe-3 ps-1 radius-u h-10 gap-1 py-2">
+                                            سرم ویتامین c
+                                            <i class="icon-chevronLeft icon-fs-large"></i>
+                                        </a>
+                                    </div>
+                                    <div class="swiper-slide">
+                                        <a class="d-flex align-items-center text-strong-2 border-gray-200 pe-3 ps-1 radius-u h-10 gap-1 py-2">
+                                            سرم ویتامین c
+                                            <i class="icon-chevronLeft icon-fs-large"></i>
+                                        </a>
+                                    </div>
+                                    <div class="swiper-slide">
+                                        <a class="d-flex align-items-center text-strong-2 border-gray-200 pe-3 ps-1 radius-u h-10 gap-1 py-2">
+                                            سرم ویتامین c
+                                            <i class="icon-chevronLeft icon-fs-large"></i>
+                                        </a>
+                                    </div>
+
+                                    <div class="swiper-slide">
+                                        <a class="d-flex align-items-center text-strong-2 border-gray-200 pe-3 ps-1 radius-u h-10 gap-1 py-2">
+                                            سرم ویتامین c
+                                            <i class="icon-chevronLeft icon-fs-large"></i>
+                                        </a>
+                                    </div>
+                                    <div class="swiper-slide">
+                                        <a class="d-flex align-items-center text-strong-2 border-gray-200 pe-3 ps-1 radius-u h-10 gap-1 py-2">
+                                            سرم ویتامین c
+                                            <i class="icon-chevronLeft icon-fs-large"></i>
+                                        </a>
+                                    </div>
+
+                                </div>
+
+                                <div class="swiper-btn-prev icon-chevronRight"></div>
+                                <div class="swiper-btn-next icon-chevronLeft"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            @if (CurrentUser.IsAuthenticated)
+            {
+                <div class="d-none d-lg-flex align-items-center">
+                    <div class="header-profile position-relative">
+                        <div class="header-profilebtn pointer d-flex align-items-center p-2 radius-medium">
+                            <i class="icon-profile"></i>
+                            <span class="mx-1 text-strong-3">@CurrentUser.FullNameInfo</span>
+                            <i class="icon-dropdown"></i>
+                        </div>
+                        <div class="header-profile-Dropdown pb-2 radius-medium bg-white position-absolute">
+                            <div>
+                                <a class="py-4 mx-4 border-b-gray-100 d-flex align-items-center justify-content-between color-gray-700 ">
+                                    <span class="text-strong-3">@CurrentUser.FullNameInfo</span>
+                                    <i class="icon-chevronLeft "></i>
+                                </a>
+                            </div>
+                            <div>
+                                <div  class="d-flex align-items-center px-4 py-2 border-b-gray-100 color-gray-700">
+                                    <i class="icon-signOut me-1 ms-5"></i>
+                                    <a href="/auth/logout" class="btn btn-link p-0 text-strong-3">خروج از حساب کاربری</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="header-cart position-relative ">
+                        <div class="header-cart-btn position-relative p-2">
+                            <i class="icon-cart "></i>
+                            <div class="cart-badge d-flex justify-content-center align-items-center position-absolute end-0 bottom-0 bg-primary-500">
+                                <span class="text-subtitle-strong color-white fanumber">۴</span>
+                            </div>
+                        </div>
+
+                        <div class="header-cart-dropdown position-absolute  bg-white start-0 top-100 radius-medium ">
+                            <div class="py-2 px-3">
+                                <span class="fanumber color-gray-600 text-medium">۲ کالا</span>
+                            </div>
+                            <div class="cart-list overflow-auto">
+                                <div class="cart-item  mx-3 py-4 ">
+                                    <div class="d-flex gap-6">
+                                        <img src="~/assets/images/product/300/43.webp">
+                                        <div class="overflow-hidden">
+                                            <p class="color-gray-800 text-strong-2 mb-2">ماگ حرارتی طرح کهکشان کد 08</p>
+                                            <div class="d-flex align-items-center gap-2">
+                                                <div class="radius-circle cart-item-variant-color" style="background-color: #c71585"></div>
+                                                <span class="text-medium color-gray-600">چند رنگ</span>
+                                            </div>
+                                            <div class=" py-3 d-flex flex-column pointer">
+                                                <div class="d-flex align-items-center w-p-100 mb-1">
+                                                    <i class="icon-productAvailable ms-2 icon-fs-medium color-secondary-500"></i>
+                                                    <span class="text-medium color-gray-600 ms-4">موجود در انبار دیجی‌کالا</span>
+                                                </div>
+                                                <div class="d-flex align-items-center">
+
+                                                    <div class="position-relative d-flex justify-content-center ms-3" style="width: 18px">
+                                                        <div class="product-deliveryLine position-absolute bg-gray-200 "></div>
+                                                        <div class="product-deliveryLine position-absolute bg-gray-200 " style="bottom: -6px;top:unset"></div>
+                                                        <i class="icon-dotFill icon-fs-medium color-secondary-500" style="margin-left: 1px"></i>
+                                                    </div>
+                                                    <i class="icon-deliveryExpress color-primary-500 icon-fs-small"></i>
+                                                    <div class="me-2 color-gray-500 text-medium ">ارسال دیجی‌کالا</div>
+                                                </div>
+                                                <div class="d-flex align-items-center">
+                                                    <div class="position-relative d-flex justify-content-center ms-3" style="width: 18px">
+                                                        <div class="product-deliveryLine position-absolute bg-gray-200 "></div>
+                                                        <i class="icon-dotFill icon-fs-medium color-secondary-500" style="margin-left: 1px"></i>
+                                                    </div>
+                                                    <i class="icon-deliveryInstant color-jet-100 icon-fs-small"></i>
+                                                    <div class="me-2 ms-3 color-gray-500 text-medium text-truncate ">
+                                                        ارسال
+                                                        امروز
+                                                        (فعلا در شهر تهران و
+                                                        کرج)
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="d-flex gap-6 mt-3">
+                                        <div class="d-flex align-items-center" style="width:116px">
+                                            <div class="setcartItem-Quantity px-2  radius-medium border-gray-200 d-flex justify-content-2xl-between align-items-center">
+                                                <a><i class="icon-addSimple color-primary-500 icon-fs-medium"></i></a>
+                                                <span class=" d-flex flex-column justify-content-center align-items-center">
+                                                    <span class="setcartItem-Quantity-count color-primary-500 fanumber h5">۱</span>
+                                                    <span class="color-gray-300 text-subtitle" style="margin-top: -12px;">حداکثر</span>
+                                                </span>
+                                                <a><i class="icon-delete color-primary-500 icon-fs-medium"></i> </a>
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <div class="cart-item-disAmount d-flex align-items-center color-primary-700">
+                                                <span class="text-subtitle-strong fanumber currency">۱۱,۲۵۰</span>
+                                                <i class="icon-toman position-relative"></i>
+                                                <span class="text-subtitle me-1">تخفیف</span>
+                                            </div>
+                                            <div class="d-flex align-items-center">
+                                                <span class="fanumber currency color-gray-800 h4">۱۱۶,۰۰۰</span>
+                                                <i class="icon-toman icon-fs-medium color-gray-700 me-1"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="cart-item  mx-3 py-4 ">
+                                    <div class="d-flex gap-6">
+                                        <img src="~/assets/images/product/300/43.webp">
+                                        <div class="overflow-hidden">
+                                            <p class="color-gray-800 text-strong-2 mb-2">ماگ حرارتی طرح کهکشان کد 08</p>
+                                            <div class="d-flex align-items-center gap-2">
+                                                <div class="radius-circle cart-item-variant-color" style="background-color: #c71585"></div>
+                                                <span class="text-medium color-gray-600">چند رنگ</span>
+                                            </div>
+                                            <div class=" py-3 d-flex flex-column pointer">
+                                                <div class="d-flex align-items-center w-p-100 mb-1">
+                                                    <i class="icon-productAvailable ms-2 icon-fs-medium color-secondary-500"></i>
+                                                    <span class="text-medium color-gray-600 ms-4">موجود در انبار دیجی‌کالا</span>
+                                                </div>
+                                                <div class="d-flex align-items-center">
+
+                                                    <div class="position-relative d-flex justify-content-center ms-3" style="width: 18px">
+                                                        <div class="product-deliveryLine position-absolute bg-gray-200 "></div>
+                                                        <div class="product-deliveryLine position-absolute bg-gray-200 " style="bottom: -6px;top:unset"></div>
+                                                        <i class="icon-dotFill icon-fs-medium color-secondary-500" style="margin-left: 1px"></i>
+                                                    </div>
+                                                    <i class="icon-deliveryExpress color-primary-500 icon-fs-small"></i>
+                                                    <div class="me-2 color-gray-500 text-medium ">ارسال دیجی‌کالا</div>
+                                                </div>
+                                                <div class="d-flex align-items-center">
+                                                    <div class="position-relative d-flex justify-content-center ms-3" style="width: 18px">
+                                                        <div class="product-deliveryLine position-absolute bg-gray-200 "></div>
+                                                        <i class="icon-dotFill icon-fs-medium color-secondary-500" style="margin-left: 1px"></i>
+                                                    </div>
+                                                    <i class="icon-deliveryInstant color-jet-100 icon-fs-small"></i>
+                                                    <div class="me-2 ms-3 color-gray-500 text-medium text-truncate ">
+                                                        ارسال
+                                                        امروز
+                                                        (فعلا در شهر تهران و
+                                                        کرج)
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="d-flex gap-6 mt-3">
+                                        <div class="d-flex align-items-center" style="width:116px">
+                                            <div class="setcartItem-Quantity px-2  radius-medium border-gray-200 d-flex justify-content-2xl-between align-items-center">
+                                                <a><i class="icon-addSimple color-primary-500 icon-fs-medium"></i></a>
+                                                <span class=" d-flex flex-column justify-content-center align-items-center">
+                                                    <span class="setcartItem-Quantity-count color-primary-500 fanumber h5">۱</span>
+                                                    <span class="color-gray-300 text-subtitle">حداکثر</span>
+                                                </span>
+                                                <a><i class="icon-delete color-primary-500 icon-fs-medium"></i> </a>
+                                            </div>
+                                        </div>
+                                        <div class="d-flex align-items-center">
+                                            <span class="fanumber currency color-gray-800 h4">۱۱۶,۰۰۰</span>
+                                            <i class="icon-toman icon-fs-medium color-gray-700 me-1"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="cart-item  mx-3 py-4 ">
+                                    <div class="d-flex gap-6">
+                                        <img src="~/assets/images/product/300/43.webp">
+                                        <div class="overflow-hidden">
+                                            <p class="color-gray-800 text-strong-2 mb-2">ماگ حرارتی طرح کهکشان کد 08</p>
+                                            <div class="d-flex align-items-center gap-2">
+                                                <div class="radius-circle cart-item-variant-color" style="background-color: #c71585"></div>
+                                                <span class="text-medium color-gray-600">چند رنگ</span>
+                                            </div>
+                                            <div class=" py-3 d-flex flex-column pointer">
+                                                <div class="d-flex align-items-center w-p-100 mb-1">
+                                                    <i class="icon-productAvailable ms-2 icon-fs-medium color-secondary-500"></i>
+                                                    <span class="text-medium color-gray-600 ms-4">موجود در انبار دیجی‌کالا</span>
+                                                </div>
+                                                <div class="d-flex align-items-center">
+
+                                                    <div class="position-relative d-flex justify-content-center ms-3" style="width: 18px">
+                                                        <div class="product-deliveryLine position-absolute bg-gray-200 "></div>
+                                                        <div class="product-deliveryLine position-absolute bg-gray-200 " style="bottom: -6px;top:unset"></div>
+                                                        <i class="icon-dotFill icon-fs-medium color-secondary-500" style="margin-left: 1px"></i>
+                                                    </div>
+                                                    <i class="icon-deliveryExpress color-primary-500 icon-fs-small"></i>
+                                                    <div class="me-2 color-gray-500 text-medium ">ارسال دیجی‌کالا</div>
+                                                </div>
+                                                <div class="d-flex align-items-center">
+                                                    <div class="position-relative d-flex justify-content-center ms-3" style="width: 18px">
+                                                        <div class="product-deliveryLine position-absolute bg-gray-200 "></div>
+                                                        <i class="icon-dotFill icon-fs-medium color-secondary-500" style="margin-left: 1px"></i>
+                                                    </div>
+                                                    <i class="icon-deliveryInstant color-jet-100 icon-fs-small"></i>
+                                                    <div class="me-2 ms-3 color-gray-500 text-medium text-truncate ">
+                                                        ارسال
+                                                        امروز
+                                                        (فعلا در شهر تهران و
+                                                        کرج)
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="d-flex gap-6 mt-3">
+                                        <div class="d-flex align-items-center" style="width:116px">
+                                            <div class="setcartItem-Quantity px-2  radius-medium border-gray-200 d-flex justify-content-2xl-between align-items-center">
+                                                <a><i class="icon-addSimple color-primary-500 icon-fs-medium"></i></a>
+                                                <span class=" d-flex flex-column justify-content-center align-items-center">
+                                                    <span class="setcartItem-Quantity-count color-primary-500 fanumber h5">۱</span>
+
+                                                </span>
+                                                <a><i class="icon-delete color-primary-500 icon-fs-medium"></i> </a>
+                                            </div>
+                                        </div>
+                                        <div class="d-flex align-items-center">
+                                            <span class="fanumber currency color-gray-800 h4">۱۱۶,۰۰۰</span>
+                                            <i class="icon-toman icon-fs-medium color-gray-700 me-1"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="border-t-gray-100 py-2 px-3 d-flex align-items-center">
+                                <div class="d-flex flex-2xl-column">
+                                    <span class="text-subtitle color-gray-500">مبلغ قابل پرداخت</span>
+                                    <div class="d-flex align-items-center">
+                                        <span class="fanumber currency h4 color-gray-800 ms-2">۷۹۳,۰۰۰</span>
+                                        <i class="icon-toman icon-fs-small"></i>
+                                    </div>
+                                </div>
+                                <a class="bg-primary-500 py-3 px-4 color-white text-button-2 radius-medium me-auto">
+                                    ثبت سفارش
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+            else
+            {
+                <div class="d-none d-lg-flex align-items-center">
+                    <a class="d-flex align-items-center border-lg-gray-200 h-10 text-button-1 px-4 radius-medium" href="/auth/login">
+                        <i class="icon-signIn ms-2"></i>
+                        ورود | ثبت‌نام
+                    </a>
+                    <span class="horizontal-divider h-6 d-lg-flex d-none bg-gray-200 mx-3"></span>
+                    <div class="header-cart position-relative ">
+                        <div class="header-cart-btn position-relative p-2">
+                            <i class="icon-cart "></i>
+                            <div class="cart-badge d-flex justify-content-center align-items-center position-absolute end-0 bottom-0 bg-primary-500">
+                                <span class="text-subtitle-strong color-white fanumber">۴</span>
+                            </div>
+                        </div>
+
+                        <div class="header-cart-dropdown position-absolute  bg-white start-0 top-100 radius-medium ">
+                            <div class="py-2 px-3">
+                                <span class="fanumber color-gray-600 text-medium">۲ کالا</span>
+                            </div>
+                            <div class="cart-list overflow-auto">
+                                <div class="cart-item  mx-3 py-4 ">
+                                    <div class="d-flex gap-6">
+                                        <img src="~/assets/images/product/300/43.webp">
+                                        <div class="overflow-hidden">
+                                            <p class="color-gray-800 text-strong-2 mb-2">ماگ حرارتی طرح کهکشان کد 08</p>
+                                            <div class="d-flex align-items-center gap-2">
+                                                <div class="radius-circle cart-item-variant-color" style="background-color: #c71585"></div>
+                                                <span class="text-medium color-gray-600">چند رنگ</span>
+                                            </div>
+                                            <div class=" py-3 d-flex flex-column pointer">
+                                                <div class="d-flex align-items-center w-p-100 mb-1">
+                                                    <i class="icon-productAvailable ms-2 icon-fs-medium color-secondary-500"></i>
+                                                    <span class="text-medium color-gray-600 ms-4">موجود در انبار دیجی‌کالا</span>
+                                                </div>
+                                                <div class="d-flex align-items-center">
+
+                                                    <div class="position-relative d-flex justify-content-center ms-3" style="width: 18px">
+                                                        <div class="product-deliveryLine position-absolute bg-gray-200 "></div>
+                                                        <div class="product-deliveryLine position-absolute bg-gray-200 " style="bottom: -6px;top:unset"></div>
+                                                        <i class="icon-dotFill icon-fs-medium color-secondary-500" style="margin-left: 1px"></i>
+                                                    </div>
+                                                    <i class="icon-deliveryExpress color-primary-500 icon-fs-small"></i>
+                                                    <div class="me-2 color-gray-500 text-medium ">ارسال دیجی‌کالا</div>
+                                                </div>
+                                                <div class="d-flex align-items-center">
+                                                    <div class="position-relative d-flex justify-content-center ms-3" style="width: 18px">
+                                                        <div class="product-deliveryLine position-absolute bg-gray-200 "></div>
+                                                        <i class="icon-dotFill icon-fs-medium color-secondary-500" style="margin-left: 1px"></i>
+                                                    </div>
+                                                    <i class="icon-deliveryInstant color-jet-100 icon-fs-small"></i>
+                                                    <div class="me-2 ms-3 color-gray-500 text-medium text-truncate ">
+                                                        ارسال
+                                                        امروز
+                                                        (فعلا در شهر تهران و
+                                                        کرج)
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="d-flex gap-6 mt-3">
+                                        <div class="d-flex align-items-center" style="width:116px">
+                                            <div class="setcartItem-Quantity px-2  radius-medium border-gray-200 d-flex justify-content-2xl-between align-items-center">
+                                                <a><i class="icon-addSimple color-primary-500 icon-fs-medium"></i></a>
+                                                <span class=" d-flex flex-column justify-content-center align-items-center">
+                                                    <span class="setcartItem-Quantity-count color-primary-500 fanumber h5">۱</span>
+                                                    <span class="color-gray-300 text-subtitle" style="margin-top: -12px;">حداکثر</span>
+                                                </span>
+                                                <a><i class="icon-delete color-primary-500 icon-fs-medium"></i> </a>
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <div class="cart-item-disAmount d-flex align-items-center color-primary-700">
+                                                <span class="text-subtitle-strong fanumber currency">۱۱,۲۵۰</span>
+                                                <i class="icon-toman position-relative"></i>
+                                                <span class="text-subtitle me-1">تخفیف</span>
+                                            </div>
+                                            <div class="d-flex align-items-center">
+                                                <span class="fanumber currency color-gray-800 h4">۱۱۶,۰۰۰</span>
+                                                <i class="icon-toman icon-fs-medium color-gray-700 me-1"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="cart-item  mx-3 py-4 ">
+                                    <div class="d-flex gap-6">
+                                        <img src="~/assets/images/product/300/43.webp">
+                                        <div class="overflow-hidden">
+                                            <p class="color-gray-800 text-strong-2 mb-2">ماگ حرارتی طرح کهکشان کد 08</p>
+                                            <div class="d-flex align-items-center gap-2">
+                                                <div class="radius-circle cart-item-variant-color" style="background-color: #c71585"></div>
+                                                <span class="text-medium color-gray-600">چند رنگ</span>
+                                            </div>
+                                            <div class=" py-3 d-flex flex-column pointer">
+                                                <div class="d-flex align-items-center w-p-100 mb-1">
+                                                    <i class="icon-productAvailable ms-2 icon-fs-medium color-secondary-500"></i>
+                                                    <span class="text-medium color-gray-600 ms-4">موجود در انبار دیجی‌کالا</span>
+                                                </div>
+                                                <div class="d-flex align-items-center">
+
+                                                    <div class="position-relative d-flex justify-content-center ms-3" style="width: 18px">
+                                                        <div class="product-deliveryLine position-absolute bg-gray-200 "></div>
+                                                        <div class="product-deliveryLine position-absolute bg-gray-200 " style="bottom: -6px;top:unset"></div>
+                                                        <i class="icon-dotFill icon-fs-medium color-secondary-500" style="margin-left: 1px"></i>
+                                                    </div>
+                                                    <i class="icon-deliveryExpress color-primary-500 icon-fs-small"></i>
+                                                    <div class="me-2 color-gray-500 text-medium ">ارسال دیجی‌کالا</div>
+                                                </div>
+                                                <div class="d-flex align-items-center">
+                                                    <div class="position-relative d-flex justify-content-center ms-3" style="width: 18px">
+                                                        <div class="product-deliveryLine position-absolute bg-gray-200 "></div>
+                                                        <i class="icon-dotFill icon-fs-medium color-secondary-500" style="margin-left: 1px"></i>
+                                                    </div>
+                                                    <i class="icon-deliveryInstant color-jet-100 icon-fs-small"></i>
+                                                    <div class="me-2 ms-3 color-gray-500 text-medium text-truncate ">
+                                                        ارسال
+                                                        امروز
+                                                        (فعلا در شهر تهران و
+                                                        کرج)
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="d-flex gap-6 mt-3">
+                                        <div class="d-flex align-items-center" style="width:116px">
+                                            <div class="setcartItem-Quantity px-2  radius-medium border-gray-200 d-flex justify-content-2xl-between align-items-center">
+                                                <a><i class="icon-addSimple color-primary-500 icon-fs-medium"></i></a>
+                                                <span class=" d-flex flex-column justify-content-center align-items-center">
+                                                    <span class="setcartItem-Quantity-count color-primary-500 fanumber h5">۱</span>
+                                                    <span class="color-gray-300 text-subtitle">حداکثر</span>
+                                                </span>
+                                                <a><i class="icon-delete color-primary-500 icon-fs-medium"></i> </a>
+                                            </div>
+                                        </div>
+                                        <div class="d-flex align-items-center">
+                                            <span class="fanumber currency color-gray-800 h4">۱۱۶,۰۰۰</span>
+                                            <i class="icon-toman icon-fs-medium color-gray-700 me-1"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="cart-item  mx-3 py-4 ">
+                                    <div class="d-flex gap-6">
+                                        <img src="~/assets/images/product/300/43.webp">
+                                        <div class="overflow-hidden">
+                                            <p class="color-gray-800 text-strong-2 mb-2">ماگ حرارتی طرح کهکشان کد 08</p>
+                                            <div class="d-flex align-items-center gap-2">
+                                                <div class="radius-circle cart-item-variant-color" style="background-color: #c71585"></div>
+                                                <span class="text-medium color-gray-600">چند رنگ</span>
+                                            </div>
+                                            <div class=" py-3 d-flex flex-column pointer">
+                                                <div class="d-flex align-items-center w-p-100 mb-1">
+                                                    <i class="icon-productAvailable ms-2 icon-fs-medium color-secondary-500"></i>
+                                                    <span class="text-medium color-gray-600 ms-4">موجود در انبار دیجی‌کالا</span>
+                                                </div>
+                                                <div class="d-flex align-items-center">
+
+                                                    <div class="position-relative d-flex justify-content-center ms-3" style="width: 18px">
+                                                        <div class="product-deliveryLine position-absolute bg-gray-200 "></div>
+                                                        <div class="product-deliveryLine position-absolute bg-gray-200 " style="bottom: -6px;top:unset"></div>
+                                                        <i class="icon-dotFill icon-fs-medium color-secondary-500" style="margin-left: 1px"></i>
+                                                    </div>
+                                                    <i class="icon-deliveryExpress color-primary-500 icon-fs-small"></i>
+                                                    <div class="me-2 color-gray-500 text-medium ">ارسال دیجی‌کالا</div>
+                                                </div>
+                                                <div class="d-flex align-items-center">
+                                                    <div class="position-relative d-flex justify-content-center ms-3" style="width: 18px">
+                                                        <div class="product-deliveryLine position-absolute bg-gray-200 "></div>
+                                                        <i class="icon-dotFill icon-fs-medium color-secondary-500" style="margin-left: 1px"></i>
+                                                    </div>
+                                                    <i class="icon-deliveryInstant color-jet-100 icon-fs-small"></i>
+                                                    <div class="me-2 ms-3 color-gray-500 text-medium text-truncate ">
+                                                        ارسال
+                                                        امروز
+                                                        (فعلا در شهر تهران و
+                                                        کرج)
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="d-flex gap-6 mt-3">
+                                        <div class="d-flex align-items-center" style="width:116px">
+                                            <div class="setcartItem-Quantity px-2  radius-medium border-gray-200 d-flex justify-content-2xl-between align-items-center">
+                                                <a><i class="icon-addSimple color-primary-500 icon-fs-medium"></i></a>
+                                                <span class=" d-flex flex-column justify-content-center align-items-center">
+                                                    <span class="setcartItem-Quantity-count color-primary-500 fanumber h5">۱</span>
+
+                                                </span>
+                                                <a><i class="icon-delete color-primary-500 icon-fs-medium"></i> </a>
+                                            </div>
+                                        </div>
+                                        <div class="d-flex align-items-center">
+                                            <span class="fanumber currency color-gray-800 h4">۱۱۶,۰۰۰</span>
+                                            <i class="icon-toman icon-fs-medium color-gray-700 me-1"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="border-t-gray-100 py-2 px-3 d-flex align-items-center">
+                                <div class="d-flex flex-2xl-column">
+                                    <span class="text-subtitle color-gray-500">مبلغ قابل پرداخت</span>
+                                    <div class="d-flex align-items-center">
+                                        <span class="fanumber currency h4 color-gray-800 ms-2">۷۹۳,۰۰۰</span>
+                                        <i class="icon-toman icon-fs-small"></i>
+                                    </div>
+                                </div>
+                                <a class="bg-primary-500 py-3 px-4 color-white text-button-2 radius-medium me-auto">
+                                    ثبت سفارش
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+
+        </div>
+    </div>
+
+    <nav class="header-nav d-flex justify-content-between container-4xl px-lg-4 bg-white">
+        <div class="flex-grow-1">
+            <ul class="mainMenu d-flex flex-column flex-lg-row align-items-lg-center w-p-100">
+                <li class="d-lg-none py-5 border-b-gray-100 mx-5 w-p-100">
+                    <img src="~/client/assets/images/logo/logo-fa.svg" class="h-6" />
+                </li>
+                <li class="mainMenu-hover">
+
+                </li>
+                <li class="mainMenu-li-hasSubMenu">
+                    <div class="h-10 d-none d-lg-flex align-items-center text-strong-2 gap-1 pointer color-gray-700">
+                        <i class="icon-menu icon-fs-large"></i>
+                        دسته‌بندی کالاها
+                    </div>
+                    <partial name="Layouts/Client/Header/Components/_CategoriesPartial" />
+                </li>
+
+                <span class="horizontal-divider h-4 bg-gray-200 me-5 d-none d-lg-flex"></span>
+
+                <li>
+                    <a class="mainMenu-item d-flex gap-1 px-3 align-items-center color-gray-600 text-medium" href="adminstraion">
+                        <i class="icon-amazing icon-fs-medium color-gray-400"></i>
+                        ادمین
+                    </a>
+                </li>
+
+
+                <div class="horizontal-divider h-4 bg-gray-200  d-none d-lg-flex"></div>
+
+                <li>
+                    <a class="mainMenu-item d-flex gap-1 px-3 align-items-center color-gray-600 text-medium">
+                        <i class="icon-askQuestion d-flex d-lg-none icon-fs-medium color-gray-400"></i>
+                        سوالی دارید؟
+                    </a>
+                </li>
+
+                <li>
+                    <a class="mainMenu-item d-flex gap-1 px-3 align-items-center color-gray-600 text-medium">
+                        <i class="icon-seller d-flex d-lg-none  icon-fs-medium color-gray-400"></i>
+                        در مارکت پلیس بفروشید!
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <div class="overlay mobile-header-overlay"></div>
+</header>
+
+
+

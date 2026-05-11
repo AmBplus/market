@@ -1,0 +1,60 @@
+/*
+* Prefixed by https://autoprefixer.github.io
+* PostCSS: v8.4.14,
+* Autoprefixer: v10.4.7
+* Browsers: since 2017
+*/
+
+@-webkit-keyframes ambfadeOut {
+  0% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes ambfadeOut {
+  0% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+  }
+}
+
+@-webkit-keyframes ambslideUp {
+  0% {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes ambslideUp {
+  0% {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.amb-animated-content {
+  -webkit-animation: slideUp 0.5s ease-out;
+  animation: slideUp 0.5s ease-out;
+}
+
+.amb-fade-out {
+  -webkit-animation: fadeOut 0.5s ease-out;
+  animation: fadeOut 0.5s ease-out;
+}

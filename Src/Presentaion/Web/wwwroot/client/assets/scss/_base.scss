@@ -1,0 +1,137 @@
+
+[class*='container-'] {
+    
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.ltr{
+    direction: ltr;
+}
+.bg-white{
+    background-color: $color-white;
+}
+
+.color-white{
+    color: $color-white;
+}
+
+.color-ad {
+    color: #ff009c;
+  }
+
+.bg-transparent{
+    background-color: $color-transparent;
+}
+
+.horizontal-divider{
+    width: 1px;
+    display: block;
+}
+
+.vertical-divider{
+    height: 1px;
+    display: block;
+}
+
+
+
+.no-overflow{
+    overflow: hidden;
+}
+
+.overlay{
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    background-color: rgba($color: $color-gray-900, $alpha: 0.5);
+    opacity: 0;
+    visibility: hidden;
+    transition: all .2s;
+
+
+    &.active{
+        opacity: 1;
+        visibility: visible;
+    }
+
+    &.header-overlay{
+        z-index: 6;
+    }
+
+    &.mobile-header-overlay{
+        z-index: 11;
+    }
+}
+
+
+.pointer{
+    cursor: pointer;
+}
+
+.discount-percent{
+    height: 20px;
+    width: 34px;
+}
+
+.border-white{
+    border: 1px solid $color-white;
+}
+
+.btn-disabled{
+    background-color: $color-gray-200;
+    border: 1px solid $color-gray-200;
+    color: $color-white;
+}
+
+.border-primary-500{
+    border: 1px solid $color-primary-500;
+}
+
+.border-secondary-500{
+    border: 1px solid $color-secondary-500;
+}
+
+.border-b-4{
+    border-bottom: 4px solid $color-gray-100;
+}
+
+.title-underline {
+    width: 70px;
+    height: 2px;
+}
+
+.scrollbar-hide{
+    scrollbar-width: none;
+}
+
+.shadow-t{
+    box-shadow: rgba($color: #000000, $alpha: 0.14) 0 -1px 1px 0,rgba($color: #000000, $alpha: 0.05) 0 -2px 2px 0;
+}
+
+.z-1{z-index: 1;}
+
+
+.textWithShowore{
+    height: 125px;
+
+    &::after{
+        content: "";
+        position: absolute;
+        height: 100%;
+        width: 100%;
+        background: linear-gradient(180deg,transparent 50%,#fff);
+    }
+    a{
+        color: $color-secondary-500;
+    }
+
+    &.opened{
+        height: auto;
+        &::after{
+            content: unset;
+        }
+    }
+}

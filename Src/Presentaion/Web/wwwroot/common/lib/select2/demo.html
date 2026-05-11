@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Select2 Attr Plugin — Demo</title>
+
+  <link href="/node_modules/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="/select2/select2.dist.css" rel="stylesheet" />
+  <link href="/select2/select2-bootstrap-5-theme.rtl.min.css" rel="stylesheet" />
+
+  <style>
+    body { background: #f1f5f9; }
+    .page-header {
+      background: #4f46e5;
+      color: #fff;
+      padding: 1.25rem 0;
+      margin-bottom: 1.5rem;
+    }
+    .page-header h1 { font-size: 1.25rem; font-weight: 700; margin: 0; }
+    .page-header p  { font-size: 0.82rem; opacity: .8; margin: 0; }
+    .card { border: 1px solid #e2e8f0; border-radius: .5rem; margin-bottom: 1rem; }
+    .card-header {
+      background: #f8fafc;
+      border-bottom: 1px solid #e2e8f0;
+      padding: .6rem 1rem;
+      font-size: .78rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .06em;
+      color: #4f46e5;
+    }
+    .card-body { padding: 1rem; }
+    .form-label { font-size: .85rem; font-weight: 600; margin-bottom: .25rem; }
+    .hint { font-size: .75rem; color: #64748b; margin-top: .25rem; }
+    .result-box {
+      background: #eef2ff;
+      border: 1px dashed #6366f1;
+      border-radius: .375rem;
+      padding: .4rem .75rem;
+      font-size: .8rem;
+      color: #4338ca;
+      margin-top: .5rem;
+      min-height: 2rem;
+    }
+    pre {
+      background: #0f172a;
+      color: #94a3b8;
+      border-radius: .375rem;
+      padding: .75rem 1rem;
+      font-size: .75rem;
+      margin-top: .75rem;
+      margin-bottom: 0;
+      overflow-x: auto;
+    }
+    pre .a { color: #7dd3fc; }
+    pre .v { color: #86efac; }
+    footer {
+      background: #fff;
+      border-top: 1px solid #e2e8f0;
+      padding: 1rem 0;
+      text-align: center;
+      font-size: .82rem;
+      color: #94a3b8;
+      margin-top: 2rem;
+    }
+  </style>
+</head>
+<body>
+
+<div class="page-header">
+  <div class="container">
+    <h1>Select2 Attribute Plugin</h1>
+    <p>Zero-JS Select2 configuration via HTML data attributes</p>
+  </div>
+</div>
+
+<div class="container" style="max-width:800px">
+
+  <!-- 1. Static -->
+  <div class="card">
+    <div class="card-header">1 — Static Options</div>
+    <div class="card-body">
+      <label class="form-label">Country</label>
+      <select
+        data-select2-attr
+        data-placeholder="Select a country..."
+        data-allow-clear="true"
+        class="form-select"
+        id="s-static"
+      >
+        <option value=""></option>
+        <option value="us">United States</option>
+        <option value="ca">Canada</option>
+        <option value="de">Germany</option>
+        <option value="fr">France</option>
+        <option value="jp">Japan</option>
+      </select>
+      <div class="hint">No JS needed — just <code>data-select2-attr</code> on the element.</div>
+      <div class="result-box">Selected: <span id="r-static">—</span></div>
+      <pre><span class="a">data-select2-attr</span>
+<span class="a">data-placeholder</span>=<span class="v">"Select a country..."</span>
+<span class="a">data-allow-clear</span>=<span class="v">"true"</span></pre>
+    </div>
+  </div>
+
+  <!-- 2. AJAX -->
+  <div class="card">
+    <div class="card-header">2 — AJAX Data Source</div>
+    <div class="card-body">
+      <label class="form-label">User (from /api/users)</label>
+      <select
+        data-select2-attr
+        data-url="/api/users"
+        data-data-path="data"
+        data-id-key="id"
+        data-text-key="name"
+        data-search-param="search"
+        data-placeholder="Search users..."
+        data-allow-clear="true"
+        data-delay="300"
+        data-on-select="callbacks.onUserSelect"
+        data-on-clear="callbacks.onUserClear"
+        data-on-load="callbacks.onLoad"
+        class="form-select"
+        id="s-ajax"
+      ></select>
+      <div class="hint">Fetches from <code>/api/users?search=</code> — type to filter.</div>
+      <div class="result-box">Selected: <span id="r-ajax">—</span></div>
+      <pre><span class="a">data-url</span>=<span class="v">"/api/users"</span>
+<span class="a">data-data-path</span>=<span class="v">"data"</span>
+<span class="a">data-id-key</span>=<span class="v">"id"</span>  <span class="a">data-text-key</span>=<span class="v">"name"</span>
+<span class="a">data-on-select</span>=<span class="v">"callbacks.onUserSelect"</span></pre>
+    </div>
+  </div>
+
+  <!-- 3. Pagination -->
+  <div class="card">
+    <div class="card-header">3 — Pagination</div>
+    <div class="card-body">
+      <label class="form-label">City (paginated, 5 per page)</label>
+      <select
+        data-select2-attr
+        data-url="/api/cities"
+        data-data-path="data.items"
+        data-id-key="id"
+        data-text-key="city"
+        data-pagination="true"
+        data-page-size="5"
+        data-page-param="page"
+        data-page-size-param="limit"
+        data-search-param="q"
+        data-total-path="data.total"
+        data-placeholder="Search cities..."
+        data-allow-clear="true"
+        class="form-select"
+        id="s-paged"
+      ></select>
+      <div class="hint">Scroll down in the dropdown to load more pages.</div>
+      <pre><span class="a">data-pagination</span>=<span class="v">"true"</span>
+<span class="a">data-page-size</span>=<span class="v">"5"</span>  <span class="a">data-total-path</span>=<span class="v">"data.total"</span>
+<span class="a">data-page-param</span>=<span class="v">"page"</span>  <span class="a">data-page-size-param</span>=<span class="v">"limit"</span></pre>
+    </div>
+  </div>
+
+  <!-- 4. Dependency -->
+  <div class="card">
+    <div class="card-header">4 — Dependency (parent → child)</div>
+    <div class="card-body">
+      <div class="row g-3">
+        <div class="col-md-6">
+          <label class="form-label">Country</label>
+          <select
+            data-select2-attr
+            data-url="/api/countries"
+            data-data-path="data"
+            data-id-key="id"
+            data-text-key="name"
+            data-search-param="search"
+            data-placeholder="Select country..."
+            data-allow-clear="true"
+            class="form-select"
+            id="s-country"
+          ></select>
+        </div>
+        <div class="col-md-6">
+          <label class="form-label">City (depends on country)</label>
+          <select
+            data-select2-attr
+            data-url="/api/dep-cities"
+            data-data-path="data"
+            data-id-key="id"
+            data-text-key="name"
+            data-search-param="search"
+            data-depends-on="#s-country"
+            data-dep-param="countryId"
+            data-placeholder="Select city..."
+            data-allow-clear="true"
+            class="form-select"
+            id="s-depcity"
+          ></select>
+          <div class="hint">Disabled until a country is selected. Clears on parent change.</div>
+        </div>
+      </div>
+      <pre><span class="a">data-depends-on</span>=<span class="v">"#s-country"</span>
+<span class="a">data-dep-param</span>=<span class="v">"countryId"</span>  <span class="v">← sent as ?countryId=</span></pre>
+    </div>
+  </div>
+
+  <!-- 5. Initial Value -->
+  <div class="card">
+    <div class="card-header">5 — Initial Value (data-current-id)</div>
+    <div class="card-body">
+      <label class="form-label">Product (pre-selected id=3)</label>
+      <select
+        data-select2-attr
+        data-url="/api/products"
+        data-data-path="data.items"
+        data-id-key="id"
+        data-text-key="label"
+        data-search-param="search"
+        data-pagination="true"
+        data-page-size="5"
+        data-total-path="data.total"
+        data-current-id="3"
+        data-fetch-url="/api/products"
+        data-fetch-id-param="id"
+        data-placeholder="Search products..."
+        data-allow-clear="true"
+        class="form-select"
+        id="s-initial"
+      ></select>
+      <div class="hint">On load, fetches <code>/api/products?id=3</code> and pre-selects the result.</div>
+      <pre><span class="a">data-current-id</span>=<span class="v">"3"</span>
+<span class="a">data-fetch-url</span>=<span class="v">"/api/products"</span>
+<span class="a">data-fetch-id-param</span>=<span class="v">"id"</span></pre>
+    </div>
+  </div>
+
+  <!-- 6. on-change / watch -->
+  <div class="card">
+    <div class="card-header">6 — on-change &amp; watch</div>
+    <div class="card-body">
+      <div class="row g-3">
+        <div class="col-md-6">
+          <label class="form-label">User (triggers refresh on product)</label>
+          <select
+            data-select2-attr
+            data-url="/api/users"
+            data-data-path="data"
+            data-id-key="id"
+            data-text-key="name"
+            data-search-param="search"
+            data-on-change="#s-watched-product"
+            data-placeholder="Select user..."
+            data-allow-clear="true"
+            class="form-select"
+            id="s-trigger"
+          ></select>
+        </div>
+        <div class="col-md-6">
+          <label class="form-label">Product (watches user select)</label>
+          <select
+            data-select2-attr
+            data-url="/api/products"
+            data-data-path="data.items"
+            data-id-key="id"
+            data-text-key="label"
+            data-search-param="search"
+            data-pagination="true"
+            data-page-size="5"
+            data-total-path="data.total"
+            data-watch="#s-trigger"
+            data-watch-action="clear"
+            data-placeholder="Select product..."
+            data-allow-clear="true"
+            class="form-select"
+            id="s-watched-product"
+          ></select>
+          <div class="hint">Clears when the user select changes.</div>
+        </div>
+      </div>
+      <pre><span class="v">← trigger element:</span>  <span class="a">data-on-change</span>=<span class="v">"#s-watched-product"</span>
+<span class="v">← watched element:</span> <span class="a">data-watch</span>=<span class="v">"#s-trigger"</span>  <span class="a">data-watch-action</span>=<span class="v">"clear"</span></pre>
+    </div>
+  </div>
+
+  <!-- 7. Multiple + Tags -->
+  <div class="card">
+    <div class="card-header">7 — Multiple Selection &amp; Tags</div>
+    <div class="card-body">
+      <div class="row g-3">
+        <div class="col-md-6">
+          <label class="form-label">Multiple Users</label>
+          <select
+            data-select2-attr
+            data-url="/api/users"
+            data-data-path="data"
+            data-id-key="id"
+            data-text-key="name"
+            data-search-param="search"
+            data-placeholder="Select multiple..."
+            multiple
+            class="form-select"
+            id="s-multi"
+          ></select>
+        </div>
+        <div class="col-md-6">
+          <label class="form-label">Tags (free input)</label>
+          <select
+            data-select2-attr
+            data-tags="true"
+            data-placeholder="Type and press Enter..."
+            class="form-select"
+            id="s-tags"
+            multiple
+          >
+            <option value="js" selected>JavaScript</option>
+            <option value="ts" selected>TypeScript</option>
+          </select>
+        </div>
+      </div>
+      <pre><span class="v">multiple select:</span>  <span class="a">multiple</span> attribute on &lt;select&gt;
+<span class="v">tags mode:</span>        <span class="a">data-tags</span>=<span class="v">"true"</span></pre>
+    </div>
+  </div>
+
+  <!-- 8. Dynamic / Modal -->
+  <div class="card">
+    <div class="card-header">8 — Auto-Init in Modal (dynamic elements)</div>
+    <div class="card-body">
+      <button class="btn btn-sm btn-outline-primary" data-bs-toggle="modal" data-bs-target="#demoModal">
+        Open Modal
+      </button>
+      <div class="hint">Select2 inside the modal auto-inits and uses the modal as <code>dropdownParent</code>.</div>
+    </div>
+  </div>
+
+</div><!-- /container -->
+
+<!-- Modal -->
+<div class="modal fade" id="demoModal" tabindex="-1">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Modal — Auto Init</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+      <div class="modal-body">
+        <label class="form-label">Product inside modal</label>
+        <select
+          data-select2-attr
+          data-url="/api/products"
+          data-data-path="data.items"
+          data-id-key="id"
+          data-text-key="label"
+          data-search-param="search"
+          data-pagination="true"
+          data-page-size="5"
+          data-total-path="data.total"
+          data-placeholder="Search products..."
+          data-allow-clear="true"
+          class="form-select"
+          id="s-modal"
+        ></select>
+        <div class="hint mt-2">
+          <code>dropdownParent</code> is automatically set to <code>.modal</code>.
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-secondary btn-sm" data-bs-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="container">Select2 Attribute Plugin &mdash; Demo Page</div>
+</footer>
+
+<!-- ═══════════════════ SCRIPTS ═══════════════════ -->
+<script src="/node_modules/jquery/dist/jquery.min.js"></script>
+<script src="/node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+<script src="/select2/select2.dist.js"></script>
+<script src="/jquery.select2-attributes.js"></script>
+
+<!-- ═══════════════════ CALLBACKS ═══════════════════ -->
+<script>
+  window.callbacks = {
+    onUserSelect: function (data, el) {
+      document.getElementById('r-ajax').textContent = data.id + ' — ' + data.text;
+    },
+    onUserClear: function (el) {
+      document.getElementById('r-ajax').textContent = '—';
+    },
+    onLoad: function (response, results, el) {
+      console.log('[onLoad]', results.length, 'items loaded');
+    }
+  };
+
+  // Show static result
+  $(document).on('change', '#s-static', function () {
+    var v = $(this).val();
+    $('#r-static').text(v ? $(this).find('option:selected').text() + ' (' + v + ')' : '—');
+  });
+</script>
+
+</body>
+</html>

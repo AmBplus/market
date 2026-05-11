@@ -1,0 +1,95 @@
+
+.circle-button {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 5px;
+}
+
+#hidden-div {
+  display: none; /* مخفی کردن div به صورت پیش‌فرض */
+}
+
+.green-text {
+  color: green;
+}
+
+.red-text {
+  color: red;
+}
+
+.red-orange {
+  color: #ff6a00;
+}
+
+/*///
+*/
+.question-item {
+  text-align: right; /* تنظیم متن به سمت راست */
+  padding: 10px;
+  border: 1px solid #ddd;
+  margin-bottom: 10px;
+}
+
+.question-header {
+  display: flex;
+  align-items: center;
+  gap: 10px; /* فاصله بین شماره سوال و عنوان */
+}
+
+  .question-header h6 {
+    margin: 0; /* حذف فضای پیش‌فرض بالا و پایین تگ h6 */
+  }
+
+.option {
+  display: flex;
+  align-items: center;
+  margin-bottom: 5px;
+}
+
+  .option i {
+    margin-right: 5px; /* فاصله بین آیکون و متن گزینه */
+    width: 24px; /* عرض ثابت برای آیکون‌ها */
+    text-align: center; /* تراز کردن آیکون‌ها در وسط */
+  }
+
+  .option i.new-icon {
+    margin-right: 0; /* حذف فاصله برای آیکون جدید */
+    margin-left: 5px; /* اضافه کردن فاصله به سمت چپ برای آیکون جدید */
+  }
+
+/* کد CSS برای کادر بیضی با گوشه‌های گرد */
+.option-box {
+  border: 1px solid #ccc;
+  border-radius: 20px; 
+  padding: 10px;
+  margin-bottom: 10px;
+  background-color: #f8f9fa;
+}
+
+  .option div {
+    flex: 1; /* پر کردن فضای باقی‌مانده */
+    font-weight: bold; /* بولد کردن متن گزینه‌ها */
+   
+  }
+
+.bg-success {
+  background-color: #28a745 !important;
+}
+
+.bg-danger {
+  background-color: #dc3545 !important;
+}
+
+.dash {
+  margin: 0 5px;
+}
+
+.fixed-width-icon {
+  width: 30px; /* عرض ثابت برای آیکون‌ها */
+  text-align: center;
+  flex-shrink: 0; /* جلوگیری از تغییر اندازه آیکون‌ها */
+}

@@ -1,0 +1,129 @@
+stages:
+ - staging
+ - production
+
+variables:
+#  STAGE_MSSQL_CS: Server=$HOST;Database=meshkat_db;User Id=sa;Password=$SA_STAGE_PASS;MultipleActiveResultSets=true;TrustServerCertificate=true;
+  DB_PASSWORD: $SA_PASSWORD
+  STAGE_DB_PASSWORD: $SA_STAGE_PASS
+  REDIS_PASSWORD: $REDIS_PASSWORD
+  PROD_MSSQL_CS: $DEVELOP_MSSQL_CS
+#  PROD_MSSQL_CS: $PROD_MSSQL_CS
+  SMS_PROVIDER_USERNAME: $SMS_PROVIDER_USERNAME
+  SMS_PROVIDER_PASSWORD: $SMS_PROVIDER_PASSWORD
+  SMS_PROVIDER_SENDER_NUMBER: $SMS_PROVIDER_SENDER_NUMBER
+
+  SmsProviderSettings_DefaultSenderNumber: $SMS_PROVIDER_SENDER_NUMBER
+  SmsProviderSettings_Username: $SMS_PROVIDER_USERNAME
+  SmsProviderSettings_Password: $SMS_PROVIDER_PASSWORD
+
+  STAGE_API_URL: $STAGE_API_URL
+  PROD_API_URL: $PROD_API_URL
+  SEPEHR_GATEWAY_TERMINAL_ID: $SEPEHR_GATEWAY_TERMINAL_ID
+  SEPEHR_GATEWAY_SHARE_CODE: $SEPEHR_GATEWAY_SHARE_CODE
+  STAGE_PAYMENT_CALLBACK_URL: $STAGE_PAYMENT_CALLBACK_URL
+  PROD_PAYMENT_CALLBACK_URL: $PROD_PAYMENT_CALLBACK_URL
+  PROD_CERTIFICATE_VALIDATE_URL: $PROD_CERTIFICATE_VALIDATE_URL
+  STAGE_CERTIFICATE_VALIDATE_URL: $STAGE_CERTIFICATE_VALIDATE_URL
+  GENERATE_REPORT_API_URI: $GENERATE_REPORT_API_URI
+
+Build & Test:
+ stage: staging
+ rules:
+   - if: $CI_COMMIT_BRANCH == "develop"
+ tags:
+   - runner_meshkattest
+ script:
+   - docker login dockerhub.mshdiau.ac.ir -u admin -p $MY_HUBDOCKER_PASSWORD  || true 
+   - docker network create meshkat_net || true
+   - docker pull dockerhub.mshdiau.ac.ir/db/redis:latest
+#   - docker pull mcr.microsoft.com/mssql/server
+#   - docker pull redis:latest
+#   - docker build -t meshkattest/market_webapp --target test .
+
+#    - docker run --rm -v /var/run/docker.sock:/var/run/docker.sock --name meshkat-test meshkat/test
+ ### with test result
+ #   - docker run --rm -v /var/run/docker.sock:/var/run/docker.sock  -v ./testresults:/app/tests/IntegrationTests/testresults --name meshkat-test meshkat/test
+ # artifacts:
+ #  reports:
+ #    junit: "*/testresult.xml"
+
+
+Deploy on Staging Server:
+  stage: staging
+  tags:
+    - runner_meshkattest
+  rules:
+    - if: $CI_COMMIT_BRANCH == "develop"
+  script:
+    - docker network create meshkat_net || true
+#    - docker pull mcr.microsoft.com/mssql/server
+    - export MSSQL_CS="${DEVELOP_MSSQL_CS}"
+    - export ASP_ENV="Development"
+    - export DEFAULT_GATEWAY="ParbadVirtual"
+    - export API_URL="${STAGE_API_URL}"
+    - export SEQ_URL="${SEQ_TEST_URL}"
+    - export REPORTAPIURL="${REPORTAPIURL}"
+    - export PAYMENT_CALLBACK_URL="${STAGE_PAYMENT_CALLBACK_URL}"
+    - export CERTIFICATE_VALIDATE_URL="${STAGE_CERTIFICATE_VALIDATE_URL}"
+    - export image_name="meshkattest/market_webapp"
+    - docker compose build 
+            --build-arg ASP_ENV="$ASP_ENV"
+            --build-arg MSSQL_CS="$MSSQL_CS"
+            --build-arg SA_PASSWORD="$SA_STAGE_PASSWORD"
+            --build-arg REDIS_PASSWORD="$REDIS_PASSWORD"
+            --build-arg GENERATE_REPORT_API_URI="$GENERATE_REPORT_API_URI"
+            --build-arg SMS_PROVIDER_USERNAME="$SMS_PROVIDER_USERNAME"
+            --build-arg SMS_PROVIDER_PASSWORD="$SMS_PROVIDER_PASSWORD"
+            --build-arg SMS_PROVIDER_SENDER_NUMBER="$SMS_PROVIDER_SENDER_NUMBER"
+            --build-arg SmsProviderSettings_Username="$SMS_PROVIDER_USERNAME"
+            --build-arg SmsProviderSettings_Password="$SMS_PROVIDER_PASSWORD"
+            --build-arg SmsProviderSettings_DefaultSenderNumber="$SMS_PROVIDER_SENDER_NUMBER"
+            
+    - docker compose  down
+    - docker compose  up -d
+    #- docker push dockerhub.mshdiau.ac.ir/$image_name
+   
+
+
+Deploy on Customer Server:
+  stage: production
+  tags:
+ #   - meshakat_prod 
+    - runner_meshkat
+  rules:
+    - if: $CI_COMMIT_BRANCH == "main"
+#    - when: manual   
+  script:
+    - docker network create meshkat_net || true
+#    - docker pull mcr.microsoft.com/mssql/server
+    - export MSSQL_CS="${PROD_MSSQL_CS}"
+    - export ASP_ENV="Production"
+    - export DEFAULT_GATEWAY="Sepehr"
+    - export API_URL="${PROD_API_URL}"
+    - export SEQ_URL="${SEQ_URL}"
+    - export REPORTAPIURL="${REPORTAPIURL}"
+    - export PAYMENT_CALLBACK_URL="${PROD_PAYMENT_CALLBACK_URL}"
+    - export CERTIFICATE_VALIDATE_URL="${PROD_CERTIFICATE_VALIDATE_URL}"
+    - export image_name="meshkat/market_webapp"
+    - docker compose build
+            --build-arg ASP_ENV="$ASP_ENV"
+            --build-arg MSSQL_CS="$MSSQL_CS"
+            --build-arg SA_PASSWORD="$DB_PASSWORD"
+            --build-arg REDIS_PASSWORD="$REDIS_PASSWORD"
+            --build-arg SMS_PROVIDER_USERNAME="$SMS_PROVIDER_USERNAME"
+            --build-arg SMS_PROVIDER_PASSWORD="$SMS_PROVIDER_PASSWORD"
+            --build-arg SMS_PROVIDER_SENDER_NUMBER="$SMS_PROVIDER_SENDER_NUMBER"
+            --build-arg GENERATE_REPORT_API_URI="$GENERATE_REPORT_API_URI"
+            --build-arg SEPEHR_GATEWAY_SHARE_CODE="$SEPEHR_GATEWAY_SHARE_CODE"
+            --build-arg SEPEHR_GATEWAY_TERMINAL_ID="$SEPEHR_GATEWAY_TERMINAL_ID"
+            --build-arg SmsProviderSettings_Username="$SMS_PROVIDER_USERNAME"
+            --build-arg SmsProviderSettings_Password="$SMS_PROVIDER_PASSWORD"
+            --build-arg SmsProviderSettings_DefaultSenderNumber="$SMS_PROVIDER_SENDER_NUMBER"
+            
+            #--push webapp
+    - docker compose  down
+    - docker compose  up -d
+    #- docker push dockerhub.mshdiau.ac.ir/$image_name
+    - docker restart nginx
+

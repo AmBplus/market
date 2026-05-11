@@ -1,0 +1,341 @@
+.cart-item {
+
+    &:not(:first-child) {
+        border-top: 1px solid $color-gray-100;
+    }
+
+    img {
+        width: 116px;
+        object-fit: contain;
+    }
+
+    .cart-item-variant-color {
+        height: 18px;
+        width: 18px;
+    }
+
+    &-disAmount {
+
+        .icon-toman {
+            margin-right: 2px;
+            top: -2px;
+
+            &::before {
+                font-size: 1.4rem;
+                ;
+            }
+        }
+    }
+
+}
+
+.setcartItem-Quantity {
+    width: 102px;
+    height: 44px;
+
+    // &-count {
+    //    height: 20px;
+    //    line-height: 20px;
+    // }
+}
+
+
+.cart-dgplusWidget {
+    --bs-columns: 1;
+
+    @include mq(lg) {
+        --bs-columns: 7;
+
+    }
+
+    border: 1px solid $color-dgplus-500;
+}
+
+.cartPage-aside {
+    @include mq(lg) {
+        width: 308px;
+
+        .position-sticky{
+            top: 20px;
+        }
+
+    }
+
+
+}
+
+.cart-submitBtn {
+    height: 4.8rem;
+}
+
+.cart-dgclubpoint {
+    background-color: $color-white;
+
+    @include mq(lg) {
+        background-color: $color-gray-100;
+    }
+}
+
+.cart-offers {
+    background-color: $color-gray-100;
+
+    @include mq(lg) {
+        background-color: $color-white;
+    }
+}
+
+.digipay-modal {
+
+
+    @include mq(lg) {
+        width: 460px;
+
+    }
+
+    padding: {
+        top: 60px;
+        bottom: 75px
+    }
+
+    ;
+}
+
+.cartdigiplus-modal {
+    @include mq(lg) {
+        width: 460px;
+
+    }
+
+    padding: {
+        top: 103px;
+        bottom: 104px
+    }
+
+
+    .modal-header {
+        background: url(assets/images/svg/digiplua-modal-header-bg.svg);
+    }
+
+    .digiplus-Subscription-item {
+        border-radius: 12px;
+
+        .customRadio:checked {
+            border-color: $color-dgplus-500;
+        }
+
+        &.active {
+            border-color: $color-dgplus-500;
+            background-color: rgba($color-dgplus-500, 0.05);
+        }
+
+        &-offer {
+            top: -6px;
+            left: 12px;
+            height: 22px;
+        }
+
+        &-price {
+            :first-child {
+                width: 40%;
+
+                @include mq(lg) {
+                    width: 35%;
+
+                }
+            }
+        }
+    }
+}
+
+.cartheader-logo {
+    img{
+        height: 20px;
+        @include mq(lg)
+        {
+            height: 24px;
+        }
+    }
+   
+}
+
+.carthedar-item {
+    &.prev {
+        opacity: 0.5;
+    }
+
+    &.active {
+        i::before {
+            @include mq(lg)
+            {
+            font-size: 3.6rem;
+            }
+        }
+    }
+
+    .carthedar-item-line {
+       
+       width: 20px; 
+        height: 1px;
+        opacity: 0.5;
+        @include mq(lg)
+        {
+            width: 95px;
+        }
+    }
+}
+
+.cart-deliveryTypeItem {
+    .icon-large::before {
+        font-size: 3.6rem;
+    }
+
+    .productswiper-Item-img {
+        width: 90px !important;
+        height: 90px !important;
+
+
+    }
+
+    .item-variant-color {
+        height: 14px;
+        width: 14px;
+    }
+}
+
+.selectDatethumbswiper {
+    .swiper-slide-thumb-active {
+        p:first-child {
+            color: $color-secondary-500;
+        }
+
+        .activeborderB {
+            height: 3px;
+            width: 26px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+    }
+}
+
+.selectDateswiper {
+    .swiper-slide {
+        width: 100%;
+
+
+    }
+}
+
+.shipping{
+    .cartPage-aside{
+        @include mq(lg) {
+            width: 25%;
+    
+        }
+    }
+}
+
+.shipping-aside-ShipmentType-tooltip{
+    .shipping-aside-ShipmentType-tooltip-btn{
+        background-color: rgba($color-secondary-600, 0.05);
+    }
+
+    .tooltip{
+        width: 286px;
+        box-shadow:  rgba(0, 0, 0, 0.2) 0px 1px 5px 0px
+
+    }
+}
+
+.cart-addresses-modal{
+  @include mq(lg) {
+        width: 460px;
+
+    }
+}
+
+.paymernt-paymentType{
+    .customRadio:checked + .font-large{
+        color: $color-secondary-500;
+    }
+    .font-large::before{
+        font-size: 3.2rem;
+    }
+
+    >label:nth-child(n+4){
+        display: none !important;
+    }
+
+    &.showall > label:nth-child(n+4) {
+        display: flex !important;
+    }
+}
+
+.cart-discount-gift-Container{
+    height: 4.8rem;
+    background-color: $color-gray-100;
+ 
+    @include mq(lg)
+    {
+       
+        background-color: transparent;
+    }
+    input{
+        background-color: transparent;
+
+        &::placeholder{
+            color:$color-gray-400
+        }
+    }
+
+   
+    &.focused{
+        border-bottom: 2px solid $color-secondary-500;
+        
+        @include mq(lg)
+        {
+           border-bottom-width: 1px ;
+        }
+        border-color: $color-secondary-500;
+
+        button{
+            color:  $color-secondary-500;;
+        }
+    }
+}
+
+
+.shipmentsummery-swiper{
+
+.productswiper-Item-img {
+    width: 96px !important;
+    height: 96px !important;
+}
+
+.item-variant-color {
+    height: 14px;
+    width: 14px;
+}
+}
+
+.shipmentsummery-swiper-openbtn{
+    .icon-chevronDown{
+        transition: all .2s linear;
+    }
+    &.opend{
+        .icon-chevronDown{
+            
+            transform: rotate(180deg)
+        }
+    }
+    
+}
+
+.cart-ganje{
+    border: 1px solid rgba(0,142,178,.3);
+    background: linear-gradient(270deg,#f2f7ff 29.09%,rgba(243,248,255,.5) 79.75%);
+  }
+
+  .shipping-dgplus{
+    background-color:  #fff7fe;
+    border: 1px solid #dfb1da;
+  }

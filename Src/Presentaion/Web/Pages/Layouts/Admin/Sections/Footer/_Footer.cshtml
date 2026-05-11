@@ -1,0 +1,36 @@
+@using System.Reflection
+@using Framework.Resources
+@{
+  TempData.Keep();
+  ViewData["containerNav"] ??= "container-fluid";
+}
+<!-- Footer: Start -->
+<footer class="landing-footer bg-body footer-text "  >
+
+    <div class="footer-bottom py-3 ">
+        <div class="container d-flex flex-wrap justify-content-between flex-md-row flex-column text-center text-md-start">
+            <div class="mb-2 mb-md-0">
+                <span class="text-primary">
+                   
+                    <a href='@TempData.Peek("authorUrl")' target="_blank" class=" fw-medium text-primary">
+                      @Messages.DevelopementOrgin
+                        <script>
+                            document.write(new Date().toLocaleDateString('fa-IR', { year: 'numeric' }))
+
+                        </script>
+                        <span class=" "><small>@MeshkatMessage.Meshkat</small></span>
+                        (
+                        <span> @Messages.Version : </span>
+                        <span>
+                             @Assembly.GetEntryAssembly().GetName().Version.ToString()
+                        </span>
+                        )
+                    </a> 
+                </span>
+            </div>
+            <div>
+            </div>
+        </div>
+    </div>
+</footer>
+<!-- Footer: End -->

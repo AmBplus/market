@@ -1,0 +1,65 @@
+﻿@using Framework.Aspc.Security
+@using Framework.Security
+
+@inject UserInfo userInfo
+@* @inject Infrastructure.Security.UserRoleInfo UserRoleInfo *@
+
+@{
+    TempData.Keep();
+
+    string currentPage = Convert.ToString(ViewContext.RouteData.Values["Page"]) ?? string.Empty;
+
+    // bool IsActive(string page) =>
+    //     string.Equals(currentPage, page, StringComparison.OrdinalIgnoreCase);
+
+    // bool StartsWithActive(string basePage) =>
+    //     currentPage.StartsWith(basePage, StringComparison.OrdinalIgnoreCase);
+
+
+
+}
+
+<!-- Menu -->
+<aside id="layout-menu" class="layout-menu menu-vertical menu">
+
+    <!-- App Brand -->
+    <div class='my-2 app-brand demo @((ViewData["navbarFull"] is bool bf && bf) ? "d-xl-none" : "")'>
+        <a asp-page="/Index" class="app-brand-link">
+            <span class="app-brand-logo demo d-flex align-content-center">
+                <img src="/assets/images/logos/meshkat-logo.webp" width="30" />
+            </span>
+            <span class="app-brand-text demo text-white fw-bold">
+                پنل ادمین
+            </span>
+        </a>
+
+        <a href="javascript:void(0);" class="layout-menu-toggle menu-link text-large ms-auto">
+            <!-- SVG -->
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M8.47365 11.7183C8.11707 12.0749 8.11707 12.6531 8.47365 13.0097L12.071 16.607C12.4615 16.9975 12.4615 17.6305 12.071 18.021C11.6805 18.4115 11.0475 18.4115 10.657 18.021L5.83009 13.1941C5.37164 12.7356 5.37164 11.9924 5.83009 11.5339L10.657 6.707C11.0475 6.31653 11.6805 6.31653 12.071 6.707C12.4615 7.09747 12.4615 7.73053 12.071 8.121L8.47365 11.7183Z" />
+                <path d="M14.3584 11.8336C14.0654 12.1266 14.0654 12.6014 14.3584 12.8944L18.071 16.607C18.4615 16.9975 18.4615 17.6305 18.071 18.021C17.6805 18.4115 17.0475 18.4115 16.657 18.021L11.6819 13.0459C11.3053 12.6693 11.3053 12.0587 11.6819 11.6821L16.657 6.707C17.0475 6.31653 17.6805 6.31653 18.071 6.707C18.4615 7.09747 18.4615 7.73053 18.071 8.121L14.3584 11.8336Z" fill-opacity="0.4" />
+            </svg>
+        </a>
+    </div>
+
+    <!-- User Profile -->
+    @if (userInfo.IsAuthenticated)
+    {
+        <div class="user-profile-section p-3 text-center">
+     @*        <img src="@profileImageUrl" width="40" height="40" class="rounded-circle mb-2" /> *@
+
+            <div class="text-white fw-semibold">@userInfo.FullNameInfo</div>
+            <div class="text-white small">@userInfo.RoleTitle</div>
+            <div class="text-white small">@userInfo.RoleDomainTitle</div>
+        </div>
+    }
+
+    <div class="menu-inner-shadow"></div>
+
+    <!-- Menu Items -->
+    <ul class="menu-inner py-1">
+
+        
+
+    </ul>
+</aside>

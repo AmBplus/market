@@ -1,0 +1,18 @@
+@import "variables";
+
+@import "../../node_modules/bootstrap/scss/mixins";
+@import "../../node_modules/bootstrap/scss/helpers/text-truncation";
+
+
+@import "mixin";
+@import "maps";
+@import "base";
+
+@import "../../node_modules/bootstrap/scss/custom";
+@import "reset","icon","typography";
+@import "components/header","components/swiper","components/banner","components/footer","components/modal",
+        "components/tooltip","components/tabs","components/popover";
+
+@import "forms/fotm-checkbox","forms/form-input","forms/form-radio";
+@import "pages/index","pages/search","pages/product","pages/compare","pages/profile","pages/cart","pages/account",
+"pages/faq","pages/landing";

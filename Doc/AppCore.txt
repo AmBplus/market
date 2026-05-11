@@ -1,0 +1,836 @@
+using System;
+using System.Collections.Generic;
+using System.Text;
+
+namespace AppCore.Features.ID.Users.Commands;
+using AppCore.Data;
+using AppCore.Domains.Entities.ID;
+using Framework.ResultHelper;
+using Microsoft.EntityFrameworkCore;
+
+
+public class CreateUserCommand
+{
+    public required string UserName { get; set; }
+    public string? Email { get; set; }
+    public required string Password { get; set; }
+    public string? Mobile { get; set; }
+    public string? FirstName { get; set; }
+    public string? LastName { get; set; }
+    public string? FatherName { get; set; }
+    public string? NationalId { get; set; }
+    public string? PassportNumber { get; set; }
+    public string? Nationality { get; set; }
+    public DateTime? BirthDate { get; set; }
+    public string? Address { get; set; }
+    public bool IsActive { get; set; } = true;
+    public long? CreatedBy { get; set; }
+}
+
+public class CreateUserHandler
+{
+    private readonly AppDbContext _context;
+
+    public CreateUserHandler(AppDbContext context)
+    {
+        _context = context;
+    }
+
+    public async Task<ResultOperation<long>> Handle(CreateUserCommand command)
+    {
+        // بررسی تکراری نبودن username
+        var userNameExists = await _context.Users
+            .AnyAsync(u => u.UserName == command.UserName && !u.IsDelete);
+
+        if (userNameExists)
+            return ResultOperation<long>.ToFailedResult("این نام کاربری قبلاً ثبت شده است.");
+
+        // بررسی تکراری نبودن موبایل
+        if (!string.IsNullOrWhiteSpace(command.Mobile))
+        {
+            var mobileExists = await _context.Users
+                .AnyAsync(u => u.Mobile == command.Mobile && !u.IsDelete);
+
+            if (mobileExists)
+                return ResultOperation<long>.ToFailedResult("این شماره موبایل قبلاً ثبت شده است.");
+        }
+
+        // بررسی تکراری نبودن ایمیل
+        if (!string.IsNullOrWhiteSpace(command.Email))
+        {
+            var emailExists = await _context.Users
+                .AnyAsync(u => u.Email == command.Email && !u.IsDelete);
+
+            if (emailExists)
+                return ResultOperation<long>.ToFailedResult("این ایمیل قبلاً ثبت شده است.");
+        }
+
+        var user = new AppUser
+        {
+            UserName = command.UserName,
+            Email = command.Email,
+            PasswordHash = command.Password, // Must Be Hashed
+            Mobile = command.Mobile,
+            FirstName = command.FirstName,
+            LastName = command.LastName,
+            FatherName = command.FatherName,
+            NationalId = command.NationalId,
+            PassportNumber = command.PassportNumber,
+            Nationality = command.Nationality,
+            BirthDate = command.BirthDate,
+            Address = command.Address,
+            IsActive = command.IsActive,
+            CreatedAt = DateTime.UtcNow,
+            UpdatedAt = DateTime.UtcNow,
+            CreatedBy = command.CreatedBy,
+            UpdatedBy = command.CreatedBy
+        };
+
+        await _context.Users.AddAsync(user);
+        await _context.SaveChangesAsync();
+
+        return ResultOperation<long>.ToSuccessResult("کاربر با موفقیت ایجاد شد.", user.Id);
+    }
+}
+using AppCore.Data;
+using AppCore.Features.Shop.ProductAgg.Tag.Commands;
+using Framework.ResultHelper;
+using Microsoft.EntityFrameworkCore;
+
+
+namespace AppCore.Features.ID.Users.Commands
+{
+    public record DeleteUserCommand(long Id,long? DeletedBy);
+
+
+    public class DeleteTagHandler
+    {
+        private readonly AppDbContext _context;
+
+        public DeleteTagHandler(AppDbContext context)
+        {
+            _context = context;
+        }
+
+        public async Task<ResultOperation> Handle(DeleteUserCommand command)
+        {
+            var user = await _context.Users
+                .FirstOrDefaultAsync(t => t.Id == command.Id && !t.IsDelete);
+
+            if (user is null)
+                return ResultOperation.ToFailedResult("کاربر مورد نظر پیدا نشد.");
+
+            user.IsDelete = true;
+            user.IsActive = false;
+            user.UpdatedAt = DateTime.UtcNow;
+            user.UpdatedBy = command.DeletedBy;
+
+            await _context.SaveChangesAsync();
+
+            return ResultOperation.ToSuccessResult("کاربر با موفقیت حذف شد.");
+        }
+    }
+
+}
+using AppCore.Data;
+using Framework.ResultHelper;
+using Microsoft.EntityFrameworkCore;
+
+
+
+namespace AppCore.Features.ID.Users.Commands;
+    // AppCore/Features/ID/Users/Commands/UpdateUser/UpdateUserCommand.cs
+
+    public class UpdateUserCommand
+{
+    public long Id { get; set; }
+    public required string UserName { get; set; }
+    public string? Email { get; set; }
+    public string? Mobile { get; set; }
+    public string? FirstName { get; set; }
+    public string? LastName { get; set; }
+    public string? FatherName { get; set; }
+    public string? NationalId { get; set; }
+    public string? PassportNumber { get; set; }
+    public string? Nationality { get; set; }
+    public DateTime? BirthDate { get; set; }
+    public string? Address { get; set; }
+    public bool IsActive { get; set; }
+    public long? UpdatedBy { get; set; }
+}
+
+public class UpdateUserHandler
+{
+    private readonly AppDbContext _context;
+
+    public UpdateUserHandler(AppDbContext context)
+    {
+        _context = context;
+    }
+
+    public async Task<ResultOperation> Handle(UpdateUserCommand command)
+    {
+        var user = await _context.Users
+            .FirstOrDefaultAsync(u => u.Id == command.Id && !u.IsDelete);
+
+        if (user is null)
+            return ResultOperation.ToFailedResult("کاربر مورد نظر یافت نشد.");
+
+        // بررسی تکراری نبودن username (به جز خودش)
+        var userNameExists = await _context.Users
+            .AnyAsync(u => u.UserName == command.UserName
+                        && u.Id != command.Id
+                        && !u.IsDelete);
+
+        if (userNameExists)
+            return ResultOperation.ToFailedResult("این نام کاربری قبلاً ثبت شده است.");
+
+        // بررسی تکراری نبودن موبایل (به جز خودش)
+        if (!string.IsNullOrWhiteSpace(command.Mobile))
+        {
+            var mobileExists = await _context.Users
+                .AnyAsync(u => u.Mobile == command.Mobile
+                            && u.Id != command.Id
+                            && !u.IsDelete);
+
+            if (mobileExists)
+                return ResultOperation.ToFailedResult("این شماره موبایل قبلاً ثبت شده است.");
+        }
+
+        // بررسی تکراری نبودن ایمیل (به جز خودش)
+        if (!string.IsNullOrWhiteSpace(command.Email))
+        {
+            var emailExists = await _context.Users
+                .AnyAsync(u => u.Email == command.Email
+                            && u.Id != command.Id
+                            && !u.IsDelete);
+
+            if (emailExists)
+                return ResultOperation.ToFailedResult("این ایمیل قبلاً ثبت شده است.");
+        }
+
+        user.UserName = command.UserName;
+        user.Email = command.Email;
+        user.Mobile = command.Mobile;
+        user.FirstName = command.FirstName;
+        user.LastName = command.LastName;
+        user.FatherName = command.FatherName;
+        user.NationalId = command.NationalId;
+        user.PassportNumber = command.PassportNumber;
+        user.Nationality = command.Nationality;
+        user.BirthDate = command.BirthDate;
+        user.Address = command.Address;
+        user.IsActive = command.IsActive;
+        user.UpdatedAt = DateTime.UtcNow;
+        user.UpdatedBy = command.UpdatedBy;
+
+        await _context.SaveChangesAsync();
+
+        return ResultOperation.ToSuccessResult("کاربر با موفقیت ویرایش شد.");
+    }
+}
+
+
+namespace AppCore.Features.ID.Users.Queries.Shared;
+
+public class ProfileDto
+{
+    public string? FirstName { get; set; }
+    public string? LastName { get; set; }
+    public string? FatherName { get; set; }
+    public string? PassportNumber { get; set; }
+    public string? Nationality { get; set; }
+    public DateTime? BirthDate { get; set; }
+    public DateTime? CreatedAt { get; set; }
+    public DateTime? UpdatedAt { get; set; }
+    public string? Address { get; set; }
+    public string? Avatar { get; set; }
+    
+}
+
+namespace AppCore.Features.ID.Users.Queries.Shared;
+
+public class RoleDomainDto
+{
+    public long Id { get; set; }
+    public long UserId { get; set; }
+    public long RoleId { get; set; }
+    public required string RoleName { get; set; }
+}
+
+
+namespace AppCore.Features.ID.Users.Queries.Shared;
+
+
+public class UserDto
+{
+    public long Id { get; set; }
+    public required string UserName { get; set; }
+    public string? Email { get; set; }
+    public string? Mobile { get; set; }
+    public string? FirstName { get; set; }
+    public string? LastName { get; set; }
+    public required string PasswordHash { get; set; }
+    public string? NationalCode { get; set; }
+    public DateTime? BirthDate { get; set; }
+    public string? Address { get; set; }
+    public string? Avatar { get; set; }
+    public DateTime CreatedAt { get; set; }
+    public DateTime UpdatedAt { get; set; }
+
+    public bool IsActive { get; set; }
+    public bool IsDelete { get; set; }
+
+
+    public string? FatherName { get; set; }
+    public string? NationalId { get; set; }
+    public string? PassportNumber { get; set; }
+    public string? Nationality { get; set; }
+
+    public List<RoleDomainDto>? RolesDomain { get; set; }
+
+    public ProfileDto? Profile { get; set; }
+}
+using AppCore.Data;
+using AppCore.Features.ID.Users.Queries.Shared;
+using Framework.ResultHelper;
+using Microsoft.EntityFrameworkCore;
+
+namespace AppCore.Features.ID.Users.Queries;
+
+public record GetUserByIdQuery(long UserId);
+
+public class GetUserByIdHandler
+{
+    private readonly AppDbContext _context;
+
+    public GetUserByIdHandler(AppDbContext context)
+    {
+        _context = context;
+    }
+
+    public async Task<ResultOperation<UserDto>> Handle(GetUserByIdQuery query)
+    {
+        var user = await _context.Users
+            .AsNoTracking()
+            .Include(u => u.DomainRoles)
+                .ThenInclude(dr => dr.Role)
+            .Where(u => u.Id == query.UserId)
+            .Select(u => new UserDto
+            {
+                Id = u.Id,
+                UserName = u.UserName,
+                Email = u.Email,
+                PasswordHash = u.PasswordHash,
+                Mobile = u.Mobile,
+                CreatedAt = u.CreatedAt,
+                UpdatedAt = u.UpdatedAt,
+                FirstName = u.FirstName,
+                LastName = u.LastName,
+                FatherName = u.FatherName,
+                PassportNumber = u.PassportNumber,
+                Nationality = u.Nationality,
+                NationalId =u.NationalId,
+                IsActive = u.IsActive,
+                IsDelete = u.IsDelete,
+                BirthDate = u.BirthDate,
+                Address = u.Address,
+                Avatar = u.Avatar,
+                // نقش‌ها
+                RolesDomain = u.DomainRoles.Select(dr => new RoleDomainDto
+                    {
+                        Id = dr.Id,
+                        UserId = dr.UserId,
+                        RoleId = dr.RoleId,
+                        RoleName = dr.Role!.Title
+                    }).ToList()
+
+            })
+            .FirstOrDefaultAsync();
+
+        if (user == null)
+            return ResultOperation<UserDto>.ToFailedResult("کاربر یافت نشد");
+        return user.ToSuccessResult();
+    }
+}
+using AppCore.Data;
+using Framework.DatatableModels;
+using Framework.ResultHelper;
+
+using Microsoft.EntityFrameworkCore;
+
+namespace AppCore.Features.ID.Users.Queries;
+
+public class GetUsersDataTableQuery : DatatableFullRequest
+{
+    public string? SearchUserName { get; set; }
+    public string? SearchEmail { get; set; }
+    public string? SearchMobile { get; set; }
+    public string? SearchFirstName { get; set; }
+    public string? SearchLastName { get; set; }
+}
+
+public class UserListDto
+{
+    public long Id { get; set; }
+    public string UserName { get; set; }
+    public string Email { get; set; }
+    public string Mobile { get; set; }
+    public string FirstName { get; set; }
+    public string LastName { get; set; }
+    public int RolesCount { get; set; }
+    public bool IsActive{ get; set; }
+    public DateTime CreatedAt { get; set; }
+}
+
+public class GetUsersDataTableHandler
+{
+    private readonly AppDbContext _context;
+
+    public GetUsersDataTableHandler(AppDbContext context)
+    {
+        _context = context;
+    }
+
+    public async Task<ResultOperation<DataTableResponse<UserListDto>>> Handle(GetUsersDataTableQuery query)
+    {
+        var baseQuery = _context.Users
+                        .AsNoTracking()
+                        .Where(t => !t.IsDelete)
+           /*   .Include(u => u.DomainRoles)  */ // اگر RoleCount به صورت eager loading نیاز دارید
+                        .AsQueryable();
+
+        // 2. فیلترهای جستجو
+        if (!string.IsNullOrWhiteSpace(query.SearchUserName))
+            baseQuery = baseQuery.Where(u => u.UserName.Contains(query.SearchUserName));
+
+        if (!string.IsNullOrWhiteSpace(query.SearchEmail))
+            baseQuery = baseQuery.Where(u =>  u.Email!.Contains(query.SearchEmail));
+
+        if (!string.IsNullOrWhiteSpace(query.SearchMobile))
+            baseQuery = baseQuery.Where(u => u.Mobile!.Contains(query.SearchMobile));
+
+        if (!string.IsNullOrWhiteSpace(query.SearchFirstName))
+            baseQuery = baseQuery.Where(u => u.FirstName!.Contains(query.SearchFirstName));
+
+        if (!string.IsNullOrWhiteSpace(query.SearchLastName))
+            baseQuery = baseQuery.Where(u => u.LastName!.Contains(query.SearchLastName));
+
+        // 3. شمارش کل رکوردها
+        var filteredCount = await baseQuery.CountAsync();
+
+        // 4. انتخاب به DTO
+        var dtoQuery = baseQuery.Select(u => new UserListDto
+        {
+            Id = u.Id,
+            UserName = u.UserName,
+            Email = u.Email ?? string.Empty,
+            Mobile = u.Mobile ?? string.Empty,
+            FirstName = u.FirstName ?? string.Empty,
+            LastName = u.LastName ?? string.Empty,
+            RolesCount = u.DomainRoles.Count(),
+            CreatedAt = u.CreatedAt,
+            IsActive = u.IsActive
+        });
+
+        // 5. ترتیب‌سازی داینامیک
+        var orderedQuery = dtoQuery.ApplyDataTableOrdering(query);
+
+        // 6. صفحه‌بندی
+        var users = await orderedQuery
+            .Skip(query.start)
+            .Take(query.length)
+            .ToListAsync();
+
+        // 7. پاسخ
+        var response = new DataTableResponse<UserListDto>
+        {
+            Draw = query.draw,
+            RecordsTotal = filteredCount,
+            RecordsFiltered = filteredCount,
+            Data = users
+        };
+
+        return ResultOperation<DataTableResponse<UserListDto>>.ToSuccessResult(response);
+
+    }
+}
+
+using AppCore.Data;
+using AppCore.Domains.Entities.ID;
+using Framework.ResultHelper;
+using Microsoft.EntityFrameworkCore;
+
+namespace AppCore.Features.ID.Users.Queries
+{
+    public class SelectUserQuery
+    {
+        public string? SearchMobile { get; set; }
+        public string? SearchName { get; set; }
+        public string? SearchFamily { get; set; }
+        public string? SearchUserName { get; set; }
+        public string? SearchNationalCode { get; set; }
+    }
+
+    public class UserSelect2Dto
+    {
+        public long Id { get; set; }
+        public string Text{ get; set; }
+    }
+
+    public class SelectUserQueryHandler
+    {
+        private readonly AppDbContext _context;
+
+        public SelectUserQueryHandler(AppDbContext context)
+        {
+            _context = context;
+        }
+
+        public async Task<ResultOperation<List<UserSelect2Dto>>> Handle(SelectUserQuery query, CancellationToken cancellationToken)
+        {
+            var baseQuery = _context.Users
+                .AsNoTracking()
+                .Where(u => !u.IsDelete && u.IsActive)
+                .AsQueryable();
+
+            // Search filters
+            if (!string.IsNullOrWhiteSpace(query.SearchName))
+                baseQuery = baseQuery.Where(u => u.FirstName!=null && u.FirstName.Contains(query.SearchName));
+
+            if (!string.IsNullOrWhiteSpace(query.SearchFamily))
+                baseQuery = baseQuery.Where(u => u.LastName != null && u.LastName!.Contains(query.SearchFamily));
+
+            if (!string.IsNullOrWhiteSpace(query.SearchUserName))
+                baseQuery = baseQuery.Where(u => u.UserName.Contains(query.SearchUserName));
+
+            if (!string.IsNullOrWhiteSpace(query.SearchMobile))
+                baseQuery = baseQuery.Where(u => u.Mobile != null && u.Mobile!.Contains(query.SearchMobile));
+
+            if (!string.IsNullOrWhiteSpace(query.SearchNationalCode))
+                baseQuery = baseQuery.Where(u => u.NationalId != null && u.NationalId!.Contains(query.SearchNationalCode));
+
+            // Get all matching records (Select2 needs full list)
+            var users = await baseQuery.ToListAsync(cancellationToken);
+
+            var result = users.Select(u => new UserSelect2Dto
+            {
+                Id = u.Id,
+                Text = $"{u.FirstName} {u.LastName}-{u.Mobile}-{u.NationalId}",
+            }).ToList();
+
+            return ResultOperation<List<UserSelect2Dto>>.ToSuccessResult(result);
+        }
+    }
+}
+using AppCore.Domains.Entities.ID;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata.Builders;
+
+namespace AppCore.Data.Mappings.ID
+{
+    public class AppUserMap : IEntityTypeConfiguration<AppUser>
+    {
+        public void Configure(EntityTypeBuilder<AppUser> builder)
+        {
+            builder.ToTable("AppUsers");
+
+            builder.HasKey(x => x.Id);
+
+            builder.Property(x => x.UserName)
+                .IsRequired()
+                .HasMaxLength(150);
+
+            builder.Property(x => x.Email)
+                .HasMaxLength(200);
+
+            builder.Property(x => x.PasswordHash)
+                .IsRequired();
+
+            builder.Property(x => x.IsActive)
+                .IsRequired();
+
+            builder.Property(x => x.CreatedAt)
+                .IsRequired();
+
+            builder.HasIndex(x => x.UserName)
+                .IsUnique();
+
+            builder.HasIndex(x => x.Email);
+
+            builder.Property(x => x.FirstName)
+            .HasMaxLength(100);
+
+            builder.Property(x => x.LastName)
+                .HasMaxLength(100);
+
+            builder.Property(x => x.FatherName)
+                .HasMaxLength(100);
+
+            builder.Property(x => x.NationalId)
+                .HasMaxLength(20);
+
+            builder.Property(x => x.PassportNumber)
+                .HasMaxLength(20);
+
+            builder.Property(x => x.Nationality)
+                .HasMaxLength(100);
+            builder.HasMany(x => x.DomainRoles)
+                .WithOne(x => x.User)
+                .HasForeignKey(x => x.UserId);
+
+            builder.HasMany(x => x.Permissions)
+                .WithOne(x => x.User)
+                .HasForeignKey(x => x.UserId);
+        }
+    }
+}
+using AppCore.Domains.Entities.ID;
+using AppCore.Domains.Entities.Shop.ProductAgg;
+using AppCore.Domains.Entities.Shop.ProductAggregate;
+using Microsoft.EntityFrameworkCore;
+namespace AppCore.Data;
+
+public class AppDbContext : DbContext
+{
+    public DbSet<AppUser> Users { get; set; }
+    public DbSet<AppRole> Roles { get; set; }
+    public DbSet<AppUserDomainRole> UserDomainRoles { get; set; }
+    public DbSet<PermissionType> PermissionTypes { get; set; }
+    public DbSet<Permission> Permissions { get; set; }
+    public DbSet<UserRolePermission> UserRolePermissions { get; set; }
+
+    // Shop
+    public DbSet<ProductTag> ProductTags { get; set; }
+    public DbSet<ProductBrand> ProductBrands { get; set; }
+    public AppDbContext(DbContextOptions<AppDbContext> options)
+            : base(options)
+        {
+        }
+        protected override void OnModelCreating(ModelBuilder builder)
+        {
+            builder.ApplyConfigurationsFromAssembly(typeof(AppDbContext).Assembly);
+        }
+    }
+// اعداد و تبدیل‌ها
+static class UtilityNumbers
+{
+    static int GenerateRandomNumber(int min, int max)
+    static string ToEnglishNumber(this string number)
+    static bool IsContainPersianNumber(this string text)
+    static string ToPersianNumber(this string number)
+    static long ConvertRialToToman(long rial)
+    static long ConvertRialToToman(decimal rial)
+    static long ConvertToRial(long rial)
+    static long ConvertToRial(decimal rial)
+}
+// نتیجه عملیات با داده خروجی
+class ResultOperation<T>
+{
+    bool IsSuccess
+    T Data
+    List<string>? Message
+    string MessageSingle  // همه پیام‌ها به صورت یک رشته
+
+    static ResultOperation<T> ToSuccessResult(T data)
+    static ResultOperation<T> ToSuccessResult(string message, T data)
+    static ResultOperation<T> ToSuccessResult(List<string> message, T data)
+    static ResultOperation<T> ToFailedResult()
+    static ResultOperation<T> ToFailedResult(string message)
+    static ResultOperation<T> ToFailedResult(List<string> message)
+    static ResultOperation<T> ToFailedResult(string message, T data)
+    static ResultOperation<T> ToFailedResult(List<string> message, T data)
+}
+// تبدیل ResultOperation<T> به ResultOperation بدون داده
+static class ResultOperationExtend
+{
+    static ResultOperation GetResultOperation<T>(this ResultOperation<T> result)
+}
+
+// اکستنشن‌های کمکی برای ساخت راحت‌تر ResultOperation
+static class UtilityResultExtension
+{
+    static string? ToSingleMessage(this List<string> messages)
+    static ResultOperation<T> ToSuccessResult<T>(this T entity)
+    static ResultOperation<T> ToSuccessResult<T>(this T entity, string message)
+    static ResultOperation<T> ToFailedResult<T>(this T entity, string message)
+    static ResultOperation<T> ToFailedResult<T>(this T entity, List<string> messages)
+    static ResultOperation<object> ToFailedResult(this object entity, string message)
+    static ResultOperation<object> ToFailedResult(this object entity)
+}
+// پاکسازی و اعتبارسنجی متن
+static class TextFixer
+{
+    static string NameOf(this string str)
+    static string Slugify(this string phrase)              // تبدیل به slug (url-friendly)
+    static bool ContainsPersianLetters(this string input)
+    static (string errorMessage, bool result) IsValidEnglishText(this string text, string title)
+    static bool ContainsSqlInjectionPatterns(this string password)
+    static string FixText(this string phrase)              // حذف diacritics + lowercase
+    static string GetDirection(this string dir)            // نرمال‌سازی "asc"/"desc"
+    static string RemoveSqlInjection(this string query)
+    static string RemoveInnerSqlInjection(this string query)  // نسخه سبک‌تر برای شرط‌ها
+    static string RemoveDiacritics(this string text)
+}
+// ابزارهای متنی عمومی
+static class TextUtilHelper
+{
+    static string FixText(this string text)                // حذف فاصله‌های اضافه
+    static string Convert_Farsi_Numeric_to_Latin(this string mystr)
+    static string FixFarsiStr(this string s1)              // نرمال‌سازی حروف عربی به فارسی (ی، ک، و ...)
+    static string GenerateFileName()
+    static string GenerateFileName(string additionName)
+    static string GetCode(int min, int max)                // عدد تصادفی رمزنگاری‌شده
+    static string GetRawContentFromHtml(this string htmlString)  // استخراج متن خام از HTML
+}
+// تبدیل تاریخ میلادی به شمسی
+static class PersianDateConverter
+{
+    static string ToPersianDateString(this DateTime gregorianDateTime)
+    static string ToPersianDateString(this DateOnly gregorianDate)
+    static DateOnly ToDateOnlyFromPersian(this string persianDateString)
+}
+// اعتبارسنجی و تبدیل تاریخ شمسی
+static class PersianDateValidator
+{
+    static bool IsValidPersianDate(this string dateString)
+    static DateTime? ToDateTimeFromPersian(this string persianDateString)
+}
+// ابزارهای زمان و تاریخ
+static class TimeUtilHelper
+{
+    static DateTime NowDateTime(bool useCultrure = false)
+    static DateTime ToDateTime(this DateOnly dateOnly)
+    static string GetPersianDate()
+    static string GetPersianDate(DateOnly? dateTime)
+    static string GetPersianDate(this DateOnly dateTime)
+    static string GetPersianDate(this DateTime dateTime)
+    static string GetPersianDate(this DateTime? dateTime)
+    static string GetDateFromPersianDate(this string persianDate)  // شمسی → میلادی رشته‌ای
+    static bool IsPersianValid(this string persianDate)
+}
+// اعتبارسنجی مدل‌ها با DataAnnotations
+static class ValidationHelper
+{
+    static ResultOperation GetFailedResultWithError_s(this IList<ValidationResult> validationResults)
+    static bool IsValid<T>(this T entity) where T : class
+    static ResultOperation GetValidationResults<T>(this T entity) where T : class
+    static bool IsValidIranianNationalCode(string input)
+}
+// base class برای Razor Pages با متدهای نمایش پیام
+abstract class BasePageModel : PageModel
+{
+    bool AddPageError(string? message)
+    bool AddPageWarning(string? message)
+    bool AddPageSuccess(string? message)
+    bool AddToastError(string? message)
+    bool AddToastWarning(string? message)
+    bool AddToastSuccess(string? message)
+    bool AddToastInfo(string? message)
+    bool AddMessage(Messages.MessageType type, string? message)
+    bool AddAlertSuccess(string? message)
+    bool AddAlertWarning(string? message)
+    bool AddAlertError(string? message)
+    bool AddToPageErrorFromModeStateErros()
+    bool AddToAlertErrorFromModeStateErros(string? message)
+}
+// اینترفیس‌های زیرساخت
+interface IExcelHelper
+{
+    Task<ResultOperation<List<T>>> ExcelToClassAsync<T>(IFormFile file, Dictionary<int, string> columnIndexMappings, CancellationToken cancellationToken)
+    Task<ResultOperation<MemoryStream>> ClassToExcelAsync<T>(IEnumerable<T>? items, ExcelExportOptions? options, CancellationToken cancellationToken)
+}
+interface IDatatableResponseHelper
+{
+    Task<IActionResult> Get<T>(DatatableFullRequest datatableRequest, ResultOperation<DataTableResponse<T>> handlerResult, string name, CancellationToken cancellationToken)
+}
+using AppCore.Domains.Entities.ID;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata.Builders;
+
+namespace AppCore.Data.Mappings.ID
+{
+    public class AppUserMap : IEntityTypeConfiguration<AppUser>
+    {
+        public void Configure(EntityTypeBuilder<AppUser> builder)
+        {
+            builder.ToTable("AppUsers");
+
+            builder.HasKey(x => x.Id);
+
+            builder.Property(x => x.UserName)
+                .IsRequired()
+                .HasMaxLength(150);
+
+            builder.Property(x => x.Email)
+                .HasMaxLength(200);
+
+            builder.Property(x => x.PasswordHash)
+                .IsRequired();
+
+            builder.Property(x => x.IsActive)
+                .IsRequired();
+
+            builder.Property(x => x.CreatedAt)
+                .IsRequired();
+
+            builder.HasIndex(x => x.UserName)
+                .IsUnique();
+
+            builder.HasIndex(x => x.Email);
+
+            builder.Property(x => x.FirstName)
+            .HasMaxLength(100);
+
+            builder.Property(x => x.LastName)
+                .HasMaxLength(100);
+
+            builder.Property(x => x.FatherName)
+                .HasMaxLength(100);
+
+            builder.Property(x => x.NationalId)
+                .HasMaxLength(20);
+
+            builder.Property(x => x.PassportNumber)
+                .HasMaxLength(20);
+
+            builder.Property(x => x.Nationality)
+                .HasMaxLength(100);
+            builder.HasMany(x => x.DomainRoles)
+                .WithOne(x => x.User)
+                .HasForeignKey(x => x.UserId);
+
+            builder.HasMany(x => x.Permissions)
+                .WithOne(x => x.User)
+                .HasForeignKey(x => x.UserId);
+        }
+    }
+}
+using AppCore.Domains.Entities.Base;
+using Microsoft.AspNetCore.Identity;
+using System;
+using System.Collections.Generic;
+using System.Text;
+namespace AppCore.Domains.Entities.ID;
+public class AppUser : BaseEntity
+{
+    public required string UserName { get; set; }
+    public string? Email { get; set; }
+    public required string PasswordHash { get; set; }
+    public string? Mobile { get; set; }
+    public bool IsConfirmedMobile { get; set; }
+    public bool IsActive { get; set; } = true;
+    public bool IsDelete { get; set; } = false;
+    public string? FirstName { get; set; }
+    public string? LastName { get; set; }
+    public string? FatherName { get; set; }
+    public string? NationalId { get; set; }
+    public string? PassportNumber { get; set; }
+    public string? Nationality { get; set; }
+    public DateTime? BirthDate { get; set; }
+    public string? Address { get; set; }
+    public string? Avatar { get; set; }
+    public ICollection<AppUserDomainRole> DomainRoles { get; set; } = new List<AppUserDomainRole>();
+    public ICollection<UserRolePermission> Permissions { get; set; } = new List<UserRolePermission>();
+}
+

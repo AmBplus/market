@@ -1,0 +1,48 @@
+﻿<!DOCTYPE html>
+<html lang="fa">
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="~/client/assets/css/swiper-bundle.min.css" asp-append-version="true" />
+    @RenderSection("VendorStyles", required: false)
+
+    <link rel="stylesheet" href="~/client/assets/css/style.css" asp-append-version="true" />
+    @RenderSection("PageStyles", required: false)
+
+    <title>@ViewData["Title"]</title>
+</head>
+<body>
+    <div class="overlay header-overlay"></div>
+
+    <partial name="Layouts/Client/Header/_HeaderPartial" />
+
+    <div class="container">
+        <main role="main" class="pb-3">
+            @RenderBody()
+            <partial name="Layouts/Client/Header/Components/_MobileFixedFooter" />
+        </main>
+    </div>
+
+
+    <div class="modal-overlay "></div>
+
+  
+
+    <partial name="Layouts/Client/Footer/_FooterPartial" />
+
+
+    <script src="~/client/assets/js/jquery-3.7.0.min.js"></script>
+    <script src="~/client/assets/js/swiper-bundle.min.js" asp-append-version="true"></script>
+    @RenderSection("VendorScripts", required: false)
+    <script src="~/client/assets/js/moment.min.js" asp-append-version="true"></script>
+    <script src="~/client/assets/js/main.js" asp-append-version="true"></script>
+
+
+    <!-- Page Scripts-->
+    @RenderSection("PageScripts", required: false)
+    <script src="~/common/js/partialload.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

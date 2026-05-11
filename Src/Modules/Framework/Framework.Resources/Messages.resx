@@ -1,0 +1,930 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="EnterYouPasswordHere" xml:space="preserve">
+    <value>Enter Your Password Here</value>
+  </data>
+  <data name="EnterYourUsernameHere" xml:space="preserve">
+    <value>Enter Your Username Here</value>
+  </data>
+  <data name="FailCheckUserPassword" xml:space="preserve">
+    <value>Fail Check User Password</value>
+  </data>
+  <data name="LoginToSystem" xml:space="preserve">
+    <value>Login To System</value>
+  </data>
+  <data name="RememberMe" xml:space="preserve">
+    <value>Remember Me</value>
+  </data>
+  <data name="SuccessOperation" xml:space="preserve">
+    <value>Success Operation</value>
+  </data>
+  <data name="Dashboard" xml:space="preserve">
+    <value>Dashboard</value>
+  </data>
+  <data name="Actions" xml:space="preserve">
+    <value>Actions</value>
+  </data>
+  <data name="Action" xml:space="preserve">
+    <value>Action</value>
+  </data>
+  <data name="LmsDashboard" xml:space="preserve">
+    <value>Lms Dashboard</value>
+  </data>
+  <data name="ProfessorsLevelingCriteria" xml:space="preserve">
+    <value>Professors Leveling Criteria</value>
+  </data>
+  <data name="TeachingRequest" xml:space="preserve">
+    <value>Teaching Request</value>
+  </data>
+  <data name="AddNewScore" xml:space="preserve">
+    <value>Add New Score</value>
+  </data>
+  <data name="Cancel" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+  <data name="QuikLink" xml:space="preserve">
+    <value>Quick Link</value>
+  </data>
+  <data name="QuikLinks" xml:space="preserve">
+    <value>Quick Links</value>
+  </data>
+  <data name="RegisterInformation" xml:space="preserve">
+    <value>Register Information</value>
+  </data>
+  <data name="Search" xml:space="preserve">
+    <value>Search</value>
+  </data>
+  <data name="SearchBasedOn" xml:space="preserve">
+    <value>Search Based On</value>
+  </data>
+  <data name="Return" xml:space="preserve">
+    <value>Return</value>
+  </data>
+  <data name="BaseScores" xml:space="preserve">
+    <value>Base Scores</value>
+  </data>
+  <data name="AddNewRecord" xml:space="preserve">
+    <value>Add New Record</value>
+  </data>
+  <data name="LearningType" xml:space="preserve">
+    <value>Learning Type</value>
+  </data>
+  <data name="DeterminingEducationalPoints" xml:space="preserve">
+    <value>Determining Educational Points</value>
+  </data>
+  <data name="UserProfile" xml:space="preserve">
+    <value>User Profile</value>
+  </data>
+  <data name="ChangePassword" xml:space="preserve">
+    <value>Change Password</value>
+  </data>
+  <data name="ConfirmPassword" xml:space="preserve">
+    <value>Confirm Password</value>
+  </data>
+  <data name="NewPassword" xml:space="preserve">
+    <value>New Password</value>
+  </data>
+  <data name="PassRequirement" xml:space="preserve">
+    <value>Pass Requirement</value>
+  </data>
+  <data name="PassWordLenRequirement" xml:space="preserve">
+    <value>Password Len Requirement</value>
+  </data>
+  <data name="UserManagement" xml:space="preserve">
+    <value>User Management</value>
+  </data>
+  <data name="AllowedImageFormat" xml:space="preserve">
+    <value>Allowed Image Format</value>
+  </data>
+  <data name="ConfirmNewPassword" xml:space="preserve">
+    <value>Confirm New Password</value>
+  </data>
+  <data name="CurrentPassword" xml:space="preserve">
+    <value>Current Password</value>
+  </data>
+  <data name="Reset" xml:space="preserve">
+    <value>Reset</value>
+  </data>
+  <data name="SaveChange" xml:space="preserve">
+    <value>Save Change</value>
+  </data>
+  <data name="SavePhoto" xml:space="preserve">
+    <value>Save Photo</value>
+  </data>
+  <data name="UploadNewPhoto" xml:space="preserve">
+    <value>Upload New Photo</value>
+  </data>
+  <data name="RegisterInSystem" xml:space="preserve">
+    <value>Register In System</value>
+  </data>
+  <data name="Financial" xml:space="preserve">
+    <value>Financial</value>
+  </data>
+  <data name="FinancialAccountInformation" xml:space="preserve">
+    <value>Financial Account Information</value>
+  </data>
+  <data name="UserPersonalInfoManagement" xml:space="preserve">
+    <value>My Profile</value>
+  </data>
+  <data name="Wallet" xml:space="preserve">
+    <value>Wallet</value>
+  </data>
+  <data name="JudgePortable" xml:space="preserve">
+    <value>Judge Portable</value>
+  </data>
+  <data name="TeachingPortable" xml:space="preserve">
+    <value>Teaching Portable</value>
+  </data>
+  <data name="TeachingRequests" xml:space="preserve">
+    <value>Teaching Requests</value>
+  </data>
+  <data name="TeachingRequests_Judge" xml:space="preserve">
+    <value>Teaching Requests Judge</value>
+  </data>
+  <data name="NewTeachingRequest" xml:space="preserve">
+    <value>New Teaching Request</value>
+  </data>
+  <data name="NotSelectedFile" xml:space="preserve">
+    <value>Not Selected File</value>
+  </data>
+  <data name="SelectFile" xml:space="preserve">
+    <value>Select File</value>
+  </data>
+  <data name="ProfessionalProfile" xml:space="preserve">
+    <value>Professional Profile</value>
+  </data>
+  <data name="Login" xml:space="preserve">
+    <value>Login</value>
+  </data>
+  <data name="Logout" xml:space="preserve">
+    <value>Logout</value>
+  </data>
+  <data name="MyCourses" xml:space="preserve">
+    <value>My Courses</value>
+  </data>
+  <data name="ValidFormatis" xml:space="preserve">
+    <value>Valid Format Is</value>
+  </data>
+  <data name="ValidFormatsis" xml:space="preserve">
+    <value>Valid Formats Is</value>
+  </data>
+  <data name="AdditionalProfile" xml:space="preserve">
+    <value>Additional Profile</value>
+  </data>
+  <data name="EducationalExperience" xml:space="preserve">
+    <value>Educational Experience</value>
+  </data>
+  <data name="FurtherDetails" xml:space="preserve">
+    <value>Further Details</value>
+  </data>
+  <data name="SuperAdminPortal" xml:space="preserve">
+    <value>Super Admin Portal</value>
+  </data>
+  <data name="UploadDeggree" xml:space="preserve">
+    <value>Upload Degree</value>
+  </data>
+  <data name="UploadNationalCard" xml:space="preserve">
+    <value>Upload National Card</value>
+  </data>
+  <data name="UploadResume" xml:space="preserve">
+    <value>Upload Resume</value>
+  </data>
+  <data name="NactionalCard" xml:space="preserve">
+    <value>National Card</value>
+  </data>
+  <data name="NationalCode" xml:space="preserve">
+    <value>National Code</value>
+  </data>
+  <data name="ReturnToFirstState" xml:space="preserve">
+    <value>Return To First State</value>
+  </data>
+  <data name="UserProfileDetail" xml:space="preserve">
+    <value>User Profile Detail</value>
+  </data>
+  <data name="BirthDay" xml:space="preserve">
+    <value>Birth Day</value>
+  </data>
+  <data name="UploadEdit" xml:space="preserve">
+    <value>Upload Edit</value>
+  </data>
+  <data name="Creditor" xml:space="preserve">
+    <value>Creditor</value>
+  </data>
+  <data name="Debtor" xml:space="preserve">
+    <value>Debtor</value>
+  </data>
+  <data name="Description" xml:space="preserve">
+    <value>Description</value>
+  </data>
+  <data name="ForWhat" xml:space="preserve">
+    <value>For What</value>
+  </data>
+  <data name="SelectState" xml:space="preserve">
+    <value>Select State</value>
+  </data>
+  <data name="ShamsiDate" xml:space="preserve">
+    <value>Shamsi Date</value>
+  </data>
+  <data name="CourseType" xml:space="preserve">
+    <value>Course Type</value>
+  </data>
+  <data name="SettlementRequest" xml:space="preserve">
+    <value>Settlement Request</value>
+  </data>
+  <data name="CourseGroup" xml:space="preserve">
+    <value>Course Group</value>
+  </data>
+  <data name="RefereeMessage" xml:space="preserve">
+    <value>Referee Message</value>
+  </data>
+  <data name="StudentCount" xml:space="preserve">
+    <value>Student Count</value>
+  </data>
+  <data name="JudgeTeachingRequests" xml:space="preserve">
+    <value>Judge Teaching Requests</value>
+  </data>
+  <data name="Scientificleveling" xml:space="preserve">
+    <value>Scientific Leveling</value>
+  </data>
+  <data name="OtpMessage" xml:space="preserve">
+    <value>Otp Message</value>
+  </data>
+  <data name="CourseInfo" xml:space="preserve">
+    <value>Course Info</value>
+  </data>
+  <data name="Certificates" xml:space="preserve">
+    <value>Certificates</value>
+  </data>
+  <data name="Comments" xml:space="preserve">
+    <value>Comments</value>
+  </data>
+  <data name="Content" xml:space="preserve">
+    <value>Content</value>
+  </data>
+  <data name="Exams" xml:space="preserve">
+    <value>Exams</value>
+  </data>
+  <data name="Participants" xml:space="preserve">
+    <value>Participants</value>
+  </data>
+  <data name="CommingSoon" xml:space="preserve">
+    <value>Coming Soon</value>
+  </data>
+  <data name="FinancialManagement" xml:space="preserve">
+    <value>Financial Management</value>
+  </data>
+  <data name="PaymentReports" xml:space="preserve">
+    <value>Payment Reports</value>
+  </data>
+  <data name="AccountSettlement" xml:space="preserve">
+    <value>Account Settlement</value>
+  </data>
+  <data name="ChangeItAsSoonAsPossible" xml:space="preserve">
+    <value>Change Password As Soon As Possible</value>
+  </data>
+  <data name="ClickBellowLinkToEnterSite" xml:space="preserve">
+    <value>Click Below Link To Enter Site</value>
+  </data>
+  <data name="EnterMainPage" xml:space="preserve">
+    <value>Enter Main Page</value>
+  </data>
+  <data name="EnterTheNumberInThePicture InTheBoxBelow" xml:space="preserve">
+    <value>Enter The Number In The Picture In The Box Below</value>
+  </data>
+  <data name="LogInSignUp" xml:space="preserve">
+    <value>Log In Sign Up</value>
+  </data>
+  <data name="MobileLogin_registration" xml:space="preserve">
+    <value>Mobile Login Registration</value>
+  </data>
+  <data name="MobileNumber" xml:space="preserve">
+    <value>Mobile Number</value>
+  </data>
+  <data name="Or" xml:space="preserve">
+    <value>Or</value>
+  </data>
+  <data name="Password" xml:space="preserve">
+    <value>Password</value>
+  </data>
+  <data name="SuccessfullyRegister" xml:space="preserve">
+    <value>Successfully Register</value>
+  </data>
+  <data name="UserName" xml:space="preserve">
+    <value>User Name</value>
+  </data>
+  <data name="AccountNumber" xml:space="preserve">
+    <value>Account Number</value>
+  </data>
+  <data name="BankName" xml:space="preserve">
+    <value>Bank Name</value>
+  </data>
+  <data name="DetailPayed" xml:space="preserve">
+    <value>Detail Payed</value>
+  </data>
+  <data name="DiscountPrecent" xml:space="preserve">
+    <value>Discount Precent</value>
+  </data>
+  <data name="EnterOnlineClass" xml:space="preserve">
+    <value>Enter Online Class</value>
+  </data>
+  <data name="NameOfAccountHolder" xml:space="preserve">
+    <value>Name Of Account Holder</value>
+  </data>
+  <data name="PayedAmount" xml:space="preserve">
+    <value>Payed Amount</value>
+  </data>
+  <data name="PayedResult" xml:space="preserve">
+    <value>Payed Result</value>
+  </data>
+  <data name="PayedState" xml:space="preserve">
+    <value>Payed State</value>
+  </data>
+  <data name="PayedTime" xml:space="preserve">
+    <value>Payed Time</value>
+  </data>
+  <data name="Payer" xml:space="preserve">
+    <value>Payer</value>
+  </data>
+  <data name="ReturnToCourse" xml:space="preserve">
+    <value>Return To Course</value>
+  </data>
+  <data name="SharingPayed" xml:space="preserve">
+    <value>Sharing Payed</value>
+  </data>
+  <data name="TrackingCode" xml:space="preserve">
+    <value>Tracking Code</value>
+  </data>
+  <data name="TrackingID" xml:space="preserve">
+    <value>Tracking ID</value>
+  </data>
+  <data name="SettlementRequests" xml:space="preserve">
+    <value>Settlement Requests</value>
+  </data>
+  <data name="CourseId" xml:space="preserve">
+    <value>Course Id</value>
+  </data>
+  <data name="UserId" xml:space="preserve">
+    <value>User Id</value>
+  </data>
+  <data name="MyCertificate" xml:space="preserve">
+    <value>My Certificate</value>
+  </data>
+  <data name="MyExams" xml:space="preserve">
+    <value>My Exams</value>
+  </data>
+  <data name="RequestTeachingList" xml:space="preserve">
+    <value>Request Teaching List</value>
+  </data>
+  <data name="MyPayment" xml:space="preserve">
+    <value>My Payment</value>
+  </data>
+  <data name="Avatar" xml:space="preserve">
+    <value>Avatar</value>
+  </data>
+  <data name="MaxSizePicProfile" xml:space="preserve">
+    <value>Max Size Pic Profile</value>
+  </data>
+  <data name="SuccessUpdateInfoOperation" xml:space="preserve">
+    <value>Success Update Info Operation</value>
+  </data>
+  <data name="NotAllowModify" xml:space="preserve">
+    <value>Not Allow Modify</value>
+  </data>
+  <data name="AcceptedStatus" xml:space="preserve">
+    <value>Accepted Status</value>
+  </data>
+  <data name="AccNumberStatus" xml:space="preserve">
+    <value>Acc Number Status</value>
+  </data>
+  <data name="NotRegisteredAnyAccNumber" xml:space="preserve">
+    <value>Not Registered Any Acc Number</value>
+  </data>
+  <data name="UnAcceptedStatus" xml:space="preserve">
+    <value>Un Accepted Status</value>
+  </data>
+  <data name="YouAccNumber" xml:space="preserve">
+    <value>You Acc Number</value>
+  </data>
+  <data name="BankShabaSaderat" xml:space="preserve">
+    <value>Bank Shaba Saderat</value>
+  </data>
+  <data name="SaveOrUpdateAccInfo" xml:space="preserve">
+    <value>Save Or Update Acc Info</value>
+  </data>
+  <data name="Amount" xml:space="preserve">
+    <value>Amount</value>
+  </data>
+  <data name="Price_Final" xml:space="preserve">
+    <value>Price Final</value>
+  </data>
+  <data name="Price_Old" xml:space="preserve">
+    <value>Price Old</value>
+  </data>
+  <data name="RowNumber" xml:space="preserve">
+    <value>Row Number</value>
+  </data>
+  <data name="Courses" xml:space="preserve">
+    <value>Courses</value>
+  </data>
+  <data name="Home" xml:space="preserve">
+    <value>Home</value>
+  </data>
+  <data name="AmountToman" xml:space="preserve">
+    <value>Amount Toman</value>
+  </data>
+  <data name="CoursesTitle" xml:space="preserve">
+    <value>Courses Title</value>
+  </data>
+  <data name="Price_FinalToman" xml:space="preserve">
+    <value>Price Final Toman</value>
+  </data>
+  <data name="Price_OldToman" xml:space="preserve">
+    <value>Price Old Toman</value>
+  </data>
+  <data name="CntCourseAssessments" xml:space="preserve">
+    <value>Cnt Course Assessments</value>
+  </data>
+  <data name="CntCourseContents" xml:space="preserve">
+    <value>Cnt Course Contents</value>
+  </data>
+  <data name="IsPublic" xml:space="preserve">
+    <value>Is Public</value>
+  </data>
+  <data name="CourseName" xml:space="preserve">
+    <value>Course Name</value>
+  </data>
+  <data name="PaymentTo" xml:space="preserve">
+    <value>Payment To</value>
+  </data>
+  <data name="DomainTitle" xml:space="preserve">
+    <value>Domain Title</value>
+  </data>
+  <data name="AssessmentItemCount" xml:space="preserve">
+    <value>Assessment Item Count</value>
+  </data>
+  <data name="ExamDate" xml:space="preserve">
+    <value>Exam Date</value>
+  </data>
+  <data name="ExamTitle" xml:space="preserve">
+    <value>Exam Title</value>
+  </data>
+  <data name="ExamType" xml:space="preserve">
+    <value>Exam Type</value>
+  </data>
+  <data name="SumScore" xml:space="preserve">
+    <value>Sum Score</value>
+  </data>
+  <data name="NameAndFamily" xml:space="preserve">
+    <value>Name And Family</value>
+  </data>
+  <data name="MessagingAndCorrespondenceManagement" xml:space="preserve">
+    <value>Messaging And Correspondence Management</value>
+  </data>
+  <data name="SystemManagement" xml:space="preserve">
+    <value>System Management</value>
+  </data>
+  <data name="UserPermissionManagement" xml:space="preserve">
+    <value>User Permission Management</value>
+  </data>
+  <data name="Users" xml:space="preserve">
+    <value>Users</value>
+  </data>
+  <data name="HoldingDateStart" xml:space="preserve">
+    <value>Holding Date Start</value>
+  </data>
+  <data name="ExamDateEnd" xml:space="preserve">
+    <value>Exam Date End</value>
+  </data>
+  <data name="PayedAmountToman" xml:space="preserve">
+    <value>Payed Amount Toman</value>
+  </data>
+  <data name="SodorDate" xml:space="preserve">
+    <value>Sodor Date</value>
+  </data>
+  <data name="DomainRolesCount" xml:space="preserve">
+    <value>Domain Roles Count</value>
+  </data>
+  <data name="OnlinePaymentId" xml:space="preserve">
+    <value>Online Payment Id</value>
+  </data>
+  <data name="LatestCourse" xml:space="preserve">
+    <value>Latest Course</value>
+  </data>
+  <data name="LatestFreeCourse" xml:space="preserve">
+    <value>Latest Free Course</value>
+  </data>
+  <data name="ShowAll" xml:space="preserve">
+    <value>Show All</value>
+  </data>
+  <data name="Error" xml:space="preserve">
+    <value>Error</value>
+  </data>
+  <data name="Info" xml:space="preserve">
+    <value>Info</value>
+  </data>
+  <data name="Warning" xml:space="preserve">
+    <value>Warning</value>
+  </data>
+  <data name="Version" xml:space="preserve">
+    <value>Version</value>
+  </data>
+  <data name="ExamTimeElapsed" xml:space="preserve">
+    <value>Exam Time Elapsed</value>
+  </data>
+  <data name="SuccessLogin" xml:space="preserve">
+    <value>Success Login</value>
+  </data>
+  <data name="CourseEndDate" xml:space="preserve">
+    <value>Course End Date</value>
+  </data>
+  <data name="CourseOrganizer" xml:space="preserve">
+    <value>Course Organizer</value>
+  </data>
+  <data name="CourseRegisterCount" xml:space="preserve">
+    <value>Course Register Count</value>
+  </data>
+  <data name="CourseStartDate" xml:space="preserve">
+    <value>Course Start Date</value>
+  </data>
+  <data name="CourseTime" xml:space="preserve">
+    <value>Course Time</value>
+  </data>
+  <data name="Free" xml:space="preserve">
+    <value>Free</value>
+  </data>
+  <data name="Hour" xml:space="preserve">
+    <value>Hour</value>
+  </data>
+  <data name="LoginToOnlineClass" xml:space="preserve">
+    <value>Login To Online Class</value>
+  </data>
+  <data name="Person" xml:space="preserve">
+    <value>Person</value>
+  </data>
+  <data name="RegisterEndDate" xml:space="preserve">
+    <value>Register End Date</value>
+  </data>
+  <data name="RegisterOnCourse" xml:space="preserve">
+    <value>Register On Course</value>
+  </data>
+  <data name="RegisterStartDate" xml:space="preserve">
+    <value>Register Start Date</value>
+  </data>
+  <data name="RemaningCapacity" xml:space="preserve">
+    <value>Remaining Capacity</value>
+  </data>
+  <data name="SeeMore" xml:space="preserve">
+    <value>See More</value>
+  </data>
+  <data name="Toman" xml:space="preserve">
+    <value>Toman</value>
+  </data>
+  <data name="TypeCourse" xml:space="preserve">
+    <value>Type Course</value>
+  </data>
+  <data name="View" xml:space="preserve">
+    <value>View</value>
+  </data>
+  <data name="YourRegisteredOnCourse" xml:space="preserve">
+    <value>Your Registered On Course</value>
+  </data>
+  <data name="Loading_Watting" xml:space="preserve">
+    <value>Loading Waiting</value>
+  </data>
+  <data name="SuccessFullyLogout" xml:space="preserve">
+    <value>Successfully Logout</value>
+  </data>
+  <data name="CourseWithDiscount" xml:space="preserve">
+    <value>Course With Discount</value>
+  </data>
+  <data name="OfflineCourses" xml:space="preserve">
+    <value>Offline Courses</value>
+  </data>
+  <data name="certificateTypeTitle" xml:space="preserve">
+    <value>Certificate Type Title</value>
+  </data>
+  <data name="IsAcceptedCertificate" xml:space="preserve">
+    <value>Is Accepted Certificate</value>
+  </data>
+  <data name="CapacityHasBeenReached" xml:space="preserve">
+    <value>Capacity Has Been Reached</value>
+  </data>
+  <data name="RemainingCapacity" xml:space="preserve">
+    <value>Remaining Capacity</value>
+  </data>
+  <data name="TrainingSpecifications" xml:space="preserve">
+    <value>Training Specifications</value>
+  </data>
+  <data name="CourseEnded" xml:space="preserve">
+    <value>TheCourseHasEnded</value>
+  </data>
+  <data name="RegistrationEnded" xml:space="preserve">
+    <value>Registration has ended</value>
+  </data>
+  <data name="CourseDeleted" xml:space="preserve">
+    <value>The Course Is Deleted</value>
+  </data>
+  <data name="CourseIsNotActive" xml:space="preserve">
+    <value>The Course is not active</value>
+  </data>
+  <data name="SpecializedCourses" xml:space="preserve">
+    <value>Specialized courses</value>
+  </data>
+  <data name="ActiveUser" xml:space="preserve">
+    <value>Active User</value>
+  </data>
+  <data name="ActiveUsers" xml:space="preserve">
+    <value>Active Users</value>
+  </data>
+  <data name="Traininghours" xml:space="preserve">
+    <value>Training hours</value>
+  </data>
+  <data name="Teacher" xml:space="preserve">
+    <value>Teacher</value>
+  </data>
+  <data name="MyProfile" xml:space="preserve">
+    <value>My Profile</value>
+  </data>
+  <data name="AllCourses" xml:space="preserve">
+    <value>All Courses</value>
+  </data>
+  <data name="TheLatest" xml:space="preserve">
+    <value>The Latest</value>
+  </data>
+  <data name="CourseCategories" xml:space="preserve">
+    <value>Course Categories</value>
+  </data>
+  <data name="BasicSciences" xml:space="preserve">
+    <value>Basic Sciences</value>
+  </data>
+  <data name="MedicalSciences" xml:space="preserve">
+    <value>Medical Sciences</value>
+  </data>
+  <data name="BusinessManagement" xml:space="preserve">
+    <value>Business Management</value>
+  </data>
+  <data name="FinanceAndInvestment" xml:space="preserve">
+    <value>Finance and Investment</value>
+  </data>
+  <data name="TechnicalAndEngineering" xml:space="preserve">
+    <value>Technical and Engineering</value>
+  </data>
+  <data name="Others" xml:space="preserve">
+    <value>Others</value>
+  </data>
+  <data name="Frequently Asked Questions" xml:space="preserve">
+    <value>Frequently Asked Questions</value>
+  </data>
+  <data name="MeshkatDescriptions" xml:space="preserve">
+    <value>The Meshkat system (Management of the National Empowerment Education Network) was created with the mission of organizing skill-building and empowerment courses across the Islamic Azad University.</value>
+  </data>
+  <data name="Quick Links" xml:space="preserve">
+    <value>Quick Links</value>
+  </data>
+  <data name="Main Page" xml:space="preserve">
+    <value>Main Page</value>
+  </data>
+  <data name="Teaching Request" xml:space="preserve">
+    <value>Teaching Request</value>
+  </data>
+  <data name="Teaching Requests" xml:space="preserve">
+    <value>Teaching Requests</value>
+  </data>
+  <data name="Login to Meshkat User System" xml:space="preserve">
+    <value>Login to Meshkat User System</value>
+  </data>
+  <data name="Useful Links" xml:space="preserve">
+    <value>Useful Links</value>
+  </data>
+  <data name="Office of the Supreme Leader Information Base" xml:space="preserve">
+    <value>Office of the Supreme Leader Information Base</value>
+  </data>
+  <data name="Central Organization of Islamic Azad University" xml:space="preserve">
+    <value>Central Organization of Islamic Azad University</value>
+  </data>
+  <data name="Meshkat System Links" xml:space="preserve">
+    <value>Meshkat System Links</value>
+  </data>
+  <data name="Meshkat User Area" xml:space="preserve">
+    <value>Meshkat User Area</value>
+  </data>
+  <data name="Meshkat Teachers Area" xml:space="preserve">
+    <value>Meshkat Teachers Area</value>
+  </data>
+  <data name="DevelopementOrgin" xml:space="preserve">
+    <value>Islamic Azad University Development and Technology </value>
+  </data>
+  <data name="DevelopementOrgins" xml:space="preserve">
+    <value>Islamic Azad University Development and Technology</value>
+  </data>
+  <data name="SuccessedPayment" xml:space="preserve">
+    <value>Your Payment Was Successfully</value>
+  </data>
+  <data name="_404ErrorNotFoundMessages" xml:space="preserve">
+    <value>Error 404 </value>
+  </data>
+  <data name="PageNotFoundMessage" xml:space="preserve">
+    <value>The page is not founded</value>
+  </data>
+  <data name="OrderBy" xml:space="preserve">
+    <value>Order By</value>
+  </data>
+  <data name="All" xml:space="preserve">
+    <value>All</value>
+  </data>
+  <data name="Method of holding" xml:space="preserve">
+    <value>Method of holding</value>
+  </data>
+  <data name="Organizing unit" xml:space="preserve">
+    <value>Organizing unit</value>
+  </data>
+  <data name="Course category" xml:space="preserve">
+    <value>Course category</value>
+  </data>
+  <data name="Instructor name" xml:space="preserve">
+    <value>Instructor name</value>
+  </data>
+  <data name="Show inactive courses" xml:space="preserve">
+    <value>Show inactive courses</value>
+  </data>
+  <data name="ShowMore" xml:space="preserve">
+    <value>ShowMore</value>
+  </data>
+  <data name="Oldest" xml:space="preserve">
+    <value>Oldest</value>
+  </data>
+  <data name="Updating" xml:space="preserve">
+    <value>Updating</value>
+  </data>
+  <data name="Most Popular" xml:space="preserve">
+    <value>Most Popular</value>
+  </data>
+  <data name="Best Selling" xml:space="preserve">
+    <value>Best Selling</value>
+  </data>
+  <data name="Most Expensive" xml:space="preserve">
+    <value>Most Expensive</value>
+  </data>
+  <data name="Cheapest" xml:space="preserve">
+    <value>Cheapest</value>
+  </data>
+  <data name="CombinatorialCourse" xml:space="preserve">
+    <value>Combinatorial Course</value>
+  </data>
+  <data name="Online Courses" xml:space="preserve">
+    <value>Online Courses</value>
+  </data>
+  <data name="Verbal Course" xml:space="preserve">
+    <value>Verbal Course</value>
+  </data>
+  <data name="Discounted" xml:space="preserve">
+    <value>Discounted</value>
+  </data>
+  <data name="Not free" xml:space="preserve">
+    <value>Not free</value>
+  </data>
+  <data name="Ok" xml:space="preserve">
+    <value>Ok</value>
+  </data>
+  <data name="Register" xml:space="preserve">
+    <value>Register</value>
+  </data>
+  <data name="ProvideCredibleCertificate" xml:space="preserve">
+    <value>ProvideCredibleCertificate</value>
+  </data>
+  <data name="HoldingCoursesAndMeetings" xml:space="preserve">
+    <value>Holding courses and meetings</value>
+  </data>
+  <data name="HoldingOfflineAndOnlineIn-personCourses" xml:space="preserve">
+    <value>Holding offline and online in-person courses</value>
+  </data>
+  <data name="Organizational Training (Islamic Azad University)" xml:space="preserve">
+    <value>Organizational Training (Islamic Azad University)</value>
+  </data>
+  <data name="Conducting online exams" xml:space="preserve">
+    <value>Conducting online exams</value>
+  </data>
+  <data name="UnDefined" xml:space="preserve">
+    <value>UnDefined</value>
+  </data>
+  <data name="Programing" xml:space="preserve">
+    <value>Programing</value>
+  </data>
+</root>

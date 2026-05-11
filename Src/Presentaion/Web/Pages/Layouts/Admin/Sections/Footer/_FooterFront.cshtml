@@ -1,0 +1,98 @@
+@using System.Reflection
+@* @using WebApp.Helper *@
+
+@{
+    TempData.Keep();
+}
+<!-- Footer: Start -->
+<footer class="landing-footer bg-body footer-text">
+    <div class="footer-top">
+        <div class="container">
+            <div class="row gx-0 gy-4 g-md-3">
+                <div class="col-lg-4">
+                    <a asp-page="/Index" class="app-brand-link mb-2">
+                   @*      <span class="app-brand-logo demo">
+                            <img src="/assets/images/logos/meshkat-logo.webp" height="30" width="30" />
+                        </span> *@
+                        <h1 class="footer-title font-nastaligh">درباره ما</h1>
+                    </a>
+                    <p class="footer-text footer-logo-description mb-1">
+             @*         @Messages.MeshkatDescriptions *@
+                    </p>
+               @*      <form class="footer-form">
+                        <label for="footer-email" class="small">عضویت در خبرنامه</label>
+                        <div class="d-flex mt-1">
+                            <input type="email" class="form-control rounded-0 rounded-start-bottom rounded-start-top" id="footer-email" placeholder="در اینجا ایمیل خود را وارد نمایید" />
+                            <button type="submit" class="b tn btn-primary shadow-none rounded-0 rounded-end-bottom rounded-end-top mx-1">
+                                عضویت
+                            </button>
+                        </div>
+                    </form> *@
+                </div>
+                <div class="col-lg-3 col-md-4 col-sm-6" id="QuikLink">
+                 @*    <h4 class="footer-title mb-4 font-nastaligh">@Messages.Quick_Links</h4>
+
+                    <ul class="list-unstyled">
+                        <li class="mb-3">
+                            <a href="javascript:void(0);" class="footer-link ">@Messages.Main_Page</a>
+                        </li>
+                        <li class="mb-3">
+                            <a href="@MenuLink.UserInfoMng.Account.NewTeachingRequest" class="footer-link ">@Messages.TeachingRequest</a>
+                        </li>
+                        <li class="mb-3">
+                            <a href="@MenuLink.UserInfoMng.Account.ListTeachingRequest" class="footer-link ">@Messages.TeachingRequests</a>
+                        </li>
+                        <li class="mb-3">
+                            <a href="https://meshkat.iau.ir" class="footer-link " alt="_blank">@Messages.Login_to_Meshkat_User_System</a>
+                        </li>
+
+                    </ul> *@
+                </div>
+                <div class="col-lg-3 col-md-4 col-sm-6">
+            @*         <h4 class="footer-title mb-4 font-nastaligh">@Messages.Useful_Links</h4>
+                    <ul class="list-unstyled">
+                        <li class="mb-3">
+                            <a href="https://leader.ir/" class="footer-link ">@Messages.Office_of_the_Supreme_Leader_Information_Base</a>
+                        </li>
+                        <li class="mb-3">
+                            <a href="https://iau.ac.ir/" class="footer-link ">@Messages.Central_Organization_of_Islamic_Azad_University</a>
+                        </li>
+
+                    </ul> *@
+                </div>
+                <div class="col-lg-2 col-md-4 col-sm-6 text-center">
+                    @* <img src="~/assets/images/logos/logoazad.png" width="100"  asp-append-version=true /> *@
+                    <img src="~/assets/images/logos/logo-meshkat-dark-min.png" class="mt-3" width="230" asp-append-version=true />
+                </div>
+               
+            </div>
+        </div>
+    </div>
+    <div class="footer-bottom py-3">
+        <div class="container d-flex flex-wrap justify-content-between flex-md-row flex-column text-center text-md-start">
+            <div class="mb-2 mb-md-0">
+                <span class="footer-text">
+
+                    <span> © </span>
+                 @*    <a href='@TempData.Peek("authorUrl")' target="_blank" class="footer-link fw-medium footer-theme-link ">
+                        @Messages.DevelopementOrgin
+                        <script>
+                            document.write(new Date().toLocaleDateString('fa-IR', { year: 'numeric' }))
+                        </script>
+                    </a> <span class="footer-hero-title"> @MeshkatMessage.Meshkat</span>
+                    (
+                    <span>
+                        <span> @Messages.Version : </span>
+                        @Assembly.GetEntryAssembly().GetName().Version.ToString()
+                    </span> *@
+
+            
+                    )
+                </span>
+            </div>
+            <div>
+            </div>
+        </div>
+    </div>
+</footer>
+<!-- Footer: End -->

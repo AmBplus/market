@@ -1,0 +1,10 @@
+@* @model  NavigateTitle
+<h3 class="py-3 mb-4">
+    @foreach (var title in Model.BasePageTitles)
+    {
+        <small>@title / </small>
+    }
+    <span class="text-muted"> </span> <span class=" "> @Model.AppPageTitle</span>
+</h3>
+
+ *@

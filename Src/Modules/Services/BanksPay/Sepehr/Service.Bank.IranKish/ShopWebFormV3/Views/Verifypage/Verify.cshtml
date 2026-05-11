@@ -1,0 +1,62 @@
+﻿
+@{
+    ViewData["Title"] = "ایران کیش";
+}
+
+@model ShopWebFormV3.Models.RequestVerify
+
+
+
+
+
+<div class="row">
+
+    <div class="col-3"> </div>
+    <div class="col-6">
+        <form id="getTokenForm" method='post' action="/Verifypage/btnVerification_Click">
+
+            @******************** شماره ترمینال  ***********************@
+            <div class="form-group">
+                <label style="float:right" asp-for="@Model.terminalId" class="control-label"> terminalId  </label>
+                <input style="text-align:right" asp-for="@Model.terminalId" type="text" class="form-control" id="txtAmount" >
+            </div>
+
+
+
+            @*********************ریسپانس کد ***********************@
+            <div class="form-group">
+                <label style="float:right" asp-for="@Model.responseCode" class="control-label"> responseCode  </label>
+                <input style="text-align:right" asp-for="@Model.responseCode" type="text" class="form-control" id="txtAmount" >
+            </div>
+
+
+
+            @**********************کد پایانه*******************@
+            <div class="form-group">
+                <label  style="float:right" asp-for="@Model.retrievalReferenceNumber" class="control-label">retrievalReferenceNumber</label>
+                <input style="text-align:right" asp-for="@Model.retrievalReferenceNumber"  class="form-control" id="txtTerminalId" >
+                
+            </div>
+
+            @*********************کد پذیرنده****************@
+            <div class="form-group">
+                <label style="float:right" asp-for="@Model.tokenIdentity" for="exampleInputPassword1">tokenIdentity</label>
+                <input style="text-align:right"  asp-for="@Model.tokenIdentity" class="form-control" id="txtAcceptorID">
+            </div>
+
+            @*********************شماره سند/پیگیری****************@
+            <div class="form-group">
+                <label style="float:right" asp-for="@Model.systemTraceAuditNumber" for="exampleInputPassword1"> systemTraceAuditNumber </label>
+                <input style="text-align:right"  asp-for="@Model.systemTraceAuditNumber" class="form-control" id="exampleInputPassword1">
+            </div>
+
+            @*********************توکن مشتری****************@
+         
+
+            <button type="submit"  class="btn btn-success btn-lg btn-block" > تایید تراکنش </button>
+           
+        </form>
+    </div>
+    <div class="col-3"> </div>
+
+</div>

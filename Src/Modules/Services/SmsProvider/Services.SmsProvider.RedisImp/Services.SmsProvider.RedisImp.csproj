@@ -1,0 +1,17 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\Framework\Framework.Redis\Framework.Redis.csproj" />
+    <ProjectReference Include="..\..\..\Framework\Framework.Resources\Framework.Resources.csproj" />
+    <ProjectReference Include="..\..\..\Framework\Framework\Framework.csproj" />
+    <ProjectReference Include="..\Services.SmsProvider\Services.SmsProvider.csproj" />
+  </ItemGroup>
+
+</Project>

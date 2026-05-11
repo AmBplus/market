@@ -1,0 +1,930 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="EnterYouPasswordHere" xml:space="preserve">
+    <value>رمز عبور خود را اینجا وارد کنید</value>
+  </data>
+  <data name="EnterYourUsernameHere" xml:space="preserve">
+    <value>نام کاربری خود را اینجا وارد کنید</value>
+  </data>
+  <data name="FailCheckUserPassword" xml:space="preserve">
+    <value>نام کاربری یا رمز عبور اشتباه است یا وجود ندارد</value>
+  </data>
+  <data name="LoginToSystem" xml:space="preserve">
+    <value>ورود به سیستم</value>
+  </data>
+  <data name="RememberMe" xml:space="preserve">
+    <value>مرا به خاطر بیاور</value>
+  </data>
+  <data name="SuccessOperation" xml:space="preserve">
+    <value>عملیات با موفقیت انجام شد</value>
+  </data>
+  <data name="Dashboard" xml:space="preserve">
+    <value>پـیشخوان</value>
+  </data>
+  <data name="Actions" xml:space="preserve">
+    <value>عملیات‌</value>
+  </data>
+  <data name="Action" xml:space="preserve">
+    <value>عملیات</value>
+  </data>
+  <data name="LmsDashboard" xml:space="preserve">
+    <value>مدیریت آموزشی</value>
+  </data>
+  <data name="ProfessorsLevelingCriteria" xml:space="preserve">
+    <value>سطح بندی استادان</value>
+  </data>
+  <data name="TeachingRequest" xml:space="preserve">
+    <value>درخواست تدریس</value>
+  </data>
+  <data name="AddNewScore" xml:space="preserve">
+    <value>اضافه کردن امتیاز جدید</value>
+  </data>
+  <data name="Cancel" xml:space="preserve">
+    <value>منصرف شدن</value>
+  </data>
+  <data name="QuikLink" xml:space="preserve">
+    <value>لینک سریع</value>
+  </data>
+  <data name="QuikLinks" xml:space="preserve">
+    <value>لـینک های سریع</value>
+  </data>
+  <data name="RegisterInformation" xml:space="preserve">
+    <value>ثبت اطلاعات</value>
+  </data>
+  <data name="Search" xml:space="preserve">
+    <value>جستجو</value>
+  </data>
+  <data name="SearchBasedOn" xml:space="preserve">
+    <value>جستجو بر اساس</value>
+  </data>
+  <data name="Return" xml:space="preserve">
+    <value>بازگشت</value>
+  </data>
+  <data name="BaseScores" xml:space="preserve">
+    <value>امتیازات پایه</value>
+  </data>
+  <data name="AddNewRecord" xml:space="preserve">
+    <value>اضافه کردن رکورد جدید</value>
+  </data>
+  <data name="LearningType" xml:space="preserve">
+    <value>مدل های آموزش</value>
+  </data>
+  <data name="DeterminingEducationalPoints" xml:space="preserve">
+    <value>تعین امتیاز آموزشی</value>
+  </data>
+  <data name="UserProfile" xml:space="preserve">
+    <value>پروفایل کاربری</value>
+  </data>
+  <data name="ChangePassword" xml:space="preserve">
+    <value>تغییر رمز عبور</value>
+  </data>
+  <data name="ConfirmPassword" xml:space="preserve">
+    <value>تایید رمز عبور</value>
+  </data>
+  <data name="NewPassword" xml:space="preserve">
+    <value>رمز عبور جدید</value>
+  </data>
+  <data name="PassRequirement" xml:space="preserve">
+    <value>نیاز مندی های رمز عبور</value>
+  </data>
+  <data name="PassWordLenRequirement" xml:space="preserve">
+    <value>پسورد باید حداقل هشت کاراکتر باشد</value>
+  </data>
+  <data name="UserManagement" xml:space="preserve">
+    <value>مدیریت کاربر</value>
+  </data>
+  <data name="AllowedImageFormat" xml:space="preserve">
+    <value>فقط تصاویر با فرمت های Webp , jpg , png مجاز هستند</value>
+  </data>
+  <data name="ConfirmNewPassword" xml:space="preserve">
+    <value>تایید رمز عبور جدید</value>
+  </data>
+  <data name="CurrentPassword" xml:space="preserve">
+    <value>رمز عبور فعلی</value>
+  </data>
+  <data name="Reset" xml:space="preserve">
+    <value>برگردادن به حالت اولیه</value>
+  </data>
+  <data name="SaveChange" xml:space="preserve">
+    <value>ذخیره تغییرات</value>
+  </data>
+  <data name="SavePhoto" xml:space="preserve">
+    <value>ذخیره تصویر</value>
+  </data>
+  <data name="UploadNewPhoto" xml:space="preserve">
+    <value>بارگذاری تصویر جدید</value>
+  </data>
+  <data name="RegisterInSystem" xml:space="preserve">
+    <value>ثبت نام در سیستم</value>
+  </data>
+  <data name="Financial" xml:space="preserve">
+    <value>مالی</value>
+  </data>
+  <data name="FinancialAccountInformation" xml:space="preserve">
+    <value>اطلاعات حساب مالی</value>
+  </data>
+  <data name="UserPersonalInfoManagement" xml:space="preserve">
+    <value>پــــروفــایـــل مــن</value>
+  </data>
+  <data name="Wallet" xml:space="preserve">
+    <value>کیف پول</value>
+  </data>
+  <data name="JudgePortable" xml:space="preserve">
+    <value>کارتابل داوری</value>
+  </data>
+  <data name="TeachingPortable" xml:space="preserve">
+    <value>کارتابل مدرسین</value>
+  </data>
+  <data name="TeachingRequests" xml:space="preserve">
+    <value>درخواست های تدریس</value>
+  </data>
+  <data name="TeachingRequests_Judge" xml:space="preserve">
+    <value>ارزیابی درخواست های تدریس</value>
+  </data>
+  <data name="NewTeachingRequest" xml:space="preserve">
+    <value>درخواست تدریس جدید</value>
+  </data>
+  <data name="NotSelectedFile" xml:space="preserve">
+    <value>فایلی انتخاب نشده</value>
+  </data>
+  <data name="SelectFile" xml:space="preserve">
+    <value>انتخاب فایل</value>
+  </data>
+  <data name="ProfessionalProfile" xml:space="preserve">
+    <value>پروفایل تخصصی</value>
+  </data>
+  <data name="Login" xml:space="preserve">
+    <value>ورود</value>
+  </data>
+  <data name="Logout" xml:space="preserve">
+    <value>خروج</value>
+  </data>
+  <data name="MyCourses" xml:space="preserve">
+    <value>دروس من</value>
+  </data>
+  <data name="ValidFormatis" xml:space="preserve">
+    <value>فرمت صحیح فقط</value>
+  </data>
+  <data name="ValidFormatsis" xml:space="preserve">
+    <value>فرمت های صحیح فقط</value>
+  </data>
+  <data name="AdditionalProfile" xml:space="preserve">
+    <value>اطلاعات تکمیلی</value>
+  </data>
+  <data name="EducationalExperience" xml:space="preserve">
+    <value>سوابق آموزشی</value>
+  </data>
+  <data name="FurtherDetails" xml:space="preserve">
+    <value>توضیحات تکمیلی</value>
+  </data>
+  <data name="SuperAdminPortal" xml:space="preserve">
+    <value>کارتابل ادمین ارشد</value>
+  </data>
+  <data name="UploadDeggree" xml:space="preserve">
+    <value>آپلود مدرک تحصیلی</value>
+  </data>
+  <data name="UploadNationalCard" xml:space="preserve">
+    <value>آپلود تصویر کارت ملی</value>
+  </data>
+  <data name="UploadResume" xml:space="preserve">
+    <value>آپلود رزومه</value>
+  </data>
+  <data name="NactionalCard" xml:space="preserve">
+    <value>کارت ملی</value>
+  </data>
+  <data name="NationalCode" xml:space="preserve">
+    <value>کد ملی</value>
+  </data>
+  <data name="ReturnToFirstState" xml:space="preserve">
+    <value>بازگشت به حالت اول</value>
+  </data>
+  <data name="UserProfileDetail" xml:space="preserve">
+    <value>جزییات پروفایل کاربری</value>
+  </data>
+  <data name="BirthDay" xml:space="preserve">
+    <value>تاریخ تولد</value>
+  </data>
+  <data name="UploadEdit" xml:space="preserve">
+    <value>آپلود/ویرایش</value>
+  </data>
+  <data name="Creditor" xml:space="preserve">
+    <value>بستانکار</value>
+  </data>
+  <data name="Debtor" xml:space="preserve">
+    <value>بدهکار</value>
+  </data>
+  <data name="Description" xml:space="preserve">
+    <value>توضیحات</value>
+  </data>
+  <data name="ForWhat" xml:space="preserve">
+    <value>بابت</value>
+  </data>
+  <data name="SelectState" xml:space="preserve">
+    <value>انتخاب استان</value>
+  </data>
+  <data name="ShamsiDate" xml:space="preserve">
+    <value>تاریخ شمسی</value>
+  </data>
+  <data name="CourseType" xml:space="preserve">
+    <value>نوع درس</value>
+  </data>
+  <data name="SettlementRequest" xml:space="preserve">
+    <value>درخواست تسویه</value>
+  </data>
+  <data name="CourseGroup" xml:space="preserve">
+    <value>دسته بندی درس</value>
+  </data>
+  <data name="RefereeMessage" xml:space="preserve">
+    <value>پیغام ارزیاب</value>
+  </data>
+  <data name="StudentCount" xml:space="preserve">
+    <value>تعداد دانش پذیران</value>
+  </data>
+  <data name="JudgeTeachingRequests" xml:space="preserve">
+    <value>ارزیابی درخواست های تدریس</value>
+  </data>
+  <data name="Scientificleveling" xml:space="preserve">
+    <value>سطح بندی علمی</value>
+  </data>
+  <data name="OtpMessage" xml:space="preserve">
+    <value>کد ورود شما به مشکات {0}</value>
+  </data>
+  <data name="CourseInfo" xml:space="preserve">
+    <value>اطلاعات درس</value>
+  </data>
+  <data name="Certificates" xml:space="preserve">
+    <value>گواهی‌ها</value>
+  </data>
+  <data name="Comments" xml:space="preserve">
+    <value>نظرات</value>
+  </data>
+  <data name="Content" xml:space="preserve">
+    <value>محتوا</value>
+  </data>
+  <data name="Exams" xml:space="preserve">
+    <value>آزمون ها</value>
+  </data>
+  <data name="Participants" xml:space="preserve">
+    <value>شرکت کنندگان</value>
+  </data>
+  <data name="CommingSoon" xml:space="preserve">
+    <value>(به زودی)</value>
+  </data>
+  <data name="FinancialManagement" xml:space="preserve">
+    <value>مدیریت مالی</value>
+  </data>
+  <data name="PaymentReports" xml:space="preserve">
+    <value>گزارش پرداخت ها</value>
+  </data>
+  <data name="AccountSettlement" xml:space="preserve">
+    <value>تسویه حساب</value>
+  </data>
+  <data name="ChangeItAsSoonAsPossible" xml:space="preserve">
+    <value>رمز عبور خود را در اسرع وقت تغیر دهید</value>
+  </data>
+  <data name="ClickBellowLinkToEnterSite" xml:space="preserve">
+    <value>جهت ورود به سایت بر روی لینک زیر کلیک بفرمایید</value>
+  </data>
+  <data name="EnterMainPage" xml:space="preserve">
+    <value>ورود به صفحه اصلی</value>
+  </data>
+  <data name="EnterTheNumberInThePicture InTheBoxBelow" xml:space="preserve">
+    <value>عدد داخل تصویر را داخل باکس زیر وارد کنید</value>
+  </data>
+  <data name="LogInSignUp" xml:space="preserve">
+    <value>ورود / ثبت نام</value>
+  </data>
+  <data name="MobileLogin_registration" xml:space="preserve">
+    <value>ورود/ثبت نام با موبایل</value>
+  </data>
+  <data name="MobileNumber" xml:space="preserve">
+    <value>شماره همراه</value>
+  </data>
+  <data name="Or" xml:space="preserve">
+    <value>یا</value>
+  </data>
+  <data name="Password" xml:space="preserve">
+    <value>رمز عبور</value>
+  </data>
+  <data name="SuccessfullyRegister" xml:space="preserve">
+    <value>ثبت نام با موفقیت انجام شد</value>
+  </data>
+  <data name="UserName" xml:space="preserve">
+    <value>نام کاربری</value>
+  </data>
+  <data name="AccountNumber" xml:space="preserve">
+    <value>شماره حساب</value>
+  </data>
+  <data name="BankName" xml:space="preserve">
+    <value>نام بانک</value>
+  </data>
+  <data name="DetailPayed" xml:space="preserve">
+    <value>جزییات پرداخت</value>
+  </data>
+  <data name="DiscountPrecent" xml:space="preserve">
+    <value>درصد پرداخت</value>
+  </data>
+  <data name="EnterOnlineClass" xml:space="preserve">
+    <value>ورود به کلاس آنلاین</value>
+  </data>
+  <data name="NameOfAccountHolder" xml:space="preserve">
+    <value>نام صاحب حساب</value>
+  </data>
+  <data name="PayedAmount" xml:space="preserve">
+    <value>مبلغ پرداخت شده</value>
+  </data>
+  <data name="PayedResult" xml:space="preserve">
+    <value>نتیجه پرداخت</value>
+  </data>
+  <data name="PayedState" xml:space="preserve">
+    <value>وضعیت پرداخت</value>
+  </data>
+  <data name="PayedTime" xml:space="preserve">
+    <value>تاریخ پرداخت</value>
+  </data>
+  <data name="Payer" xml:space="preserve">
+    <value>پرداخت کننده</value>
+  </data>
+  <data name="ReturnToCourse" xml:space="preserve">
+    <value>برگشت به کلاس</value>
+  </data>
+  <data name="SharingPayed" xml:space="preserve">
+    <value>تسهیم پرداخت</value>
+  </data>
+  <data name="TrackingCode" xml:space="preserve">
+    <value>کد رهگیری</value>
+  </data>
+  <data name="TrackingID" xml:space="preserve">
+    <value>کد پیگیری</value>
+  </data>
+  <data name="SettlementRequests" xml:space="preserve">
+    <value>درخواست های تسویه</value>
+  </data>
+  <data name="CourseId" xml:space="preserve">
+    <value>کد درس</value>
+  </data>
+  <data name="UserId" xml:space="preserve">
+    <value>آیدی کاربر</value>
+  </data>
+  <data name="MyCertificate" xml:space="preserve">
+    <value>گواهی های من</value>
+  </data>
+  <data name="MyExams" xml:space="preserve">
+    <value>آزمون های من</value>
+  </data>
+  <data name="RequestTeachingList" xml:space="preserve">
+    <value>لیست درخواست های تدریس</value>
+  </data>
+  <data name="MyPayment" xml:space="preserve">
+    <value>پرداخت های من</value>
+  </data>
+  <data name="Avatar" xml:space="preserve">
+    <value>تصویر کاربری</value>
+  </data>
+  <data name="MaxSizePicProfile" xml:space="preserve">
+    <value>حداکثر حجم تصویر 500 کیلوبایت</value>
+  </data>
+  <data name="SuccessUpdateInfoOperation" xml:space="preserve">
+    <value>ویرایش اطلاعات با موفقیت انجام شد</value>
+  </data>
+  <data name="NotAllowModify" xml:space="preserve">
+    <value>امکان ویرایش اطلاعات وجود ندارد</value>
+  </data>
+  <data name="AcceptedStatus" xml:space="preserve">
+    <value>تایید شده</value>
+  </data>
+  <data name="AccNumberStatus" xml:space="preserve">
+    <value>وضعیت حساب</value>
+  </data>
+  <data name="NotRegisteredAnyAccNumber" xml:space="preserve">
+    <value>شماره حسابی برای شما ثبت نشده است</value>
+  </data>
+  <data name="UnAcceptedStatus" xml:space="preserve">
+    <value>تایید نشده</value>
+  </data>
+  <data name="YouAccNumber" xml:space="preserve">
+    <value>شماره حساب ثبت  شده</value>
+  </data>
+  <data name="BankShabaSaderat" xml:space="preserve">
+    <value>شماره شبا حساب (بانک سپهر صادرات)</value>
+  </data>
+  <data name="SaveOrUpdateAccInfo" xml:space="preserve">
+    <value>ذخیره یا ویرایش شماره حساب</value>
+  </data>
+  <data name="Amount" xml:space="preserve">
+    <value>مبلغ (ریال)</value>
+  </data>
+  <data name="Price_Final" xml:space="preserve">
+    <value>مبلغ بدون تخفیف (ریال)</value>
+  </data>
+  <data name="Price_Old" xml:space="preserve">
+    <value>تخفیف (ریال)</value>
+  </data>
+  <data name="RowNumber" xml:space="preserve">
+    <value>ردیف</value>
+  </data>
+  <data name="Courses" xml:space="preserve">
+    <value>دوره ها</value>
+  </data>
+  <data name="Home" xml:space="preserve">
+    <value>خانه</value>
+  </data>
+  <data name="AmountToman" xml:space="preserve">
+    <value>مبلغ پرداختی (تومان)</value>
+  </data>
+  <data name="CoursesTitle" xml:space="preserve">
+    <value>دوره ها</value>
+  </data>
+  <data name="Price_FinalToman" xml:space="preserve">
+    <value>مبلغ اصلی دوره (تومان)</value>
+  </data>
+  <data name="Price_OldToman" xml:space="preserve">
+    <value>تخفیف(تومان)</value>
+  </data>
+  <data name="CntCourseAssessments" xml:space="preserve">
+    <value>تعداد آزمون</value>
+  </data>
+  <data name="CntCourseContents" xml:space="preserve">
+    <value>تعداد محتوی</value>
+  </data>
+  <data name="IsPublic" xml:space="preserve">
+    <value>عمومی</value>
+  </data>
+  <data name="CourseName" xml:space="preserve">
+    <value>نام دوره</value>
+  </data>
+  <data name="PaymentTo" xml:space="preserve">
+    <value>پرداخت بابت</value>
+  </data>
+  <data name="DomainTitle" xml:space="preserve">
+    <value>واحد برگزارکننده</value>
+  </data>
+  <data name="AssessmentItemCount" xml:space="preserve">
+    <value>تعداد سوالات پاسخ داده شده</value>
+  </data>
+  <data name="ExamDate" xml:space="preserve">
+    <value>شروع آزمون</value>
+  </data>
+  <data name="ExamTitle" xml:space="preserve">
+    <value>عنوان آزمون</value>
+  </data>
+  <data name="ExamType" xml:space="preserve">
+    <value>نوع</value>
+  </data>
+  <data name="SumScore" xml:space="preserve">
+    <value>امتیاز</value>
+  </data>
+  <data name="NameAndFamily" xml:space="preserve">
+    <value>نام و نام خانوادگی</value>
+  </data>
+  <data name="MessagingAndCorrespondenceManagement" xml:space="preserve">
+    <value>مدیریت پیام‌رسانی و مکاتبات</value>
+  </data>
+  <data name="SystemManagement" xml:space="preserve">
+    <value>مدیریت سامانه</value>
+  </data>
+  <data name="UserPermissionManagement" xml:space="preserve">
+    <value>مدیریت کاربران &amp; مجوز ها</value>
+  </data>
+  <data name="Users" xml:space="preserve">
+    <value>کاربران</value>
+  </data>
+  <data name="HoldingDateStart" xml:space="preserve">
+    <value>شروع دوره</value>
+  </data>
+  <data name="ExamDateEnd" xml:space="preserve">
+    <value>پایان آزمون</value>
+  </data>
+  <data name="PayedAmountToman" xml:space="preserve">
+    <value>مبلغ پرداخت شده(تومان)</value>
+  </data>
+  <data name="SodorDate" xml:space="preserve">
+    <value>تاریخ صدور</value>
+  </data>
+  <data name="DomainRolesCount" xml:space="preserve">
+    <value>تعداد نقش ها</value>
+  </data>
+  <data name="OnlinePaymentId" xml:space="preserve">
+    <value>آیدی پرداخت کننده</value>
+  </data>
+  <data name="LatestCourse" xml:space="preserve">
+    <value>جدیدترین دوره ها</value>
+  </data>
+  <data name="LatestFreeCourse" xml:space="preserve">
+    <value>دوره های رایگان</value>
+  </data>
+  <data name="ShowAll" xml:space="preserve">
+    <value>مـشاهـده هـمـه</value>
+  </data>
+  <data name="Error" xml:space="preserve">
+    <value>خطا</value>
+  </data>
+  <data name="Info" xml:space="preserve">
+    <value>اطلاعات</value>
+  </data>
+  <data name="Warning" xml:space="preserve">
+    <value>هشدار</value>
+  </data>
+  <data name="Version" xml:space="preserve">
+    <value>نسخه</value>
+  </data>
+  <data name="ExamTimeElapsed" xml:space="preserve">
+    <value>مدت آزمون(دقیقه)</value>
+  </data>
+  <data name="SuccessLogin" xml:space="preserve">
+    <value>ورود با موفقیت انجام شد</value>
+  </data>
+  <data name="CourseEndDate" xml:space="preserve">
+    <value>پایان دوره</value>
+  </data>
+  <data name="CourseOrganizer" xml:space="preserve">
+    <value>برگزار کننده دوره</value>
+  </data>
+  <data name="CourseRegisterCount" xml:space="preserve">
+    <value>تعداد ثبت نامی ها</value>
+  </data>
+  <data name="CourseStartDate" xml:space="preserve">
+    <value>شروع دوره</value>
+  </data>
+  <data name="CourseTime" xml:space="preserve">
+    <value>مدت زمان دوره</value>
+  </data>
+  <data name="Free" xml:space="preserve">
+    <value>رایــگان</value>
+  </data>
+  <data name="Hour" xml:space="preserve">
+    <value>ساعت</value>
+  </data>
+  <data name="LoginToOnlineClass" xml:space="preserve">
+    <value>ورود به کلاس آنلاین</value>
+  </data>
+  <data name="Person" xml:space="preserve">
+    <value>نفر</value>
+  </data>
+  <data name="RegisterEndDate" xml:space="preserve">
+    <value>پایان ثبت نام</value>
+  </data>
+  <data name="RegisterOnCourse" xml:space="preserve">
+    <value>ثبت نام در دوره</value>
+  </data>
+  <data name="RegisterStartDate" xml:space="preserve">
+    <value>شروع ثبت نام</value>
+  </data>
+  <data name="RemaningCapacity" xml:space="preserve">
+    <value>ظرفیت باقی مانده</value>
+  </data>
+  <data name="SeeMore" xml:space="preserve">
+    <value>مشاهده بیشتر</value>
+  </data>
+  <data name="Toman" xml:space="preserve">
+    <value>تــومــان</value>
+  </data>
+  <data name="TypeCourse" xml:space="preserve">
+    <value>شیوه(نوع) برگزاری دوره</value>
+  </data>
+  <data name="View" xml:space="preserve">
+    <value>بازدید</value>
+  </data>
+  <data name="YourRegisteredOnCourse" xml:space="preserve">
+    <value>شما در دوره ثبت نام کرده‌اید</value>
+  </data>
+  <data name="Loading_Watting" xml:space="preserve">
+    <value>در حال پردازش اطلاعات ، لطفا صبر کنید</value>
+  </data>
+  <data name="SuccessFullyLogout" xml:space="preserve">
+    <value>با موفقیت از سیستم خارج شدید</value>
+  </data>
+  <data name="CourseWithDiscount" xml:space="preserve">
+    <value>دوره های با تخفیف</value>
+  </data>
+  <data name="OfflineCourses" xml:space="preserve">
+    <value>دوره های آفلاین</value>
+  </data>
+  <data name="certificateTypeTitle" xml:space="preserve">
+    <value>نوع دوره</value>
+  </data>
+  <data name="IsAcceptedCertificate" xml:space="preserve">
+    <value>وضعیت گواهی</value>
+  </data>
+  <data name="CapacityHasBeenReached" xml:space="preserve">
+    <value>اتمام ظرفیت</value>
+  </data>
+  <data name="RemainingCapacity" xml:space="preserve">
+    <value>ظرفیت باقی مانده</value>
+  </data>
+  <data name="TrainingSpecifications" xml:space="preserve">
+    <value>مشخصات آموزشی</value>
+  </data>
+  <data name="CourseEnded" xml:space="preserve">
+    <value>دوره به پایان رسیده است</value>
+  </data>
+  <data name="RegistrationEnded" xml:space="preserve">
+    <value>ثبت نام به پایان رسیده است</value>
+  </data>
+  <data name="CourseDeleted" xml:space="preserve">
+    <value>دوره حذف شده است</value>
+  </data>
+  <data name="CourseIsNotActive" xml:space="preserve">
+    <value>دوره فعال نیست</value>
+  </data>
+  <data name="SpecializedCourses" xml:space="preserve">
+    <value>دوره های تخصصی</value>
+  </data>
+  <data name="ActiveUser" xml:space="preserve">
+    <value>کاربر فعال</value>
+  </data>
+  <data name="ActiveUsers" xml:space="preserve">
+    <value>کاربران فعال</value>
+  </data>
+  <data name="Traininghours" xml:space="preserve">
+    <value>ساعت آموزش</value>
+  </data>
+  <data name="Teacher" xml:space="preserve">
+    <value>مدرس</value>
+  </data>
+  <data name="MyProfile" xml:space="preserve">
+    <value>پـروفایل مـن</value>
+  </data>
+  <data name="AllCourses" xml:space="preserve">
+    <value>همه دوره ها</value>
+  </data>
+  <data name="TheLatest" xml:space="preserve">
+    <value>جدید‌ترین ها</value>
+  </data>
+  <data name="CourseCategories" xml:space="preserve">
+    <value>دسته بندی آموزش‌ها</value>
+  </data>
+  <data name="BasicSciences" xml:space="preserve">
+    <value>علوم پایه</value>
+  </data>
+  <data name="MedicalSciences" xml:space="preserve">
+    <value>علوم پزشکی</value>
+  </data>
+  <data name="BusinessManagement" xml:space="preserve">
+    <value>مدیریت کسب و کار</value>
+  </data>
+  <data name="FinanceAndInvestment" xml:space="preserve">
+    <value>مالی و سرمایه گذاری</value>
+  </data>
+  <data name="TechnicalAndEngineering" xml:space="preserve">
+    <value>فنی و مهندسی</value>
+  </data>
+  <data name="Others" xml:space="preserve">
+    <value>سایر</value>
+  </data>
+  <data name="Frequently Asked Questions" xml:space="preserve">
+    <value>سوالات پر تکرار</value>
+  </data>
+  <data name="MeshkatDescriptions" xml:space="preserve">
+    <value>سامانه مشکات ( مدیریت شبکه کشوری آموزش توان‌افزا ) با رسالت برگزاری یکپارچه دوره‌های مهارت آموزی و توان افزایی در گستره دانشگاه آزاد اسلامی ایجاد شده است</value>
+  </data>
+  <data name="Quick Links" xml:space="preserve">
+    <value>لینک های سریع</value>
+  </data>
+  <data name="Main Page" xml:space="preserve">
+    <value>صفحه اصلی</value>
+  </data>
+  <data name="Teaching Request" xml:space="preserve">
+    <value>درخواست تدریس</value>
+  </data>
+  <data name="Teaching Requests" xml:space="preserve">
+    <value>درخواست های تدریس</value>
+  </data>
+  <data name="Login to Meshkat User System" xml:space="preserve">
+    <value>ورود به سامانه کاربران مشکات</value>
+  </data>
+  <data name="Useful Links" xml:space="preserve">
+    <value>لینک های مفید</value>
+  </data>
+  <data name="Office of the Supreme Leader Information Base" xml:space="preserve">
+    <value>پایگاه اطلاع رسانی دفتر مقام معظم رهبری</value>
+  </data>
+  <data name="Central Organization of Islamic Azad University" xml:space="preserve">
+    <value>سازمان مرکزی دانشگاه آزاد</value>
+  </data>
+  <data name="Meshkat System Links" xml:space="preserve">
+    <value>لینک های سامانه مشکات</value>
+  </data>
+  <data name="Meshkat User Area" xml:space="preserve">
+    <value>سامانه مشکات بخش کاربران</value>
+  </data>
+  <data name="Meshkat Teachers Area" xml:space="preserve">
+    <value>سامانه مشکات بخش اساتید</value>
+  </data>
+  <data name="DevelopementOrgin" xml:space="preserve">
+    <value>توسعه و فناوری دانشگاه آزاد اسلامی</value>
+  </data>
+  <data name="DevelopementOrgins" xml:space="preserve">
+    <value>توسعه و فناوری دانشگاه آزاد اسلامی</value>
+  </data>
+  <data name="SuccessedPayment" xml:space="preserve">
+    <value>پرداخت شما با موفقیت انجام شد</value>
+  </data>
+  <data name="_404ErrorNotFoundMessages" xml:space="preserve">
+    <value>خطای 404</value>
+  </data>
+  <data name="PageNotFoundMessage" xml:space="preserve">
+    <value>صفحه ای که به دنبال آن هستید پیدا نشد</value>
+  </data>
+  <data name="OrderBy" xml:space="preserve">
+    <value>مرتب سازی بر اساس</value>
+  </data>
+  <data name="All" xml:space="preserve">
+    <value>همه</value>
+  </data>
+  <data name="Method of holding" xml:space="preserve">
+    <value>شیوه برگزاری</value>
+  </data>
+  <data name="Organizing unit" xml:space="preserve">
+    <value>واحد برگزارکننده</value>
+  </data>
+  <data name="Course category" xml:space="preserve">
+    <value>دسته بندی درس</value>
+  </data>
+  <data name="Instructor name" xml:space="preserve">
+    <value>نام مدرس</value>
+  </data>
+  <data name="Show inactive courses" xml:space="preserve">
+    <value>نمایش دوره های غیرفعال</value>
+  </data>
+  <data name="ShowMore" xml:space="preserve">
+    <value>نمایش بیشتر</value>
+  </data>
+  <data name="Oldest" xml:space="preserve">
+    <value>قدیمی ترین</value>
+  </data>
+  <data name="Updating" xml:space="preserve">
+    <value>بروزرسانی</value>
+  </data>
+  <data name="Most Popular" xml:space="preserve">
+    <value>محبوب‌ترین</value>
+  </data>
+  <data name="Best Selling" xml:space="preserve">
+    <value>پرفروش‌ترین</value>
+  </data>
+  <data name="Most Expensive" xml:space="preserve">
+    <value>گران‌ترین</value>
+  </data>
+  <data name="Cheapest" xml:space="preserve">
+    <value>ارزان‌ترین</value>
+  </data>
+  <data name="CombinatorialCourse" xml:space="preserve">
+    <value>دروس ترکیبی</value>
+  </data>
+  <data name="Online Courses" xml:space="preserve">
+    <value>دوره آنلاین</value>
+  </data>
+  <data name="Verbal Course" xml:space="preserve">
+    <value>دوره حضوری</value>
+  </data>
+  <data name="Discounted" xml:space="preserve">
+    <value>تخفیف دار</value>
+  </data>
+  <data name="Not free" xml:space="preserve">
+    <value>غیر رایگان</value>
+  </data>
+  <data name="Ok" xml:space="preserve">
+    <value>باشه</value>
+  </data>
+  <data name="Register" xml:space="preserve">
+    <value>ثبت نام</value>
+  </data>
+  <data name="ProvideCredibleCertificate" xml:space="preserve">
+    <value>ارائه گواهینامه معتبر</value>
+  </data>
+  <data name="HoldingCoursesAndMeetings" xml:space="preserve">
+    <value>برگزاری دوره‌ها و جلسات</value>
+  </data>
+  <data name="HoldingOfflineAndOnlineIn-personCourses" xml:space="preserve">
+    <value>برگزاری دوره های آفلاین ، آنلاین ، حضوری</value>
+  </data>
+  <data name="Organizational Training (Islamic Azad University)" xml:space="preserve">
+    <value>آموزش‌های سازمانی(دانشگاه آزاد اسلامی)</value>
+  </data>
+  <data name="Conducting online exams" xml:space="preserve">
+    <value>برگزاری آزمون‌های آنلاین</value>
+  </data>
+  <data name="UnDefined" xml:space="preserve">
+    <value>نامشخص</value>
+  </data>
+  <data name="Programing" xml:space="preserve">
+    <value>برنامه نویسی</value>
+  </data>
+</root>

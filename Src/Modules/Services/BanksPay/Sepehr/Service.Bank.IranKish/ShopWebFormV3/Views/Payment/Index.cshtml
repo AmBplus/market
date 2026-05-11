@@ -1,0 +1,82 @@
+﻿@{
+    ViewData["Title"] = "ایران کیش";
+}
+
+@model ShopWebFormV3.Models.IPGDataModel
+
+
+
+<div class="row">
+
+    <div class="col-3"> </div>
+    <div class="col-6">
+
+        @*********************مقدار -ریال***********************@
+        <div class="form-group">
+            <label style="float:right" asp-for="@Model.Amount" class="control-label">مقدار -ریال </label>
+            @*  <input asp-for="@Model.Amount" type="text" class="form-control" id="txtAmount" >*@
+            <input style="text-align:right" asp-for="@Model.Amount" type="text" class="form-control" id="txtAmount">
+        </div>
+        @**********************کد پایانه*******************@
+        <div class="form-group">
+            <label style="float:right" asp-for="@Model.TerminalId" class="control-label">کد پایانه</label>
+            <input style="text-align:right" asp-for="@Model.TerminalId" class="form-control" id="txtTerminalId">
+
+        </div>
+
+        @*********************کد پذیرنده****************@
+        <div class="form-group">
+            <label style="float:right" asp-for="@Model.AcceptorId" for="exampleInputPassword1">کد پذیرنده</label>
+            <input style="text-align:right" asp-for="@Model.AcceptorId" class="form-control" id="txtAcceptorID">
+        </div>
+
+        @*********************عبارت عبور****************@
+        <div class="form-group">
+            <label style="float:right" asp-for="@Model.PassPhrase" for="exampleInputPassword1">عبارت عبور</label>
+            <input style="text-align:right" asp-for="@Model.PassPhrase" class="form-control" id="exampleInputPassword1">
+        </div>
+        <button type="button" class="btn btn-success btn-lg btn-block" onclick="getToke()"> دریافت توکن</button>
+        <form id="paymentForm" method='post' action="@ViewBag.urlpayment">
+            @*<form id="getTokenForm" method='post' action="/payment/getToken_onclick">*@
+            <input style="text-align:right" class="form-control" id="tokenIdentity" name="tokenIdentity" readonly>
+            <button type="submit" class="btn btn-success btn-lg btn-block">  پرداخت </button>
+        </form>
+    </div>
+    <div class="col-3"> </div>
+
+</div>
+@section Scripts
+{
+<script>
+    debugger;
+     var IPGData ={};
+          IPGData.amount=parseInt( document.getElementById("txtAmount").value);
+             IPGData.TerminalId=document.getElementById("txtTerminalId").value;
+             IPGData.acceptorId=document.getElementById("txtAcceptorID").value;
+             IPGData.passPhrase=document.getElementById("exampleInputPassword1").value;
+             var jsonValue = JSON.stringify(IPGData);
+             console.log(jsonValue);
+             function getToke()
+             {
+                 $.ajax({
+                    type: "POST",
+                    url: "http://localhost:6001/Payment/getToken_onclick",
+                    // The key needs to match your method's input parameter (case-sensitive).
+
+                    data:jsonValue ,
+                    contentType: "application/json; charset=utf-8",                  
+                    success: function(data){
+                    document.getElementById("tokenIdentity").value=data.token;
+                    console.log(data);
+                    },
+                    error: function(errMsg) {
+                        alert(errMsg);
+                    }
+                 });
+             }
+
+</script>
+}
+
+
+

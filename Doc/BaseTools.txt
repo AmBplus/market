@@ -1,0 +1,132 @@
+// اعداد و تبدیل‌ها
+static class UtilityNumbers
+{
+    static int GenerateRandomNumber(int min, int max)
+    static string ToEnglishNumber(this string number)
+    static bool IsContainPersianNumber(this string text)
+    static string ToPersianNumber(this string number)
+    static long ConvertRialToToman(long rial)
+    static long ConvertRialToToman(decimal rial)
+    static long ConvertToRial(long rial)
+    static long ConvertToRial(decimal rial)
+}
+// نتیجه عملیات با داده خروجی
+class ResultOperation<T>
+{
+    bool IsSuccess
+    T Data
+    List<string>? Message
+    string MessageSingle  // همه پیام‌ها به صورت یک رشته
+
+    static ResultOperation<T> ToSuccessResult(T data)
+    static ResultOperation<T> ToSuccessResult(string message, T data)
+    static ResultOperation<T> ToSuccessResult(List<string> message, T data)
+    static ResultOperation<T> ToFailedResult()
+    static ResultOperation<T> ToFailedResult(string message)
+    static ResultOperation<T> ToFailedResult(List<string> message)
+    static ResultOperation<T> ToFailedResult(string message, T data)
+    static ResultOperation<T> ToFailedResult(List<string> message, T data)
+}
+// تبدیل ResultOperation<T> به ResultOperation بدون داده
+static class ResultOperationExtend
+{
+    static ResultOperation GetResultOperation<T>(this ResultOperation<T> result)
+}
+
+// اکستنشن‌های کمکی برای ساخت راحت‌تر ResultOperation
+static class UtilityResultExtension
+{
+    static string? ToSingleMessage(this List<string> messages)
+    static ResultOperation<T> ToSuccessResult<T>(this T entity)
+    static ResultOperation<T> ToSuccessResult<T>(this T entity, string message)
+    static ResultOperation<T> ToFailedResult<T>(this T entity, string message)
+    static ResultOperation<T> ToFailedResult<T>(this T entity, List<string> messages)
+    static ResultOperation<object> ToFailedResult(this object entity, string message)
+    static ResultOperation<object> ToFailedResult(this object entity)
+}
+// پاکسازی و اعتبارسنجی متن
+static class TextFixer
+{
+    static string NameOf(this string str)
+    static string Slugify(this string phrase)              // تبدیل به slug (url-friendly)
+    static bool ContainsPersianLetters(this string input)
+    static (string errorMessage, bool result) IsValidEnglishText(this string text, string title)
+    static bool ContainsSqlInjectionPatterns(this string password)
+    static string FixText(this string phrase)              // حذف diacritics + lowercase
+    static string GetDirection(this string dir)            // نرمال‌سازی "asc"/"desc"
+    static string RemoveSqlInjection(this string query)
+    static string RemoveInnerSqlInjection(this string query)  // نسخه سبک‌تر برای شرط‌ها
+    static string RemoveDiacritics(this string text)
+}
+// ابزارهای متنی عمومی
+static class TextUtilHelper
+{
+    static string FixText(this string text)                // حذف فاصله‌های اضافه
+    static string Convert_Farsi_Numeric_to_Latin(this string mystr)
+    static string FixFarsiStr(this string s1)              // نرمال‌سازی حروف عربی به فارسی (ی، ک، و ...)
+    static string GenerateFileName()
+    static string GenerateFileName(string additionName)
+    static string GetCode(int min, int max)                // عدد تصادفی رمزنگاری‌شده
+    static string GetRawContentFromHtml(this string htmlString)  // استخراج متن خام از HTML
+}
+// تبدیل تاریخ میلادی به شمسی
+static class PersianDateConverter
+{
+    static string ToPersianDateString(this DateTime gregorianDateTime)
+    static string ToPersianDateString(this DateOnly gregorianDate)
+    static DateOnly ToDateOnlyFromPersian(this string persianDateString)
+}
+// اعتبارسنجی و تبدیل تاریخ شمسی
+static class PersianDateValidator
+{
+    static bool IsValidPersianDate(this string dateString)
+    static DateTime? ToDateTimeFromPersian(this string persianDateString)
+}
+// ابزارهای زمان و تاریخ
+static class TimeUtilHelper
+{
+    static DateTime NowDateTime(bool useCultrure = false)
+    static DateTime ToDateTime(this DateOnly dateOnly)
+    static string GetPersianDate()
+    static string GetPersianDate(DateOnly? dateTime)
+    static string GetPersianDate(this DateOnly dateTime)
+    static string GetPersianDate(this DateTime dateTime)
+    static string GetPersianDate(this DateTime? dateTime)
+    static string GetDateFromPersianDate(this string persianDate)  // شمسی → میلادی رشته‌ای
+    static bool IsPersianValid(this string persianDate)
+}
+// اعتبارسنجی مدل‌ها با DataAnnotations
+static class ValidationHelper
+{
+    static ResultOperation GetFailedResultWithError_s(this IList<ValidationResult> validationResults)
+    static bool IsValid<T>(this T entity) where T : class
+    static ResultOperation GetValidationResults<T>(this T entity) where T : class
+    static bool IsValidIranianNationalCode(string input)
+}
+// base class برای Razor Pages با متدهای نمایش پیام
+abstract class BasePageModel : PageModel
+{
+    bool AddPageError(string? message)
+    bool AddPageWarning(string? message)
+    bool AddPageSuccess(string? message)
+    bool AddToastError(string? message)
+    bool AddToastWarning(string? message)
+    bool AddToastSuccess(string? message)
+    bool AddToastInfo(string? message)
+    bool AddMessage(Messages.MessageType type, string? message)
+    bool AddAlertSuccess(string? message)
+    bool AddAlertWarning(string? message)
+    bool AddAlertError(string? message)
+    bool AddToPageErrorFromModeStateErros()
+    bool AddToAlertErrorFromModeStateErros(string? message)
+}
+// اینترفیس‌های زیرساخت
+interface IExcelHelper
+{
+    Task<ResultOperation<List<T>>> ExcelToClassAsync<T>(IFormFile file, Dictionary<int, string> columnIndexMappings, CancellationToken cancellationToken)
+    Task<ResultOperation<MemoryStream>> ClassToExcelAsync<T>(IEnumerable<T>? items, ExcelExportOptions? options, CancellationToken cancellationToken)
+}
+interface IDatatableResponseHelper
+{
+    Task<IActionResult> Get<T>(DatatableFullRequest datatableRequest, ResultOperation<DataTableResponse<T>> handlerResult, string name, CancellationToken cancellationToken)
+}

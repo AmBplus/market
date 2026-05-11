@@ -1,0 +1,24 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFrameworks>netstandard2.1</TargetFrameworks>
+		<Authors>Amb</Authors>
+		<Version>1.0.0</Version>
+		<Description>.Net Adobe Connect Sdk</Description>
+		<RepositoryType>Git</RepositoryType>
+		<!--<PackageId>Adobe.Connect.SDK</PackageId>-->
+		<Copyright>MIT License</Copyright>
+		<!--<GeneratePackageOnBuild>true</GeneratePackageOnBuild>-->
+		<PackageIcon>icon.png</PackageIcon>
+		<PackageIconUrl />
+		<Product>Adobe.Connect.SDK</Product>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<None Include="..\icon.png">
+			<Pack>True</Pack>
+			<PackagePath></PackagePath>
+		</None>
+	</ItemGroup>
+
+</Project>

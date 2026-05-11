@@ -1,0 +1,53 @@
+
+
+.tooltip{
+    @extend .text-medium;
+
+    max-width: 320px;
+    background-color: $color-white;
+    border-radius: $radius-small;
+    padding: map-get($map: $spacers, $key: 2) map-get($map: $spacers, $key:3 );
+    margin: map-get($map: $spacers, $key: 2);
+    width: max-content;
+    display: none;
+    position: absolute;
+
+    &[data-position="left"]
+    {
+        top: 50%;
+        transform: translateY(-50%);
+        right: 100%
+    }
+
+    &[data-position="right"]
+    {
+        top: 50%;
+        transform: translateY(-50%);
+        left: 100%
+    }
+
+    &[data-position="bottom"]
+    {
+        top: 100%;
+        transform: translateX(-50%);
+        left: 50%;
+    }
+}
+
+.showTooltip{
+    position: relative;
+    &:hover .tooltip{
+        display:flex
+    }
+}
+
+.product-summerySellerState-tooltip{
+    color: $color-gray-900 !important;
+    background-color: $color-white !important;
+    border: 1px solid $color-gray-200 !important;
+    min-width: 400px;
+    top: 0 !important;
+    transform: unset !important;
+    margin: -4px 0 0 28px;
+    box-shadow: 0 1px 5px rgba($color: #000, $alpha: .2);
+}

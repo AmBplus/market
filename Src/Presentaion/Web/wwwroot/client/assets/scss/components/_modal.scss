@@ -1,0 +1,163 @@
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    background-color: rgba($color: #000, $alpha: 0.3);
+    z-index: 15;
+
+    opacity: 0;
+    visibility: hidden;
+
+    &.active {
+        visibility: visible;
+        opacity: 1;
+    }
+}
+
+
+.modal {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    max-height: 100%;
+    background-color: $color-white;
+    z-index: 15;
+
+    transform: translateY(100%);
+    transition: .2s transform ease-in-out;
+
+
+
+
+    &.active {
+
+        transform: translateY(0);
+    }
+
+
+    @include mq(lg) {
+        bottom: unset;
+        right: unset;
+        left: 50%;
+        top: 50%;
+        min-width: 460px;
+        transform: translate(-50%, -50%);
+        max-height: 80%;
+        opacity: 0;
+        visibility: hidden;
+        transition: .2s opacity ease-in-out;
+
+        &.active {
+            visibility: visible;
+            opacity: 1;
+            transform: translate(-50%, -50%);
+        }
+    }
+}
+
+.modal-header {
+    z-index: 10;
+}
+
+.modal-title {
+    @extend .h5
+}
+
+
+.mobileModal {
+    position: fixed !important;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    max-height: 100%;
+    background-color: $color-white;
+    z-index: 16;
+    transform: translateY(100%);
+    transition: .2s transform ease-in-out;
+
+    @include mq(lg) {
+        position: relative !important;
+        z-index: 4;
+        transform: unset;
+    }
+
+    &.active {
+        transform: translateY(0);
+
+    }
+}
+
+
+
+.modal-dkServices {
+
+    @include mq(lg) {
+        width: 780px;
+    }
+
+    .servicesList {
+        --bs-columns: 1;
+
+        @include mq(lg) {
+            --bs-columns: 2;
+        }
+    }
+}
+
+.addComment-modal {
+    @include mq(lg) {
+        width: 800px;
+    }
+}
+
+.productGallery-modal {
+    @include mq(lg) {
+        width: 1024px;
+    }
+
+    padding: {
+        top: 50px;
+    }
+
+    ;
+
+    .gallerySwiper-Container {
+        @include mq(lg) {
+            width: 60%;
+        }
+    }
+}
+
+.userComment-modal {
+    @include mq(lg) {
+        width: 1024px;
+    }
+}
+
+.priceChart-modal {
+    @include mq(lg) {
+        width: 800px;
+    }
+}
+
+.stories-modal {
+    z-index: 15;
+    opacity: 0;
+    visibility: hidden;
+
+    &.active {
+        visibility: visible;
+        opacity: 1;
+    }
+
+    &-bg {
+        background-color: rgba($color: #000000, $alpha: 0.8);
+    }
+
+    .stories-modal-swiper-btn {
+        position: relative;
+    }
+}

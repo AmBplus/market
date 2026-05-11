@@ -1,0 +1,326 @@
+@font-face {
+    font-family: icon;
+    src: url('../fonts/icon/icomoon.eot');
+    src: url('../fonts/icon/icomoon.eot#iefix') format('embedded-opentype'),
+        url('../fonts/icon/icomoon.ttf') format('truetype'),
+        url('../fonts/icon/icomoon.woff') format('woff'),
+        url('../fonts/icon/icomoon.svg#icomoon') format('svg');
+}
+
+
+@font-face {
+    font-family: IRANYekan;
+    font-weight: 100;
+    src: url(../fonts/iranyekanwebthin/iranyekanwebthin.eot);
+    src: url(../fonts/iranyekanwebthin/iranyekanwebthin.eot) format("embedded-opentype");
+    src: url(../fonts/iranyekanwebthin/iranyekanwebthin.woff) format("woff");
+    src: url(../fonts/iranyekanwebthin/iranyekanwebthin.ttf) format("truetype");
+
+}
+
+@font-face {
+
+    font-family: IRANYekan;
+
+    font-weight: 300;
+    src: url(../fonts/iranyekanweblight/iranyekanweblight.eot);
+    src: url(../fonts/iranyekanweblight/iranyekanweblight.eot) format("embedded-opentype"),
+        url(../fonts/iranyekanweblight/iranyekanweblight.woff) format("woff"),
+        url(../fonts/iranyekanweblight/iranyekanweblight.ttf) format("truetype")
+}
+
+@font-face {
+
+    font-family: IRANYekan;
+
+    font-weight: 400;
+    src: url(../fonts/iranyekanwebregular/iranyekanwebregular.eot);
+    src: url(../fonts/iranyekanwebregular/iranyekanwebregular.eot) format("embedded-opentype"),
+        url(../fonts/iranyekanwebregular/iranyekanwebregular.woff) format("woff"),
+        url(../fonts/iranyekanwebregular/iranyekanwebregular.ttf) format("truetype")
+}
+
+@font-face {
+
+    font-family: IRANYekan;
+
+    font-weight: 500;
+    src: url(../fonts/iranyekanwebmedium/iranyekanwebmedium.eot);
+    src: url(../fonts/iranyekanwebmedium/iranyekanwebmedium.eot) format("embedded-opentype"),
+        url(../fonts/iranyekanwebmedium/iranyekanwebmedium.woff) format("woff"),
+        url(../fonts/iranyekanwebmedium/iranyekanwebmedium.ttf) format("truetype")
+}
+
+@font-face {
+
+    font-family: IRANYekan;
+
+    font-weight: 700;
+    src: url(../fonts/iranyekanwebbold/iranyekanwebbold.eot);
+    src: url(../fonts/iranyekanwebbold/iranyekanwebbold.eot) format("embedded-opentype"),
+        url(../fonts/iranyekanwebbold/iranyekanwebbold.woff) format("woff"),
+        url(../fonts/iranyekanwebbold/iranyekanwebbold.ttf) format("truetype")
+}
+
+@font-face {
+
+    font-family: IRANYekan;
+
+    font-weight: 800;
+    src: url(../fonts/iranyekanwebextrabold/iranyekanwebextrabold.eot);
+    src: url(../fonts/iranyekanwebextrabold/iranyekanwebextrabold.eot) format("embedded-opentype"),
+        url(../fonts/iranyekanwebextrabold/iranyekanwebextrabold.woff) format("woff"),
+        url(../fonts/iranyekanwebextrabold/iranyekanwebextrabold.ttf) format("truetype")
+}
+
+@font-face {
+
+    font-family: IRANYekan;
+
+    font-weight: 900;
+    src: url(../fonts/iranyekanwebblack/iranyekanwebblack.eot);
+    src: url(../fonts/iranyekanwebblack/iranyekanwebblack.eot) format("embedded-opentype"),
+        url(../fonts/iranyekanwebblack/iranyekanwebblack.woff) format("woff"),
+        url(../fonts/iranyekanwebblack/iranyekanwebblack.ttf) format("truetype")
+}
+
+@font-face {
+
+    font-family: IRANYekan;
+
+    font-weight: 950;
+    src: url(../fonts/iranyekanwebextrablack/iranyekanwebextrablack.eot);
+    src: url(../fonts/iranyekanwebextrablack/iranyekanwebextrablack.eot) format("embedded-opentype"),
+        url(../fonts/iranyekanwebextrablack/iranyekanwebextrablack.woff) format("woff"),
+        url(../fonts/iranyekanwebextrablack/iranyekanwebextrablack.ttf) format("truetype")
+}
+
+.icon-fs-small::before{
+font-size: 1.6rem;
+}
+
+.icon-fs-medium::before{
+    font-size: 1.8rem;
+}
+
+.icon-fs-large::before{
+    font-size: 2rem;
+}
+
+.h1{
+    font-size: 2.8rem;
+    font-weight: 500;
+    line-height: 2.1;
+
+    @include mq(lg) {
+        font-size: 3.3rem;
+
+    }
+}
+.h1-strong{
+    font-size: 2.8rem;
+    font-weight: 800;
+    line-height: 2.1;
+
+    @include mq(lg) {
+        font-size: 3.3rem;
+
+    }
+}
+.h2{
+    font-size: 2.2rem;
+    font-weight: 500;
+    line-height: 2.1;
+
+    @include mq(lg) {
+        font-size: 2.6rem;
+
+    }
+}
+
+.h2-strong{
+    font-size: 2.2rem;
+    font-weight: 800;
+    line-height: 2.1;
+
+    @include mq(lg) {
+        font-size: 2.6rem;
+
+    }
+}
+
+
+
+.h3{
+    font-size: 1.8rem;
+    font-weight: 500;
+    line-height: 2.1;
+
+    @include mq(lg) {
+        font-size: 2.1rem;
+
+    }
+}
+
+
+.h3-strong{
+    font-size: 1.8rem;
+    font-weight: 800;
+    line-height: 2.1;
+
+    @include mq(lg) {
+        font-size: 2.1rem;
+
+    }
+}
+
+.h4{
+    font-size: 1.6rem;
+    font-weight: 700;
+    line-height: 2.1;
+
+    @include mq(lg) {
+        font-size: 1.9rem;
+
+    }
+}
+
+.h5{
+    font-size: 1.4rem;
+    font-weight: 700;
+    line-height: 2.1;
+
+    @include mq(lg) {
+        font-size: 1.6rem;
+
+    }
+}
+
+.h5-strong {
+    font-size: 1.4rem;
+    font-weight: 800;
+    line-height: 2.1;
+
+    @include mq("lg")
+    {
+        font-size: 1.6rem;
+    }
+
+}
+
+
+.text-button-1 {
+    font-size: 1.2rem;
+    font-weight: 700;
+    line-height: 2.17;
+}
+
+.text-button-2 {
+    font-size: 1.4rem;
+    font-weight: 700;
+    line-height: 2.17;
+}
+
+
+.text-medium {
+    font-size: 1.1rem;
+    font-weight: 400;
+    line-height: 2.15;
+
+    @include mq(lg) {
+        font-size: 1.2rem;
+
+    }
+}
+
+.text-medium-2 {
+    font-size: 1.2rem;
+    font-weight: 400;
+    line-height: 2.15;
+
+    @include mq(lg) {
+        font-size: 1.4rem;
+
+    }
+}
+
+.text-medium-3 {
+    font-size: 1.3rem;
+    font-weight: 400;
+    line-height: 2.15;
+
+    @include mq(lg) {
+        font-size: 1.5rem;
+
+    }
+}
+
+
+
+.text-strong{
+    font-size: 1.1rem;
+    font-weight: 700;
+    line-height: 2.17;
+    @include mq(lg)
+    {
+        font-size: 1.2rem;
+    }
+}
+.text-strong-2{
+    font-size: 1.2rem;
+    font-weight: 700;
+    line-height: 2.17;
+    @include mq(lg)
+    {
+        font-size: 1.4rem;
+    }
+}
+.text-strong-3{
+    font-size: 1.3rem;
+    font-weight: 700;
+    line-height: 2.17;
+    @include mq(lg)
+    {
+        font-size: 1.5rem;
+    }
+}
+
+.text-subtitle{
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 2.17;
+    @include mq(lg)
+    {
+        font-size: 1.1rem;
+    }
+}
+.text-subtitle-strong{
+    font-size: 1rem;
+    font-weight: 700;
+    line-height: 2.17;
+    @include mq(lg)
+    {
+        font-size: 1.1rem;
+    }
+}
+
+
+.text-truncate-2{
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+}
+
+.text-truncate-3{
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+}
+
+.text-nowrap{
+    white-space: nowrap
+}

@@ -1,0 +1,156 @@
+     /* استایل کلی بنر */
+     /*.ad-banner {
+        width: 100%;
+        height: 100px;*/ /* ارتفاع کاهش‌یافته */
+        /*background: linear-gradient(135deg, #a8e063 0%, #56ab2f 100%);*/ /* گرادیانت بهاری */
+        /*position: relative;
+        overflow: hidden;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        text-decoration: none;*/ /* برای لینک */
+        /*color: inherit;
+    }*/
+
+    /* دکمه بستن */
+    /*.close-btn {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        background: rgba(255, 255, 255, 0.8);
+        border: none;
+        border-radius: 50%;
+        width: 25px;
+        height: 25px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+        font-size: 16px;
+        z-index: 3;
+        transition: background 0.3s;
+    }
+
+    .close-btn:hover {
+        background: rgba(255, 255, 255, 1);
+    }*/
+
+    /* استایل برای SVG‌ها */
+    /*.flower, .leaf {
+        position: absolute;
+        animation: sway 4s infinite alternate;
+    }*/
+
+    /* موقعیت‌های مختلف برای گل‌ها و برگ‌ها */
+    /*.flower:nth-child(2) { top: 10px; left: 50px; transform: scale(0.8); }
+    .flower:nth-child(3) { top: 50px; left: 150px; }
+    .flower:nth-child(4) { bottom: 10px; right: 100px; transform: scale(0.9); }
+    .flower:nth-child(5) { top: 20px; right: 50px; }
+
+    .leaf:nth-child(6) { top: 30px; left: 200px; transform: scale(0.7); }
+    .leaf:nth-child(7) { bottom: 20px; right: 150px; }
+    .leaf:nth-child(8) { top: 40px; right: 80px; transform: scale(0.8) rotate(-45deg); }*/
+
+    /* انیمیشن برای گل‌ها و برگ‌ها */
+    /*@keyframes sway {
+        0% { transform: translateY(0) rotate(0deg); }
+        100% { transform: translateY(5px) rotate(3deg); }
+    }*/
+
+    /* استایل متن */
+/*.ad-text {
+  position: relative;
+  z-index: 2;
+  color: #fff;
+  font-size: 1.8rem;
+  font-weight: bold;
+  text-align: center;
+  font-family: "Vazirmatn FD", "Vazirmatn", "Estedad-FD", "IRANYekanWebFn", "sans-serif", "sans-serif";*/ /* فونت فارسی */
+  /*-webkit-text-stroke: 1px #333;*/ /* استروک برای متن */
+  /*text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  animation: fadeIn 2s ease-in-out;
+}*/
+
+    /* تصویر بنر (در صورت استفاده) */
+    /*.ad-image {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 1;
+    }*/
+
+    /* استایل برای حالت اسلایدی */
+    /*.banner_ad_sliderr {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+    }
+
+    .banner_ad_slider {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        opacity: 0;
+        transition: opacity 1s ease-in-out;
+    }
+
+    .banner_ad_slider.active {
+        opacity: 1;
+    }*/
+
+    /* انیمیشن برای متن */
+    /*@keyframes fadeIn {
+        0% { opacity: 0; }
+        100% { opacity: 1; }
+    }*/
+
+    /* استایل برای ریسپانسیو کردن */
+    /*@media (max-width: 768px) {
+        .ad-banner {
+            height: 80px;
+        }
+
+        .ad-text {
+            font-size: 1.3rem;
+            -webkit-text-stroke: 0.8px #333;
+        }
+
+        .flower, .leaf {
+            transform: scale(0.6);
+        }
+
+        .close-btn {
+            width: 20px;
+            height: 20px;
+            font-size: 14px;
+        }
+    }
+
+    @media (max-width: 480px) {
+        .ad-banner {
+            height: 60px;
+        }
+
+        .ad-text {
+            font-size: 1rem;
+            -webkit-text-stroke: 0.5px #333;
+        }
+
+        .flower, .leaf {
+            transform: scale(0.4);
+        }
+
+        .close-btn {
+            width: 18px;
+            height: 18px;
+            font-size: 12px;
+        }
+    }*/

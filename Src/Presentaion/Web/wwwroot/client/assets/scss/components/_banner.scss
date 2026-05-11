@@ -1,0 +1,32 @@
+.banner {
+
+    &[data-count="2"] {
+        a {
+            width: 100%;
+            @include mq(lg) {
+                width: 50%;
+            }
+        }
+    }
+    &[data-count="4"] {
+        a {
+            width: 48%;
+            @include mq(lg) {
+                width: 25%;
+            }
+        }
+    }
+}
+
+.banner-category{
+    img{
+
+        width: 90px;
+        height: 90px;
+        @include mq(lg)
+        {
+            width: 100px;
+            height: 100px;
+        }
+    }
+}

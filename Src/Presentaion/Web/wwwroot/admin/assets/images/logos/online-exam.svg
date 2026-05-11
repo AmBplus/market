@@ -1,0 +1,21 @@
+<svg id="test-svgrepo-com" xmlns="http://www.w3.org/2000/svg" width="39.898" height="39.898" viewBox="0 0 39.898 39.898">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #fff;
+      }
+    </style>
+  </defs>
+  <g id="Group_1278" data-name="Group 1278">
+    <g id="Group_1277" data-name="Group 1277">
+      <path id="Path_178" data-name="Path 178" class="cls-1" d="M391.921,144.98V157.6H390.7V137H385v22.229h7.735a.814.814,0,0,0,.814-.814V144.98Z" transform="translate(-353.651 -125.845)"/>
+      <path id="Path_179" data-name="Path 179" class="cls-1" d="M389.75,50.5a.814.814,0,0,0-1.5,0l-2,4.792h5.5Z" transform="translate(-354.8 -45.929)"/>
+      <path id="Path_180" data-name="Path 180" class="cls-1" d="M385,435.908a.814.814,0,0,0,.814.814h4.071a.814.814,0,0,0,.814-.814V432H385Z" transform="translate(-353.651 -396.824)"/>
+      <rect id="Rectangle_52" data-name="Rectangle 52" class="cls-1" width="2.233" height="2.233" transform="translate(7.141 30.523)"/>
+      <rect id="Rectangle_53" data-name="Rectangle 53" class="cls-1" width="2.233" height="2.233" transform="translate(7.141 21.59)"/>
+      <rect id="Rectangle_54" data-name="Rectangle 54" class="cls-1" width="2.233" height="2.233" transform="translate(7.141 12.656)"/>
+      <path id="Path_181" data-name="Path 181" class="cls-1" d="M22.392,8.55H20.6V0H.814A.814.814,0,0,0,0,.814v38.27a.814.814,0,0,0,.814.814H28.5a.814.814,0,0,0,.814-.814V8.55H22.392ZM12.214,11.4h4.071v1.629H12.214Zm0,8.957h4.071v1.629H12.214Zm0,8.957h4.071v1.629H12.214Zm-1.221,4.478a.814.814,0,0,1-.814.814H6.107a.814.814,0,0,1-.814-.814V29.72a.814.814,0,0,1,.814-.814h4.071a.814.814,0,0,1,.814.814Zm0-8.957a.814.814,0,0,1-.814.814H6.107a.814.814,0,0,1-.814-.814V20.763a.814.814,0,0,1,.814-.814h4.071a.814.814,0,0,1,.814.814Zm0-8.957a.814.814,0,0,1-.814.814H6.107a.814.814,0,0,1-.814-.814V11.807a.814.814,0,0,1,.814-.814h4.071a.814.814,0,0,1,.814.814ZM23.206,34.2H12.214V32.57H23.206Zm0-8.957H12.214V23.613H23.206Zm0-8.957H12.214V14.657H23.206Z"/>
+      <path id="Path_182" data-name="Path 182" class="cls-1" d="M275,5.857v6.281h6.281Z" transform="translate(-252.607 -5.38)"/>
+    </g>
+  </g>
+</svg>

@@ -1,0 +1,57 @@
+﻿@page "/"
+@model IndexModel
+@{
+    ViewData["Title"] = "مارکت پلیس";
+    var productRule = await Model.CommonServices.GetProductRule();
+
+}
+@section VendorStyles {
+
+    <link rel="stylesheet" href="~/client/assets/css/nouislider.min.css" asp-append-version="true" />
+}
+@section PageStyles {
+    <link rel="stylesheet" href="~/client/pages/index/slider.css" asp-append-version="true" />
+}
+@section VendorScripts {
+<script src="~/client/assets/js/nouislider.min.js"></script>
+}
+@section PageScripts {
+    <script>
+        mainSlider()
+        amazingCarousel()
+        digikalaRecommendationSwiper()
+        popularBrandSwiper();
+        bestSellingswiper();
+    </script>
+    <script src="~/client/pages/index/slider.js" asp-append-version="true"></script>
+}
+
+<!-- Main -->
+<div class="main">
+
+    <!-- mainSlider -->
+    <partial name="_Partials/_CarouselPartial" />
+   
+    <div class="container-2xl ">
+        <partial name="_Partials/_CategoryPartial" />
+        <partial  name="_Partials/_ServicesPartial" />
+        <div class="partialload"
+             data-api="/api/home/products">
+            <!-- این المنت بدون پارامتر درخواست می‌زند -->
+            Loading posts...
+        </div>
+        @foreach (var m in productRule)
+        {
+            <div class="partialload"
+                 data-api="/api/home/loadProducts"
+                 data-id="@m.Id">
+                <!-- این المنت بدون پارامتر درخواست می‌زند -->
+                Loading posts...
+            </div>
+        }
+
+        
+    </div>
+</div>
+
+

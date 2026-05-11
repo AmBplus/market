@@ -1,0 +1,59 @@
+
+
+
+html{
+    font-size: 8px;
+ @include mq(xs)
+ {
+    font-size: 10px;
+
+ }
+}
+
+
+body{
+    direction: rtl;
+}
+
+*{
+    font-family: $font-primary;
+}
+
+*,
+*::before,
+*::after{
+    box-sizing: border-box;
+    outline: none;
+    margin: 0;
+    padding: 0;
+}
+
+a{
+    text-decoration: none;
+    color: unset;
+    cursor: pointer;
+}
+
+
+input
+{
+    border: none;
+    
+}
+
+textarea{
+    border: none;
+    resize: none;
+}
+
+button{
+    border: none;
+    background: transparent;
+    cursor: pointer;
+}
+
+ul,
+ol,
+dd{
+    list-style: none;
+}

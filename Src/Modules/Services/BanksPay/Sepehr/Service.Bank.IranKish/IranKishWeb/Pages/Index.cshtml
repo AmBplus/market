@@ -1,0 +1,96 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "ایران کیش";
+}
+
+<div class="row">
+    <div class="col-3"></div>
+    <div class="col-6">
+        <form id="inputForm">
+            @* مقدار - ریال *@
+            <div class="form-group">
+                <label style="float:right" asp-for="@Model.IPGDataModel.Amount" class="control-label">مقدار - ریال</label>
+                <input style="text-align:right" asp-for="@Model.IPGDataModel.Amount" type="number" class="form-control" id="txtAmount" min="1" required />
+                <span asp-validation-for="@Model.IPGDataModel.Amount" class="text-danger"></span>
+            </div>
+
+            @* کد پایانه *@
+            <div class="form-group">
+                <label style="float:right" asp-for="@Model.IPGDataModel.TerminalId" class="control-label">کد پایانه</label>
+                <input style="text-align:right" asp-for="@Model.IPGDataModel.TerminalId" class="form-control" id="txtTerminalId" required />
+                <span asp-validation-for="@Model.IPGDataModel.TerminalId" class="text-danger"></span>
+            </div>
+
+            @* کد پذیرنده *@
+            <div class="form-group">
+                <label style="float:right" asp-for="@Model.IPGDataModel.AcceptorId" class="control-label">کد پذیرنده</label>
+                <input style="text-align:right" asp-for="@Model.IPGDataModel.AcceptorId" class="form-control" id="txtAcceptorId" required />
+                <span asp-validation-for="@Model.IPGDataModel.AcceptorId" class="text-danger"></span>
+            </div>
+
+            @* عبارت عبور *@
+            <div class="form-group">
+                <label style="float:right" asp-for="@Model.IPGDataModel.PassPhrase" class="control-label">عبارت عبور</label>
+                <input style="text-align:right" asp-for="@Model.IPGDataModel.PassPhrase" class="form-control" id="txtPassPhrase" required />
+                <span asp-validation-for="@Model.IPGDataModel.PassPhrase" class="text-danger"></span>
+            </div>
+
+            <button type="button" class="btn btn-success btn-lg btn-block" onclick="getToke()">دریافت توکن</button>
+        </form>
+
+        <form id="paymentForm" method="post" action="https://ikc.shaparak.ir/iuiv3/IPG/Index">
+@*             <input asp-for="@Model.IPGDataModel.Amount" type="hidden" />
+            <input asp-for="@Model.IPGDataModel.TerminalId" type="hidden" />
+            <input asp-for="@Model.IPGDataModel.AcceptorId" type="hidden" />
+            <input asp-for="@Model.IPGDataModel.PassPhrase" type="hidden" /> *@
+            <input class="form-control" id="tokenIdentity" name="tokenIdentity" readonly />
+            <button type="submit" class="btn btn-success btn-lg btn-block">پرداخت</button>
+        </form>
+    </div>
+    <div class="col-3"></div>
+</div>
+
+@section Scripts
+{
+@*     <partial name="_ValidationScriptsPartial" /> *@
+    <script>
+        function getToke() {
+            var amount = parseInt(document.getElementById("txtAmount").value) || 0;
+            var terminalId = document.getElementById("txtTerminalId").value;
+            var acceptorId = document.getElementById("txtAcceptorId").value;
+            var passPhrase = document.getElementById("txtPassPhrase").value;
+
+            if (!terminalId || !acceptorId || !passPhrase || amount <= 0) {
+                alert("لطفاً تمام فیلدها را پر کنید و مقدار معتبر وارد کنید.");
+                return;
+            }
+
+            var IPGData = {
+                Amount: amount,
+                TerminalId: terminalId,
+                AcceptorId: acceptorId,
+                PassPhrase: passPhrase
+            };
+            var jsonValue = JSON.stringify(IPGData);
+            console.log("Sending JSON:", jsonValue);
+
+            $.ajax({
+                type: "POST",
+                url: "/Payment/getToken_onclick",
+                data: jsonValue,
+                contentType: "application/json; charset=utf-8",
+                success: function(data) {
+                    document.getElementById("tokenIdentity").value = data.token;
+                    console.log("Success:", data);
+                },
+                error: function(xhr, status, error) {
+                    console.error("Status:", status);
+                    console.error("Error:", error);
+                    console.error("Response:", xhr.responseText);
+                    alert("خطا در دریافت توکن: " + xhr.responseText);
+                }
+            });
+        }
+    </script>
+}

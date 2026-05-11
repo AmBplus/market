@@ -1,0 +1,54 @@
+/*
+* Prefixed by https://autoprefixer.github.io
+* PostCSS: v8.4.14,
+* Autoprefixer: v10.4.7
+* Browsers: since 2017
+*/
+
+.amb-table thead th {
+    font-size: 0.7rem !important;
+    font-weight: bolder !important;
+    color: white !important;
+    /*background-color: rgb(28, 100, 242,0.9) !important;*/
+    background-color: #36394f !important;
+    border: 1.5px solid white !important;
+    text-align: center !important;
+    vertical-align: middle !important;
+}
+
+.amb-table tbody tr td {
+  padding: 6px 0 4px 0 !important;
+  font-weight: 500 !important;
+  text-align: center !important;
+  font-size: 0.7rem !important;
+  border: 0.5px solid #36394f5c;
+  color: #36394f !important;
+  background-color : whitesmoke !important;
+
+}
+
+
+/*.amb-table tbody tr td {
+  padding: 6px 0 4px 0 !important;
+  font-weight: 500 !important;
+  text-align: center !important;
+  font-size: 0.8rem !important;
+}
+
+[data-bs-theme=light] .amb-table tbody tr td {
+  color: #36394f !important;*/
+  /*text-align: center !important;*/
+  /*border: 0.01px solid rgb(0, 0, 0) !important;
+}
+
+[data-bs-theme=dark] .amb-table tbody tr td {
+  background-color: rgb(143, 184, 255,0.1) !important;
+  color: white !important;
+  border: 0.2px solid rgb(68, 72, 94) !important;
+}*/
+
+
+
+.amb-table-button-space{
+    padding-bottom : 20px !important;
+}

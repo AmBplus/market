@@ -1,0 +1,14 @@
+@inject UserInfo userInfo
+@using Framework.Aspc.Security
+@using Microsoft.AspNetCore.Components.Authorization
+
+
+@if(userInfo.IsAuthenticated){
+    <partial name="ShowUserInfoOnNavbarComponent.cshtml" />
+
+}else{
+    @* <div class="btn-group" role="group" aria-label="Basic example" style="">
+        <a href="@MenuLink.AuthSection.Login" id="LoginButtonTop" style="width:70px !important;" class="btn btn-primary btn-sm">@Messages.Login</a>
+        <a href="@MenuLink.AuthSection.LoginRegisterWithMobile" style="width:70px !important;" class="btn btn-outline-primary btn-sm">@Messages.Register</a>
+    </div> *@
+}

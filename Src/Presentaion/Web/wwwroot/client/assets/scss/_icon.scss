@@ -1,0 +1,446 @@
+
+
+[class^="icon-"]::before, [class*=" icon-"]::before {
+    /* use !important to prevent issues with browser extensions that change fonts */
+    font-family: $font-icon !important;
+    speak: never;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+    font-size: 24px;
+    display: block;
+  
+    /* Better Font Rendering =========== */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  .icon-active:before {
+    content: "\e900";
+  }
+  .icon-addcircle:before {
+    content: "\e901";
+  }
+  .icon-addcircleFill:before {
+    content: "\e902";
+  }
+  .icon-addComment:before {
+    content: "\e903";
+  }
+  .icon-addSimple:before {
+    content: "\e904";
+  }
+  .icon-ads:before {
+    content: "\e905";
+  }
+  .icon-adsLeft:before {
+    content: "\e906";
+  }
+  .icon-amazing:before {
+    content: "\e907";
+  }
+  .icon-aparat:before {
+    content: "\e908";
+  }
+  .icon-apple:before {
+    content: "\e909";
+  }
+  .icon-arrowDown:before {
+    content: "\e90a";
+  }
+  .icon-arrowLeft:before {
+    content: "\e90b";
+  }
+  .icon-arrowRight:before {
+    content: "\e90c";
+  }
+  .icon-askQuestion:before {
+    content: "\e90d";
+  }
+  .icon-beauty:before {
+    content: "\e90e";
+  }
+  .icon-beautyFill:before {
+    content: "\e90f";
+  }
+  .icon-bookStationary:before {
+    content: "\e910";
+  }
+  .icon-bookStationaryFill:before {
+    content: "\e911";
+  }
+  .icon-calendarCard:before {
+    content: "\e912";
+  }
+  .icon-cancel:before {
+    content: "\e913";
+  }
+  .icon-cardBank:before {
+    content: "\e914";
+  }
+  .icon-cart:before {
+    content: "\e915";
+  }
+  .icon-cartFill:before {
+    content: "\e916";
+  }
+  .icon-cashBack:before {
+    content: "\e917";
+  }
+  .icon-category:before {
+    content: "\e918";
+  }
+  .icon-categoryFill:before {
+    content: "\e919";
+  }
+  .icon-chevronDown:before {
+    content: "\e91a";
+  }
+  .icon-chevronLeft:before {
+    content: "\e91b";
+  }
+  .icon-chevronRight:before {
+    content: "\e91c";
+  }
+  .icon-chevronUp:before {
+    content: "\e91d";
+  }
+  .icon-circle:before {
+    content: "\e91e";
+  }
+  .icon-clear:before {
+    content: "\e91f";
+  }
+  .icon-close:before {
+    content: "\e920";
+  }
+  .icon-comingSoon:before {
+    content: "\e921";
+  }
+  .icon-comment:before {
+    content: "\e922";
+  }
+  .icon-compare:before {
+    content: "\e923";
+  }
+  .icon-copy:before {
+    content: "\e924";
+  }
+  .icon-credit:before {
+    content: "\e925";
+  }
+  .icon-delete:before {
+    content: "\e926";
+  }
+  .icon-deliveryExpress:before {
+    content: "\e927";
+  }
+  .icon-deliveryInstant:before {
+    content: "\e928";
+  }
+  .icon-digiclub:before {
+    content: "\e929";
+  }
+  .icon-digipay:before {
+    content: "\e92a";
+  }
+  .icon-digiplus:before {
+    content: "\e92b";
+  }
+  .icon-discount:before {
+    content: "\e92c";
+  }
+  .icon-disLike:before {
+    content: "\e92d";
+  }
+  .icon-dk:before {
+    content: "\e92e";
+  }
+  .icon-dkSmile:before {
+    content: "\e92f";
+  }
+  .icon-done:before {
+    content: "\e930";
+  }
+  .icon-dotFill:before {
+    content: "\e931";
+  }
+  .icon-dropdown:before {
+    content: "\e932";
+  }
+  .icon-edit:before {
+    content: "\e933";
+  }
+  .icon-electronic:before {
+    content: "\e934";
+  }
+  .icon-electronicFill:before {
+    content: "\e935";
+  }
+  .icon-error:before {
+    content: "\e936";
+  }
+  .icon-facebook:before {
+    content: "\e937";
+  }
+  .icon-fashion:before {
+    content: "\e938";
+  }
+  .icon-fashionFill:before {
+    content: "\e939";
+  }
+  .icon-favorite:before {
+    content: "\e93a";
+  }
+  .icon-favoriteFill:before {
+    content: "\e93b";
+  }
+  .icon-filter:before {
+    content: "\e93c";
+  }
+  .icon-flag:before {
+    content: "\e93d";
+  }
+  .icon-free:before {
+    content: "\e93e";
+  }
+  .icon-fresh:before {
+    content: "\e93f";
+  }
+  .icon-giftCard:before {
+    content: "\e940";
+  }
+  .icon-guarantee:before {
+    content: "\e941";
+  }
+  .icon-historyLog:before {
+    content: "\e942";
+  }
+  .icon-home:before {
+    content: "\e943";
+  }
+  .icon-home2Outline:before {
+    content: "\e944";
+  }
+  .icon-homeFill:before {
+    content: "\e945";
+  }
+  .icon-homeKitchen:before {
+    content: "\e946";
+  }
+  .icon-homeKitchenFill:before {
+    content: "\e947";
+  }
+  .icon-infoFill:before {
+    content: "\e948";
+  }
+  .icon-infoOutline:before {
+    content: "\e949";
+  }
+  .icon-instagram:before {
+    content: "\e94a";
+  }
+  .icon-invoice:before {
+    content: "\e94b";
+  }
+  .icon-kidsToy:before {
+    content: "\e94c";
+  }
+  .icon-kidsToyFill:before {
+    content: "\e94d";
+  }
+  .icon-like:before {
+    content: "\e94e";
+  }
+  .icon-linkedin:before {
+    content: "\e94f";
+  }
+  .icon-list:before {
+    content: "\e950";
+  }
+  .icon-location:before {
+    content: "\e951";
+  }
+  .icon-logo:before {
+    content: "\e952";
+  }
+  .icon-logoFa:before {
+    content: "\e953";
+  }
+  .icon-luckyDraw:before {
+    content: "\e954";
+  }
+  .icon-menu:before {
+    content: "\e955";
+  }
+  .icon-missions:before {
+    content: "\e956";
+  }
+  .icon-mobile:before {
+    content: "\e957";
+  }
+  .icon-mobileFill:before {
+    content: "\e958";
+  }
+  .icon-moreHorizontal:before {
+    content: "\e959";
+  }
+  .icon-moreVertical:before {
+    content: "\e95a";
+  }
+  .icon-mute:before {
+    content: "\e95b";
+  }
+  .icon-nativeBusiness:before {
+    content: "\e95c";
+  }
+  .icon-newAddress:before {
+    content: "\e95d";
+  }
+  .icon-notificationActiveOutline:before {
+    content: "\e95e";
+  }
+  .icon-notificationOffOutline:before {
+    content: "\e95f";
+  }
+  .icon-order:before {
+    content: "\e960";
+  }
+  .icon-orderReturn:before {
+    content: "\e961";
+  }
+  .icon-organizationCredit:before {
+    content: "\e962";
+  }
+  .icon-paymentWallet:before {
+    content: "\e963";
+  }
+  .icon-phone:before {
+    content: "\e964";
+  }
+  .icon-post:before {
+    content: "\e965";
+  }
+  .icon-priceChart:before {
+    content: "\e966";
+  }
+  .icon-pricetag:before {
+    content: "\e967";
+  }
+  .icon-productAvailable:before {
+    content: "\e968";
+  }
+  .icon-productIdeal:before {
+    content: "\e969";
+  }
+  .icon-profile:before {
+    content: "\e96a";
+  }
+  .icon-profileFill:before {
+    content: "\e96b";
+  }
+  .icon-question:before {
+    content: "\e96c";
+  }
+  .icon-questionExclamation:before {
+    content: "\e96d";
+  }
+  .icon-removeSimple:before {
+    content: "\e96e";
+  }
+  .icon-saveForLater:before {
+    content: "\e96f";
+  }
+  .icon-search:before {
+    content: "\e970";
+  }
+  .icon-searchHistory:before {
+    content: "\e971";
+  }
+  .icon-searchTrend:before {
+    content: "\e972";
+  }
+  .icon-seller:before {
+    content: "\e973";
+  }
+  .icon-setting:before {
+    content: "\e974";
+  }
+  .icon-share:before {
+    content: "\e975";
+  }
+  .icon-signIn:before {
+    content: "\e976";
+  }
+  .icon-signOut:before {
+    content: "\e977";
+  }
+  .icon-sort:before {
+    content: "\e978";
+  }
+  .icon-specialAmazing:before {
+    content: "\e979";
+  }
+  .icon-sportOutdoor:before {
+    content: "\e97a";
+  }
+  .icon-sportOutdoorFill:before {
+    content: "\e97b";
+  }
+  .icon-star:before {
+    content: "\e97c";
+  }
+  .icon-star-2:before {
+    content: "\e97d";
+  }
+  .icon-starfill:before {
+    content: "\e97e";
+  }
+  .icon-street:before {
+    content: "\e97f";
+  }
+  .icon-support:before {
+    content: "\e980";
+  }
+  .icon-tollsFill:before {
+    content: "\e981";
+  }
+  .icon-toman:before {
+    content: "\e982";
+  }
+  .icon-tools:before {
+    content: "\e983";
+  }
+  .icon-trendDown:before {
+    content: "\e984";
+  }
+  .icon-trendUp:before {
+    content: "\e985";
+  }
+  .icon-twitter:before {
+    content: "\e986";
+  }
+  .icon-upload:before {
+    content: "\e987";
+  }
+  .icon-vehicles:before {
+    content: "\e988";
+  }
+  .icon-vehiclesFill:before {
+    content: "\e989";
+  }
+  .icon-verifiedUser:before {
+    content: "\e98a";
+  }
+  .icon-visibilityOff:before {
+    content: "\e98b";
+  }
+  .icon-visibilityOn:before {
+    content: "\e98c";
+  }
+  .icon-voucher:before {
+    content: "\e98d";
+  }
+  

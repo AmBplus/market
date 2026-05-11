@@ -1,0 +1,224 @@
+﻿
+/* ------------------------------------- */
+/* 1. استایل کارت‌های محصول (amb-modules-slider-product-card) */
+/* ------------------------------------- */
+.amb-modules-slider-product-card {
+    border: 1px solid #e9ecef;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+    transition: box-shadow 0.3s, transform 0.3s;
+    /* **ارتفاع ثابت نهایی: 300 پیکسل** */
+    height: 300px;
+    background-color: white;
+    border-radius: 0.75rem !important;
+    overflow: hidden;
+    /* برای اطمینان از قرارگیری صحیح محتوا در ارتفاع ثابت */
+    display: flex;
+    flex-direction: column;
+}
+
+.amb-modules-slider-product-card:hover {
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    transform: translateY(-2px);
+}
+
+/* کلاس اصلاح شده: amb-modules-slider-image-container */
+.amb-modules-slider-image-container {
+    padding: 0.5rem;
+    /* کاهش ارتفاع عکس */
+    height: 190px;
+    min-height: 190px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    /* جلوگیری از فشرده شدن در Flexbox والد */
+    flex-shrink: 0;
+}
+
+/* کلاس اصلاح شده: amb-modules-slider-card-img-top */
+.amb-modules-slider-card-img-top {
+    object-fit: contain;
+    width: 100%;
+    height: 100%;
+    max-height: 130px;
+}
+
+/* بدنه کارت - باید کل فضای عمودی باقی‌مانده را بگیرد و محتوای خود را مدیریت کند */
+.amb-modules-slider-card-body {
+    padding: 0.5rem 0.75rem !important; /* کاهش پدینگ عمودی برای فشرده‌تر شدن */
+    border-top: 1px solid #e9ecef;
+    display: flex;
+    flex-direction: column;
+    /* اجازه می‌دهد فضای باقی‌مانده از کارت را اشغال کند */
+    flex-grow: 1;
+}
+
+/* کلاس اصلاح شده: amb-modules-slider-product-title */
+.amb-modules-slider-product-title {
+    color: #343a40;
+    font-size: 1.1rem;
+    margin-bottom: 0.6rem; /* کاهش مارجین پایین */
+    font-weight: 400;
+    /* تضمین ارتفاع ۲ خطی عنوان */
+    min-height: 2.2em;
+}
+
+/* کلاس اصلاح شده: amb-modules-slider-line-clamp-2 */
+.amb-modules-slider-line-clamp-2 {
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+}
+
+/* ------------------------------------- */
+/* برچسب‌های روی عکس (Badges) */
+/* ------------------------------------- */
+
+.amb-modules-slider-badge-base {
+    position: absolute;
+    z-index: 10;
+    padding: 0.5rem 0.8rem; /* ✅ افزایش پدینگ برای فاصله‌ی بیشتر */
+    font-size: 1.1rem; /* کاهش اندازه فونت برچسب */
+    font-weight: 700;
+    line-height: 1.2;
+    border-radius: 0.2rem;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+    color: white;
+    text-align: center;
+    will-change: clip-path, transform;
+    clip-path: polygon(5% 5%, 100% 0%, calc(100% - 4px) 100%, 1% 100%);
+    border-radius: 0.2rem 0.1rem 0.1rem 0.1rem;
+}
+
+.amb-modules-slider-badge-special-sale {
+    background-color: #cf0056;
+    color: white;
+
+}
+
+.amb-modules-slider-badge-installment {
+    background-color: #0d6efd;
+    color: white;
+}
+
+.amb-modules-slider-badge-shape-diagonal-right {
+
+}
+
+.amb-modules-slider-badge-top-right {
+    top: 12px; /* کاهش فاصله از بالا */
+    right: 12px;
+}
+
+.amb-modules-slider-badge-bottom-left {
+    bottom: 12px; /* کاهش فاصله از پایین */
+    left: 12px;
+}
+
+
+/* ------------------------------------- */
+/* 2. ساختار Flexbox قیمت */
+/* ------------------------------------- */
+.amb-modules-slider-price-container {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    width: 100%;
+    /* از مارجین خودکار برای هُل دادن به پایین استفاده می‌کنیم */
+    margin-top: auto;
+    padding: 0.4rem 0; /* کاهش پدینگ عمودی برای قیمت */
+}
+
+.amb-modules-slider-discount-badge {
+    order: 1;
+    background-color: #dc3545;
+    color: white;
+    font-size: 1.5rem;
+    font-weight: 600;
+    border-radius: 0.5rem;
+    padding: 0.1rem 0.4rem; /* کاهش پدینگ تخفیف */
+    line-height: 1.2;
+    margin-inline-end: auto;
+    flex-shrink: 0;
+}
+
+.amb-modules-slider-price-wrapper {
+    order: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: center;
+}
+
+/* قانون جدید برای وسط چین کردن قیمت زمانی که تنها عنصر است */
+.amb-modules-slider-price-container > .amb-modules-slider-price-wrapper:only-child {
+    margin-inline-start: auto;
+    margin-inline-end: auto;
+    align-items: center;
+}
+
+
+.amb-modules-slider-price-old {
+    color: #adb5bd;
+    text-decoration: line-through;
+    font-size: 1.6rem;
+    line-height: 1;
+}
+
+.amb-modules-slider-price-current-group {
+    display: flex;
+    align-items: baseline;
+    font-weight: 500;
+    color: #011b18;
+}
+
+.amb-modules-slider-price-current-value {
+    font-size: 1.8rem;
+}
+
+.amb-modules-slider-price-current-toman {
+    font-size: 0.7rem;
+    color: #011b18;
+    margin-inline-start: 0.3rem;
+}
+
+/* ------------------------------------- */
+/* 3. استایل دکمه‌های ناوبری */
+/* ------------------------------------- */
+/* والد دکمه‌ها — فقط برای کنار هم قرار دادن دکمه‌ها */
+.amb-modules-slider-nav-wrapper {
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: center;
+    gap: 6px;
+    direction: ltr;
+}
+
+/* خود دکمه‌ها — فقط برای وسط‌چین کردن آیکون داخلشون */
+.amb-modules-slider-nav-btn {
+    width: 28px !important;
+    height: 28px !important;
+    border-radius: 4px;
+    background-color: rgba(255, 255, 255, 0.7);
+    border: 0.2px solid #495057;
+    color: #495057;
+    /* ✅ اینجا flex فقط برای داخل دکمه است */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    /* مهم: نباید width: 100% یا display: block داشته باشه */
+}
+    .amb-modules-slider-nav-btn:hover:not(.swiper-button-disabled) {
+        background-color: #212529;
+        border-color: #212529;
+        color: white;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    .amb-modules-slider-nav-btn svg {
+        width: 18px;
+        height: 18px;
+    }
+

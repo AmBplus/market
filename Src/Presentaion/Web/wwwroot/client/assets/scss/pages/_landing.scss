@@ -1,0 +1,154 @@
+.amazingPage-header {
+    background-image: url("../images/svg/amazing/header.svg"),
+        linear-gradient(to bottom, $color-primary-700, $color-primary-500);
+    height: 64px;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+
+.incredible-dgplus {
+    min-height: 110px;
+
+    &-bgImage {
+        background: url("../images/svg/earlyAccessPatternPlusMobile.svg") top left no-repeat;
+
+        @include mq(lg) {
+            background: url("../images/svg/earlyAccessPatternPlus.svg") right center no-repeat, url("../images/svg/earlyAccessPatternPlusMobile.svg") left center no-repeat;
+
+        }
+    }
+}
+
+.amazing-shortcut {
+
+
+    background-color: #f5f5f5;
+    background-image: linear-gradient(267.6deg, rgba(230, 18, 61, .1), hsla(0, 0%, 95%, 0));
+    background-size: 340px;
+    background-repeat: no-repeat;
+    background-position: 100%;
+
+    &-titleimg {
+        height: 20px;
+
+        @include mq(lg) {
+            height: 28px;
+        }
+    }
+
+
+    &-leftImage {
+        background: url(../images/svg/incrediblePattern.svg) left center no-repeat;
+
+    }
+
+    &-leftbackground {
+        background: linear-gradient(135deg, rgba($color-primary-700, .1) 0, rgba(#fff, 0) 100%);
+        opacity: .3;
+    }
+
+    &-content {
+        z-index: 1;
+    }
+
+    .amazing-shortcut-products {
+        max-height: 75px;
+
+        .amazing-shortcut-product img {
+            width: 58px;
+            height: 58px;
+        }
+    }
+
+    .amazing-shortcut-more {
+
+        i::before {
+            font-size: 2rem
+        }
+    }
+}
+
+
+.bestSelling-header {
+    &::before {
+        content: "";
+        background-image: url(../images/svg/bestSellingPattern.svg);
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        opacity: 25%;
+        background-position: 50%;
+    }
+}
+
+.bestSelling-DateFilter {
+
+    &-before {
+        width: 360px;
+        background: linear-gradient(90deg, #e6123d, hsla(0, 0%, 100%, 0));
+        height: 2px;
+    }
+
+    &-after {
+        width: 360px;
+        background: linear-gradient(90deg,hsla(0,0%,100%,0),#e6123d);
+        height: 2px;
+    }
+
+    &-item {
+
+        &.active {
+            color: $color-primary-700;
+        }
+    }
+}
+
+.bestSelling-CategoryItem{
+    &.active{
+        color:$color-primary-500;
+        border-color: $color-primary-500;
+        background: rgba(224,83,83,.05);
+    }
+}
+
+
+.bestSelling-Products{
+    --bs-columns: 1;
+
+    @include mq("sm") {
+        --bs-columns: 2;
+    }
+
+    @include mq(lg) {
+        --bs-columns: 3;
+    }
+
+    @include mq(3xl) {
+        --bs-columns: 5;
+    }
+
+    @include mq(4xl) {
+        --bs-columns: 6;
+    }
+}
+
+
+.laptopPage-brands{
+    img{
+        width: 80px;
+
+        @include mq(lg){
+            width: 170px;
+        }
+    }
+}
+
+.laptopLanding-banner{
+    img{
+        width: 80px;
+        @include mq(lg){
+            width: auto;
+        }
+    }
+}

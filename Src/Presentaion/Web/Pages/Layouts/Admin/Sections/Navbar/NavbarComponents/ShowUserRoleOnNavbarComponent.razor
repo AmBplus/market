@@ -1,0 +1,42 @@
+@using Microsoft.AspNetCore.Components.Authorization
+<AuthorizeView>
+    <Authorized>
+        <li class="nav-item navbar-dropdown dropdown-user dropdown ">
+            <a class="nav-link dropdown-toggle hide-arrow" href="javascript:void(0);" data-bs-toggle="dropdown">
+                <div class="btn btn-outline-warning p-1">
+                    <span class="m-2">نقش ها</span>
+                    <i class="fa fa-angle-double-down "></i>
+                </div>
+            </a>
+            <ul class="dropdown-menu dropdown-menu-end border  bg-gradient-white">
+                <li class="text-center">
+                    <div class="dropdown-item">
+                        <figure class="text-center">
+                            <blockquote class="blockquote">
+                                <p>مدیر ارشد</p>
+                            </blockquote>
+                            <figcaption class="blockquote-footer">
+                                (دامنه مرکزی)
+                            </figcaption>
+                        </figure>
+                    </div>
+                </li>
+                <li>
+                    <div class="dropdown-divider"></div>
+                </li>
+                <li class="text-center">
+                    <div class="dropdown-item">
+                        <figure class="text-center">
+                            <blockquote class="blockquote">
+                                <p>مدیر </p>
+                            </blockquote>
+                            <figcaption class="blockquote-footer">
+                                دامنه واحد استان خراسان رضوی مشهد
+                            </figcaption>
+                        </figure>
+                    </div>
+                </li>
+            </ul>
+        </li>
+    </Authorized>
+</AuthorizeView>

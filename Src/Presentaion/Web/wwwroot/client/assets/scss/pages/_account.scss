@@ -1,0 +1,19 @@
+
+
+.account-page{
+    min-height: 100vh;
+    @include mq(lg)
+    {
+        max-width: 400px;
+
+    }
+}
+
+.account-page-backbtn{
+    top: 20px;
+
+    @include mq(lg)
+    {
+        top: unset;
+    }
+}

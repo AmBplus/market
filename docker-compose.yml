@@ -1,0 +1,82 @@
+version: '3.8'
+services:
+  webapp:
+    container_name: market_webapp
+    user: root
+    restart: always
+    build:
+      context: .
+      dockerfile: Dockerfile
+
+#    image: dockerhub.mshdiau.ac.ir/meshkattest/market:latest
+      tags:
+        - dockerhub.mshdiau.ac.ir/$image_name
+    
+    ports:
+      - 8020:80
+ #     - 8001:443
+    environment:
+      - ConnectionStrings__SqlServerDatabase=${MSSQL_CS}
+      - ASPNETCORE_ENVIRONMENT=${ASP_ENV}
+      - ASPNETCORE_URLS=http://+:80
+      - RedisConnection__IP=meshkat_redis
+      - RedisConnection__Port=6379
+      - RedisConnection__Password=$REDIS_PASSWORD
+      - SmsProviderSettings__DefaultSenderNumber=$SMS_PROVIDER_SENDER_NUMBER
+      - SmsProviderSettings__Username=$SMS_PROVIDER_USERNAME
+      - SmsProviderSettings__Password=$SMS_PROVIDER_PASSWORD
+      - PublicUrl=$API_URL
+      - CertificateValidateUrl=$CERTIFICATE_VALIDATE_URL
+      - GenerateReportApiUri=$GENERATE_REPORT_API_URI
+      - PaymentCallbackUrl=$PAYMENT_CALLBACK_URL
+      - SepehrGateway__TerminalId=$SEPEHR_GATEWAY_TERMINAL_ID
+      - SepehrGateway__PaymentShareCode=$SEPEHR_GATEWAY_SHARE_CODE
+#      - meshkat_netGateway=$meshkat_net_GATEWAY
+      - TZ=Asia/Tehran
+      - SeqUrl=${SEQ_URL}
+#      - SeqUrl=${SeqUrl}
+      - ReportSettings__ReportApiUrl=${REPORTAPIURL}
+    volumes:
+      - market_data:/app/wwwroot/content
+      - market_log:/app/LogServer
+
+    networks:
+      - meshkat_net
+#    depends_on:
+#      - meshkat_redis
+      
+  # meshkat_redis:
+    # image: dockerhub.mshdiau.ac.ir/db/redis:latest
+    # container_name: meshkat_redis
+    # restart: always
+# #    hostname: meshkat_redis
+    # ports:
+      # - 6379:6379
+ # #   environment:
+      # #REDIS_PASSWORD: $REDIS_PASSWORD
+    # command: redis-server --requirepass R97oxVLn86hISkD
+    
+    # volumes:
+      # - redis_data:/data
+    # networks:
+      # - meshkat_net
+
+networks:
+  meshkat_net: 
+#    driver: overlay
+#    attachable: true
+    external: true
+#    driver: bridge
+    
+#  default:   
+#    name: meshkat_net
+  
+  
+volumes:
+  market_data:
+  market_log:
+    
+  #  external: true
+    #mode: 777
+    #uid: 1000
+    #gid: 1000

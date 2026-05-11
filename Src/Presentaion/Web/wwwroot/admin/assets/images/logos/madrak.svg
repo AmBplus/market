@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="44.334" height="35.768" viewBox="0 0 44.334 35.768">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #fff;
+      }
+    </style>
+  </defs>
+  <g id="certificate-svgrepo-com_1_" data-name="certificate-svgrepo-com (1)" transform="translate(0 -87.994)">
+    <g id="Group_1252" data-name="Group 1252" transform="translate(0 87.994)">
+      <g id="Group_1251" data-name="Group 1251" transform="translate(0 0)">
+        <path id="Path_147" data-name="Path 147" class="cls-1" d="M0,90.436v27.542a2.434,2.434,0,0,0,2.434,2.434h27.09v-4.831a7.241,7.241,0,1,1,10.957,0v4.831H41.9a2.434,2.434,0,0,0,2.434-2.434V99.3H35.953a2.924,2.924,0,0,1-2.921-2.921V88H2.434A2.434,2.434,0,0,0,0,90.436Zm5.4,5.2H29.712v2.677H5.4Zm0,9.577H26.012v1.46H5.4Zm0,4.575H17.558v1.46H5.4v-1.46Z" transform="translate(0 -88.002)"/>
+        <path id="Path_148" data-name="Path 148" class="cls-1" d="M708.627,88.223v8.152a1.46,1.46,0,0,0,1.46,1.46h8.381l-9.841-9.842Z" transform="translate(-674.135 -87.994)"/>
+        <path id="Path_149" data-name="Path 149" class="cls-1" d="M644.575,684.651v-3.54a7.233,7.233,0,0,1-8.036,0v6.9l4.018-1.6,4.018,1.6v-3.357Z" transform="translate(-605.555 -652.241)"/>
+        <path id="Path_150" data-name="Path 150" class="cls-1" d="M610.931,447.8a5.782,5.782,0,1,0-.73.86A5.76,5.76,0,0,0,610.931,447.8Z" transform="translate(-571.181 -421.665)"/>
+      </g>
+    </g>
+  </g>
+</svg>

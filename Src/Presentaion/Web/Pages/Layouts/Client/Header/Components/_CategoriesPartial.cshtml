@@ -1,0 +1,75 @@
+﻿@inject ICommonServices CommonServices
+
+@{
+    var allCategories = await CommonServices.GetCategoryMenu();
+    var mainCategories = allCategories.Where(c => c.ParentId == null).ToList();
+    var subCategories = allCategories.Where(c => c.ParentId != null).ToList();
+}
+
+<div class="mainMenu-list position-absolute w-p-auto bg-white overflow-hidden">
+    <div class="mainMenu-list-categories overflow-auto d-none d-lg-block">
+        @foreach (var mainCategory in mainCategories)
+        {
+            <a class="mainMenu-list-categoryTitle hovered gap-2 d-flex align-items-center text-strong py-3 px-2 color-gray-700"
+               data-id="@mainCategory.Id">
+                @if (!string.IsNullOrEmpty(mainCategory.IconUrl))
+                {
+                    <img src="~/@mainCategory.IconUrl" class="icon-fs-medium" alt="@mainCategory.Title" width="24" height="24" />
+                }
+                else if (!string.IsNullOrEmpty(mainCategory.IconContent))
+                {
+                    @Html.Raw(mainCategory.IconContent)
+                }
+                else
+                {
+                    <i class="icon-mobile icon-fs-medium"></i>
+                }
+                <span class="mx-1">@mainCategory.Title</span>
+            </a>
+        }
+    </div>
+
+    <div class="mainMenu-sublist flex-grow-1 overflow-auto border-b-gray-200 border-lg-none">
+        @foreach (var mainCategory in mainCategories)
+        {
+            var mainSubCategories = subCategories.Where(c => c.ParentId == mainCategory.Id).ToList();
+
+            <div class="mainMenu-sublist-content p-lg-5 flex-column @(mainCategory == mainCategories.First() ? "active" : "")"
+                 data-id="@mainCategory.Id">
+
+                <a class="mainMenu-list-categoryTitle d-lg-none d-flex justify-content-between align-items-center text-strong-3 px-5"
+                   data-id="@mainCategory.Id">
+                    @mainCategory.Title
+                    <i class="icon-chevronDown"></i>
+                </a>
+
+                <div class="mainMenu-sublist-menulist">
+                    <a class="d-flex align-items-center color-secondary-700 gap-1 mt-5 mt-lg-0 mb-5 text-strong"
+                       href="@mainCategory.SeoUrl">
+                        همه محصولات @mainCategory.Title
+                        <i class="icon-chevronLeft icon-fs-small"></i>
+                    </a>
+
+                    <ul class="d-flex flex-column flex-wrap">
+                        @foreach (var subCategory in mainSubCategories)
+                        {
+                            var subSubCategories = subCategories.Where(c => c.ParentId == subCategory.Id).ToList();
+
+                            <li class="py-1 mainMenu-sublist-item color-gray-900 mainMenu-sublist-item-main mb-2 d-flex align-items-center text-strong-2">
+                                <a class="text-truncate" href="@subCategory.SeoUrl">@subCategory.Title</a>
+                                <i class="icon-chevronLeft icon-fs-small"></i>
+                            </li>
+
+                            @foreach (var subSubCategory in subSubCategories)
+                            {
+                                <li class="py-1 mainMenu-sublist-item color-gray-500 text-medium">
+                                    <a class="text-truncate" href="@subSubCategory.SeoUrl">@subSubCategory.Title</a>
+                                </li>
+                            }
+                        }
+                    </ul>
+                </div>
+            </div>
+        }
+    </div>
+</div>

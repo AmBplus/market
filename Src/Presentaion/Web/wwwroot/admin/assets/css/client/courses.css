@@ -1,0 +1,243 @@
+/*
+* Prefixed by https://autoprefixer.github.io
+* PostCSS: v8.4.14,
+* Autoprefixer: v10.4.7
+* Browsers: since 2017
+*/
+
+.margin-top-course {
+  margin-top: 110px;
+}
+
+.light-style .btn-buy-course {
+  background-color: #e1306c !important;
+  color: #ffff !important;
+  max-height: 40px !important;
+}
+
+.dark-style .btn-buy-course {
+  background-color: #e1306c !important;
+  color: #ffff !important;
+}
+
+  .dark-style .btn-buy-course:hover {
+    background-color: #e1006c !important;
+    color: #ffff !important;
+  }
+
+.light-style .btn-buy-course:hover {
+  background-color: #e1006c !important;
+  color: #ffff !important;
+}
+
+.light-style .section-top-course {
+  border: solid;
+}
+
+@media (max-width: 768px) {
+  .poster-course {
+    max-height: 600px
+  }
+}
+
+@media (min-width: 768px ) and (max-width: 992px) {
+  .poster-course {
+    max-height: 450px
+  }
+}
+
+@media (min-width: 992px) {
+  .poster-course {
+    max-height: 600px
+  }
+}
+
+@media (min-width: 1200px) {
+  .poster-course {
+    max-height: 500px
+  }
+}
+
+.boldest-text {
+  font-weight: 900 !important;
+}
+
+.light-style .course-header {
+  margin-bottom: 10px !important;
+  padding: 0.5rem 1rem;
+  font-size: 1.25rem;
+  line-height: 1.5;
+  border-color: mediumvioletred !important;
+  border-radius: 3px !important;
+}
+
+.light-style .course-header-item {
+  background-color: white !important;
+  width: 8rem !important;
+  text-align: center !important;
+  border-color: black !important;
+  color: black !important;
+}
+
+  .light-style .course-header-item:hover {
+    border-bottom: 2px solid #e1306c;
+  }
+
+.dark-style .course-header {
+  margin-bottom: 10px !important;
+  padding: 0.5rem 1rem;
+  line-height: 1.5;
+  border-color: mediumvioletred !important;
+  background-color: #ff9f4310 !important;
+  border-start-start-radius: 3rem !important;
+  border-start-end-radius: 3rem !important;
+}
+
+.dark-style .course-header-item {
+  font-weight: 900 !important;
+  border-radius: 30px !important;
+  background-color: #0684f2 !important;
+  width: 8rem !important;
+  text-align: center !important;
+  color: white;
+  text-shadow: 1px 1px black;
+}
+
+  .dark-style .course-header-item:hover {
+    color: white !important;
+    border-bottom: 2px solid #e1306c;
+    text-shadow: 1px 1px black;
+  }
+
+.light-style .text-title {
+  color: black !important;
+}
+
+.light-style .btn-onilne-course-link {
+  background-color: royalblue;
+  color: #ffff;
+}
+
+  .light-style .btn-onilne-course-link:hover {
+    background-color: mediumblue;
+    color: #ffff;
+  }
+
+.dark-style .btn-onilne-course-link {
+  background-color: royalblue;
+  color: #ffff;
+}
+
+  .dark-style .btn-onilne-course-link:hover {
+    background-color: mediumblue;
+    color: #ffff;
+  }
+
+.light-style .card-header-type-course {
+  background-color: darkgreen;
+  color: white;
+}
+
+.light-style .card-provider-course {
+  background-image: linear-gradient(to right top, #254b85, #194285, #103984, #0b2e82, #0f237f);
+  color: white;
+}
+
+.light-style .card-header-time-course {
+  background-color: #3d7bc2;
+  color: white;
+}
+
+.section-course-additionaldata {
+  top: 0;
+  left: 0;
+  position: absolute;
+}
+
+.dark-style .section-course-capacity {
+  /*  top: 0;
+  right: 0;
+  position: absolute;
+    ;*/
+  /*  background-color: crimson !important;
+  color: white !important;
+  border-bottom-left-radius: 5px !important*/
+}
+
+.light-style .course-capacity {
+  background-color: #dc3545;
+  color: white;
+}
+
+.dark-style .course-capacity {
+  background-color: #dc3545;
+  color: white;
+}
+
+.light-style .section-course-capacity {
+  top: 0;
+  right: 3px;
+  position: absolute;
+  /*  background-color: #f5f9fc !important;
+  color: #d0000d !important;
+  border-bottom-left-radius: 5px !important;*/
+}
+
+.light-style .card-header-count-course {
+  background-color: blueviolet;
+  color: white;
+}
+
+[dir=ltr] .border-title-course {
+  border-left: 4px solid #e1006c !important;
+}
+
+[dir=rtl] .border-title-course {
+  border-right: 4px solid #e1006c !important;
+}
+
+[dir=rtl] .provider-course-text {
+  border-right: 4px solid #ff9f43;
+}
+
+[dir=ltr] .provider-course-text {
+  border-left: 4px solid #ff9f43;
+}
+
+[dir=rtl] .section-description-top {
+  border-right: 4px solid #1aa3e9 !important;
+}
+
+[dir=ltr] .section-description-top {
+  border-left: 4px solid #1aa3e9 !important;
+}
+
+[dir=rtl] .section-description-detail {
+  padding-right: 10px !important;
+  margin-right: 20px !important;
+  line-height: 1.6;
+}
+
+.section-description-detail .text-justify {
+  line-height: 2 !important;
+}
+
+[dir=ltr] .section-description-detail {
+  padding-left: 10px !important;
+  margin-left: 10px !important;
+}
+
+[dir=ltr] .comment {
+  margin-left: 10px !important;
+}
+
+[dir=rtl] .comment {
+  margin-right: 20px !important;
+  line-height: 2 !important;
+}
+
+#qrcode {
+  /* width: 50px;
+  height: 50px;
+  margin-top: 15px;*/
+}

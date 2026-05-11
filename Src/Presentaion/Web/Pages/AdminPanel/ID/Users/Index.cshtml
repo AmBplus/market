@@ -1,0 +1,161 @@
+﻿@page
+@model Web.Pages.AdminPanel.ID.Users.IndexModel
+@{
+    ViewData["Title"] = "مدیریت کاربران";
+}
+
+@section PageScripts {
+    <script src="~/common/lib/datatable/smartdt.js" asp-append-version="true"></script>
+    <script src="~/common/lib/autodeletebtn.js" asp-append-version="true"></script>
+    <script src="~/admin/pages/id/users/index.js" asp-append-version="true"></script>
+}
+@*     PartialModalLoaderWithPost('userModal', 'editUserForm', 'Edit', 'usersTable'); *@
+<div class="container-fluid mt-4">
+    <h2 class="mb-4">
+        <i class="fas fa-users"></i> مدیریت کاربران
+    </h2>
+
+    <!-- فیلترها -->
+    <div class="card mb-3">
+        <div class="card-body">
+            <div class="row g-2">
+                <div class="col-md-2">
+                    <input type="text"
+                           name="SearchUserName"
+                           data-dt-target="#usersTable"
+                           data-dt-auto-search
+                           class="form-control form-control-sm"
+                           placeholder="نام کاربری...">
+                </div>
+                <div class="col-md-2">
+                    <input type="text"
+                           name="SearchEmail"
+                           data-dt-target="#usersTable"
+                           data-dt-auto-search
+                           class="form-control form-control-sm"
+                           placeholder="ایمیل...">
+                </div>
+                <div class="col-md-2">
+                    <input type="text"
+                           name="SearchMobile"
+                           data-dt-target="#usersTable"
+                           data-dt-auto-search
+                           class="form-control form-control-sm"
+                           placeholder="موبایل...">
+                </div>
+                <div class="col-md-2">
+                    <input type="text"
+                           name="SearchFirstName"
+                           data-dt-target="#usersTable"
+                           data-dt-auto-search
+                           class="form-control form-control-sm"
+                           placeholder="نام...">
+                </div>
+                <div class="col-md-2">
+                    <input type="text"
+                           name="SearchLastName"
+                           data-dt-target="#usersTable"
+                           data-dt-auto-search
+                           class="form-control form-control-sm"
+                           placeholder="نام خانوادگی...">
+                </div>
+                <div>
+                    <input 
+                           type="text"
+                           autocomplete="off"
+                           data-jdp onchange="console.log" data-jdp-min-date="1300/01/01"
+                           data-jdp-min-persian-digits="true" class="form-control changeserach dt-input amb-form-input"
+                           placeholder="1370/01/01" />
+                </div>
+                <div class="col-md-2">
+                    <button type="button"
+                            data-dt-target="#usersTable"
+                            data-dt-reload
+                            class="btn btn-primary btn-sm w-100">
+                        <i class="fa fa-search"></i> جستجو
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- جدول -->
+    <div class="card">
+        <div class="card-body">
+
+
+            <!-- دکمه کاربر جدید -->
+            <!-- دکمه کاربر جدید -->
+            <button type="button"
+                    class="btn btn-success mb-3"
+                    data-amb-toggle="modal"
+                    data-amb-target="#userModal"
+                    data-pagehandler="UserPartial"
+                    data-params-id="0">
+                کاربر جدید
+            </button>
+
+            <table id="usersTable"
+                   data-smart-dt
+                   class="table table-striped table-hover amb-table"
+                   data-dt-url="/api/admin/id/user/GetAll"
+                   data-dt-order="0:desc"
+                   data-dt-page-length="10"
+                   data-dt-searching="false">
+                <thead>
+                    <tr>
+                        <th data-dt-data="id" data-dt-width="80px">شناسه</th>
+                        <th data-dt-data="userName">نام کاربری</th>
+                        <th data-dt-data="email">ایمیل</th>
+                        <th data-dt-data="mobile">موبایل</th>
+                        <th data-dt-data="firstName">نام</th>
+                        <th data-dt-data="lastName">نام خانوادگی</th>
+                        <th data-dt-data="createdAt"
+                            data-dt-width="140px"
+                            data-dt-type="jalali"
+                            data-dt-searchable="false">تاریخ ثبت</th>
+                        <th data-dt-data="isActive"
+                            data-dt-type="yesno"
+                            data-dt-searchable="true">وضعیت</th>
+                        <th data-dt-data="actions"
+                            data-dt-width="120px"
+                            data-dt-orderable="false"
+                            data-dt-searchable="false">
+                            <template>
+                                <div class="btn-group btn-group-sm p-2" role="group">
+                                    <!-- دکمه ویرایش -->
+                                    <button class="btn btn-sm btn-info"
+                                            data-amb-toggle="modal"
+                                            data-amb-target="#userModal"
+                                            data-pagehandler="UserPartial"
+                                            data-params-id="{{row.id}}">
+                                        ویرایش
+                                    </button>
+                                    <button class="btn btn-danger btn-sm"
+                                            data-ad-url="/api/admin/id/user/Delete"
+                                            data-ad-param-id="{{row.id}}"
+                                            data-ad-table="usersTable">
+                                        <i class="fas fa-trash"></i>
+                                    </button>
+                                </div>
+                            </template>عملیات
+                        </th>
+                    </tr>
+                </thead>
+            </table>
+
+
+        </div>
+    </div>
+</div>
+
+
+
+<!-- Modal source element -->
+<div id="userModal" style="display:none"
+     data-amb-title="مدیریت کاربر"
+     data-amb-size="lg"
+     data-amb-rtl="true"
+     data-amb-anim-open="slide-up">
+    <!-- partial اینجا لود میشه -->
+</div>

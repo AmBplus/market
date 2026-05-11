@@ -1,0 +1,85 @@
+
+.footer-logo{
+    height: 30px;
+}
+
+.footer-socialLink{
+
+    i::before{
+        font-size: 3.2rem;
+
+        @include mq(md)
+        {
+            font-size: 4rem;
+        }
+    }
+}
+
+.footer-appLink{
+    background-color: #3c4b6d;
+
+    &-logo{
+        height: 24px;
+
+        @include mq(lg)
+        {
+            height: 44px;
+        }
+    }
+
+    &-moreApp{
+        i::before{
+            font-size: 4.6rem;
+        }
+    }
+}
+
+
+.footer-enamad{
+    img{
+        height: 75px;
+        width: 75px;
+    }
+}
+
+.footer-partners{
+    gap: 1px;
+    a{
+        width: 12%;
+        height: 80px;
+        img{
+            height: 20px;
+            object-fit: contain;
+        }
+    }
+}
+
+
+.mobile-footer-fixed{
+    box-shadow: rgba(0, 0, 0, 0.14) 0px -1px 1px 0px, rgba(0, 0, 0, 0.05) 0px -2px 2px 0px;
+    z-index: 5;
+
+    &-menu-item{
+        i:nth-child(2){
+            display: none;
+        }
+
+        &.active{
+            i:first-child{
+                display: none;
+            }
+            i:nth-child(2){
+                display: flex;
+            }
+
+            span{
+                color: $color-gray-900;
+                font-weight: 700
+            }
+        }
+        
+        .cart-badge{
+            right: -8px;
+        }
+    }
+}

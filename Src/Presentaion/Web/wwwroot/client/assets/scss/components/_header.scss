@@ -1,0 +1,377 @@
+.mobile-header {
+    z-index: 6;
+}
+
+header {
+    z-index: 6;
+   
+    transition: height .3s;
+    @include mq(lg) {
+        box-shadow: 0 1px 0 rgba(0, 0, 0, 0.14), 0 2px 0 rgba(0, 0, 0, 0.05);
+
+    }
+    
+}
+
+.header-banner {
+    img {
+        height: 35px;
+
+        @include mq(lg) {
+            height: 60px;
+        }
+    }
+}
+
+.header-top {
+    z-index: 10;
+}
+
+.search {
+    @include mq(lg) {
+        width: 600px;
+
+    }
+
+    &.active {
+
+        .header-search-input::placeholder {
+            color: $color-gray-400
+        }
+
+        .header-search-result {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .icon-search {
+            z-index: 8;
+            color: $color-gray-700;
+        }
+    }
+
+
+}
+
+.modal{
+    .search {
+    .header-search-result {
+        opacity: 1;
+        visibility: visible;
+    }
+    .icon-arrowRight  {
+        z-index: 8;
+        color: $color-gray-700;
+    }
+}
+
+}
+
+.header-search-input {
+    z-index: 8;
+}
+
+.header-search-result {
+    box-shadow: 0 1px 3px 0px rgba(0, 0, 0, 0.3);
+    z-index: 7;
+    opacity: 0;
+    visibility: hidden;
+    transition: all .5s;
+
+    .header-search-result-container {
+        border-top: 1px solid $color-secondary-500;
+    }
+
+    .searchTrends-swiper {
+        margin: 0 -14px;
+
+        .swiper-slide {
+            &:first-child {
+                margin-right: 56px;
+            }
+
+            &:last-child {
+                margin-left: 16px;
+            }
+        }
+
+
+        .swiper-btn-prev {
+            top: 50%;
+            transform: translateY(-50%);
+            right: 8px;
+        }
+
+        .swiper-btn-next {
+            @extend .swiper-btn-prev;
+            right: unset;
+            left: 8px;
+        }
+    }
+
+}
+
+.header-nav {
+    @include mq(lg) {
+        transition: transform .3s;
+
+    }
+}
+
+.mainMenu-hover {
+    position: absolute;
+    bottom: 0;
+    height: 2px;
+
+    transform: scaleX(0);
+    background-color: $color-primary-700;
+    transition: all .2s ease;
+    z-index: 1;
+
+}
+
+.mainMenu-li-hasSubMenu {
+    z-index: 2;
+}
+
+.mainMenu-list {
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.14), 0 4px 8px rgba(black, 0.3);
+    height: 70vh;
+    border-radius: 0 0 $radius $radius;
+    display: none;
+
+    &.active {
+        display: flex;
+    }
+}
+
+.mainMenu-list-categories {
+    width: 200px;
+    background-color: #f5f5f5;
+}
+
+.mainMenu-list-categoryTitle {
+    &.hovered {
+        background-color: $color-white;
+        color: $color-primary-500;
+    }
+}
+
+
+.mainMenu-sublist {
+    height: 70vh;
+
+    @include mq(lg) {
+        width: 880px;
+    }
+}
+
+.mainMenu-sublist-content {
+    display: none;
+
+    &.active {
+        display: flex;
+    }
+
+    ul {
+        height: 490px;
+    }
+}
+
+.mainMenu-sublist-item {
+    max-width: 220px;
+
+    &:hover {
+        color: $color-primary-500;
+    }
+}
+
+.mainManu-sublist-item-main {
+    &::before {
+        content: "";
+        height: 14px;
+        width: 2px;
+        display: block;
+        margin-left: .8rem;
+        background-color: $color-primary-500;
+    }
+}
+
+
+// mobile
+.is-mobile {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    background-color: $color-white;
+    width: 312px;
+    z-index: 12;
+    overflow: auto;
+    transform: translateX(312px);
+    transition: transform .3s;
+
+    &.active {
+        transform: translateX(0);
+    }
+
+    .mainMenu-item {
+        font-size: 1.3rem;
+        font-weight: 700;
+        color: $color-gray-700;
+        height: 52px;
+
+        i::before {
+            font-size: 2.4rem;
+            margin-left: 0.8rem;
+        }
+    }
+
+    .mainMenu-list {
+        display: flex;
+        height: unset;
+        box-shadow: unset;
+        position: relative;
+
+    }
+
+    .mainMenu-sublist {
+        height: unset;
+    }
+
+    .mainMenu-sublist-content {
+        display: flex;
+    }
+
+    .mainMenu-list-categoryTitle {
+        height: 52px;
+
+        &.active {
+            color: $color-primary-500;
+
+            i::before {
+                transform: rotateX(180deg);
+            }
+        }
+    }
+
+    .mainMenu-sublist-menulist {
+        display: none;
+
+        padding: {
+            right: 4rem
+        }
+
+        ;
+        background-color: $color-gray-100;
+
+        ul {
+            flex-wrap: nowrap !important;
+            height: 100%;
+            width: 100%;
+        }
+
+        .mainMenu-sublist-item {
+            max-width: 100%;
+            padding-right: 2rem;
+            margin: 0;
+            height: 40px;
+            color: $color-gray-700;
+            display: none;
+
+            &.active {
+                display: flex;
+            }
+
+
+            &-main {
+                height: 44px;
+                font-size: 1.3rem;
+                color: $color-gray-700;
+                justify-content: space-between;
+
+                padding: {
+                    left: 2rem
+                }
+
+                ;
+
+                i::before {
+                    font-size: 2.4rem;
+                    ;
+                    transform: rotate(-90deg);
+                }
+
+                a {
+                    pointer-events: none;
+                }
+            }
+        }
+    }
+
+
+}
+
+
+.header-profile {
+    &.active {
+        .header-profilebtn {
+            background-color: rgba($color-primary-700, 0.1);
+        }
+
+        .header-profile-Dropdown {
+            display: block
+        }
+    }
+
+    .icon-dropdown::before {
+        font-size: 2rem
+    }
+
+
+    .header-profile-Dropdown {
+        box-shadow: rgba(0, 0, 0, 0.14) 0px 1px 1px 0px, rgba(0, 0, 0, 0.3) 0px 4px 8px 0px;
+        width: 256px;
+        left: 0;
+        top: 100%;
+        display: none;
+
+        >div {
+            transition: all .2s;
+
+            &:hover {
+                background-color: $color-gray-100
+            }
+        }
+    }
+
+}
+
+.header-cart {
+
+    &:hover {
+        .header-cart-btn {
+            background-color: rgba($color-primary-700, 0.1);
+        }
+
+        .header-cart-dropdown {
+            display: block
+        }
+    }
+}
+
+.cart-badge {
+    min-width: 20px;
+    height: 20px;
+    border: 2px solid $color-white;
+    border-radius: 6px
+}
+
+.header-cart-dropdown {
+    box-shadow: rgba(0, 0, 0, 0.14) 0px 1px 1px 0px, rgba(0, 0, 0, 0.3) 0px 4px 8px 0px;
+    width: 400px;
+    display: none;
+
+    .cart-list {
+        max-height: 360px;
+    }
+}

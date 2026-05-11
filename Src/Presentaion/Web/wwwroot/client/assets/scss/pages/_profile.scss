@@ -1,0 +1,483 @@
+.profile-container {
+    --bs-columns: 1;
+
+    @include mq(lg) {
+        --bs-columns: 7
+    }
+}
+
+.profile-asid-userInfo {
+    .icon-edit::before {
+        font-size: 2rem
+    }
+
+    .icon-chevronLeft::before {
+        font-size: 2rem
+    }
+}
+
+.profile-asid-menuItem {
+
+    &:hover {
+        background-color: #f2f2f2
+    }
+
+    &-selectedLine {
+        top: 8px;
+        bottom: 8px;
+        width: 4px;
+        display: none
+    }
+
+    &.active {
+        .profile-asid-menuItem-selectedLine {
+
+            display: block
+        }
+
+        span {
+            font-weight: 800
+        }
+    }
+}
+
+.profile-orderStatus-img {
+    height: 60px
+}
+
+.profile-orderStatus-Countbadge {
+    width: 20px;
+    height: 20px;
+    background-color: #f2f2f2
+}
+
+.profile-digiplus-card-Inactive {
+    height: 188px;
+    background: $color-gray-200 url(../images/svg/profile/digiplus-pattern-inactive.svg) no-repeat left top;
+}
+
+.profile-digiplus-card-buyButton {
+    height: 48px;
+}
+
+.profile-digiplus-renewalbtn {
+    border: 1px solid $color-dgplus-500;
+    height: 40px;
+}
+
+
+.profile-order-search {
+    border-bottom: 1px solid $color-secondary-500;
+    height: 4.8rem;
+
+    input {
+        &::placeholder {
+            color: $color-gray-400;
+        }
+    }
+}
+
+.profile-order-searchMobile {
+    height: 4.8rem;
+
+    &.active {
+        border-bottom: 2px solid $color-secondary-500;
+    }
+
+    input {
+        &::placeholder {
+            color: $color-gray-400;
+        }
+
+
+    }
+
+    input:not(:placeholder-shown)+i {
+        display: flex !important;
+    }
+}
+
+.profile-order-search-notfound {
+    max-width: 480px;
+
+    .icon-infoFill::before {
+        font-size: 2rem;
+    }
+}
+
+
+
+.profile-tab-notcontent {
+    padding: 80px 0;
+}
+
+.profile-order-summeryProduts {
+    --bs-columns: 7;
+
+    div {
+        &:not(:last-child) {
+            border-left: 1px solid $color-gray-200;
+        }
+
+        &:nth-child(7) {
+            display: none;
+        }
+    }
+
+    img {
+        height: 32px;
+        width: 32px;
+    }
+
+    @include mq(lg) {
+        --bs-columns: 8;
+
+        div {
+            border-left: none !important;
+
+            &:nth-child(7) {
+                display: flex;
+            }
+        }
+
+        img {
+            height: 64px;
+            width: 64px;
+        }
+    }
+
+
+}
+
+.profile-tab-gridList {
+    --bs-columns: 1;
+
+    @include mq(lg) {
+
+        --bs-columns: 2;
+    }
+
+    .icon-notificationOffOutline::before {
+        font-size: 2rem;
+    }
+}
+
+.profile-comments-products-item {
+    img {
+        width: 96px;
+        height: 96px;
+    }
+}
+
+.profile-comments-Item {
+    img {
+        width: 64px;
+        height: 64px;
+    }
+
+    &-rate {
+        max-height: 20px;
+    }
+
+    &-badge-accepted {
+        background-color: #EDF7ED;
+        color: #2e7b32;
+        border: 1px solid #2e7b32;
+    }
+
+    &-badge-notaccepted {
+        background-color: #FFF6E8;
+        color: $color-warning-200;
+        border: 1px solid $color-warning-200;
+
+    }
+}
+
+.profile-address-popover {
+    .popover-container {
+        width: 280px;
+
+    }
+}
+
+.profile-addresses-list-item {
+    &:not(:first-child) {
+        border-top: 1px solid $color-gray-100;
+    }
+}
+
+.profile-addresses-mobile-addbtn {
+    bottom: 72px;
+    left: 20px;
+}
+
+.addAddress-modal {
+    @include mq(lg) {
+        width: 550px;
+
+    }
+
+    .modal-content {
+        padding: {
+            top: 68px;
+            bottom: 80px
+        }
+    }
+}
+
+.dropDown {
+    height: 4.8rem;
+    border: 1px solid $color-gray-300;
+
+    &.disabled{
+       
+            background-color: $color-gray-100 !important;
+            pointer-events: none;
+        
+    }
+}
+
+.dropdownList {
+    top: 52px;
+    z-index: 12;
+    height: 192px;
+    overflow-y: auto;
+    display: none;
+
+    &.active {
+        display: flex
+    }
+
+    ul li {
+        &:hover {
+            background-color: $color-gray-100;
+        }
+    }
+}
+
+.profile.modals {
+    input:not([type=checkbox]):not([type="radio"]) {
+        height: 4.8rem;
+      
+    }
+
+    .dropDown {
+        input {
+            background-color: transparent;
+        }
+
+        background-color: $color-gray-100;
+
+        @include mq(lg) {
+            background-color: transparent;
+
+        }
+    }
+
+  
+}
+
+
+
+.addAddress-modal {
+    textarea {
+        background-color: transparent;
+    }
+
+
+
+    .addAddress-modal-address {
+        background-color: $color-gray-100;
+
+        @include mq(lg) {
+            background-color: transparent;
+
+        }
+    }
+
+
+}
+
+.profile-addressModal-footer {
+    box-shadow: rgba(0, 0, 0, 0.14) 0px -1px 1px 0px, rgba(0, 0, 0, 0.05) 0px -2px 2px 0px;
+    z-index: 10;
+
+    button {
+        height: 4.8rem;
+    }
+}
+
+.profile-notification-tablist {
+    .tabs-item {
+
+        &.active {
+            &:first-child {
+                border-color: $color-primary-500;
+            }
+
+            &:nth-child(2) {
+                border-color: $color-warning-100;
+
+                span {
+                    color: $color-warning-100 !important;
+                }
+
+            }
+        }
+    }
+}
+
+.profile-notification-message-notSeeDot {
+    height: 6px;
+    left: 3px;
+    top: 3px;
+    width: 6px;
+}
+
+.profile-notification-list-Item {
+    &:not(:first-child) {
+        border-top: 1px solid $color-gray-200;
+    }
+}
+
+.profile-personalInfo-value {
+    margin-top: 2px;
+}
+
+.profile.personalinfo {
+    .modal-content {
+        padding: {
+            top: 60px
+        }
+
+        ;
+    }
+
+    .profile-personalinfo-submitbtn {
+        height: 4.8rem;
+    }
+}
+
+.dateOfBirthmodal {
+    @include mq(lg) {
+        width: 460px;
+
+    }
+}
+
+.personalinfoModal {
+    @extend .dateOfBirthmodal;
+
+    #ForeignUser {
+        border: 1px dashed $color-gray-200
+    }
+
+.upload-btn{
+    height: 4.8rem;
+}
+}
+
+.companyInfoModal{
+    @extend .dateOfBirthmodal;
+}
+
+.refundModal{
+    @extend .dateOfBirthmodal;
+
+}
+
+.passwordModal{
+    @extend .dateOfBirthmodal;
+
+}
+
+.passowrdstrength-line{
+    height: 4px;
+    
+}
+
+.orderDetail-openTransaction{
+    i{
+        transition: all .2s linear;
+
+    }
+    &.opened{
+        i{
+            transform: rotate(180deg)
+        }
+    }
+    
+}
+.orderDetail-Transaction{
+
+    display: none;
+    &.opened{
+        display: block;
+    }
+    &-item{
+        &:last-child>div:nth-child(2)
+        {
+            border-bottom: none;
+        }
+    }
+}
+
+.orderDetail-OrderStatus{
+
+
+    &.completed{
+        background-color: rgba($color-success-200, $alpha: 0.07) ;
+    
+        .orderDetail-OrderStatus-title{
+                color: $color-success-200;
+        }
+        .orderDetail-OrderStatus-progress-percent{
+        background-color: $color-success-100 ;
+
+        }
+    }
+
+    &.canceled{
+
+        background-color: rgba($color-error-100, $alpha: 0.07) ;
+
+        .orderDetail-OrderStatus-title{
+            color: $color-error-200;
+    }
+    .orderDetail-OrderStatus-progress-percent{
+    background-color: $color-error-100 ;
+
+    }
+    }
+    
+    @include mq(lg)
+    {
+        max-width: 352px;
+        background-color: $color-white !important;
+
+    }
+
+    &-progress{
+        height: 10px;
+        @include mq(lg)
+        {
+            height: 6px;
+    
+        }
+    }
+}
+.orderDetail-Products-item{
+
+    &:last-of-type{
+        border-bottom: none !important;
+    }
+    &-countBadge{
+        height: 20px;
+        width: 20px;
+    }
+    &-variant-color{
+        height: 18px;
+        width: 18px;
+    }
+}
+

@@ -1,0 +1,52 @@
+@inject UserInfo userInfo
+@* @inject IUserAssets userAssets *@
+@* @using AssetMng.Service *@
+@using Framework.Aspc.Security
+@using Microsoft.AspNetCore.Components.Authorization
+@using Web.Services.Authenticate
+@if(userInfo.IsAuthenticated){
+    <!-- User -->
+@*     <li class="nav-item navbar-dropdown dropdown-user dropdown" style="list-style:none !important;">
+        <a class="nav-link dropdown-toggle hide-arrow  d-flex align-content-center" href="javascript:void(0);" data-bs-toggle="dropdown">
+            <div class="btn btn-gmain text-white d-flex align-content-center  btn-sm">
+                <span class="">@userInfo.FullNameInfo</span>
+            </div>
+        </a>
+        <ul class="dropdown-menu dropdown-menu-end">
+            <li>
+                <a class="dropdown-item" href="@MenuLink.UserInfoMng.Account.Profile">
+                    <div class="d-flex">
+                        <div class="flex-shrink-0 me-3">
+                            <div class="avatar ">
+                                <img src="@userAssets.GetUserProfileUrl().Result" class="h-auto rounded-circle">
+                            </div>
+                        </div>
+                        <div class="flex text-start align-self-center ">
+                            <span class="fw-bold d-block">@userInfo.FullNameInfo</span>
+                        </div>
+                    </div>
+                    <small class="flex text-center align-self-center fw-medium  d-block fw-bold">@userInfo.CellPhoneNumber</small>
+                </a>
+            </li>
+            <li>
+                <div class="dropdown-divider"></div>
+            </li>
+            <li>
+                <a class="dropdown-item" href="@MenuLink.UserInfoMng.Account.Profile">
+                    <img width="30" src="~/assets/images/logos/user-profile_4810752.png" />
+                    <span class="align-middle fw-bold">@Messages.UserProfile</span>
+                </a>
+            </li>
+ 
+            <li>
+                <div class="dropdown-item">
+                    <a class="btn btn-danger col-12" href="@MenuLink.AuthSection.Logout">
+                        <i class="fa-duotone fa-solid fa-sign-out fa-sm me-2"></i>
+                        <span class="align-middle">@Messages.Logout</span>
+                    </a>
+                </div>
+            </li>
+        </ul>
+    </li> *@
+    <!--/ User -->
+}

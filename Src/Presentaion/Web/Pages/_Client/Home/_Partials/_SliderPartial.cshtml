@@ -1,0 +1,203 @@
+﻿<!-- SVG Sprite Definitions (Hidden Icons) - Thicker Arrows -->
+<svg style="display: none;" xmlns="http://www.w3.org/2000/svg">
+    <!-- Thicker Left Arrow -->
+    <symbol id="arrow-long-left-icon" viewBox="0 0 24 24">
+        <path fill="currentColor" d="M11.5 12L16.5 17L15 18.5L7.5 11L15 3.5L16.5 5L11.5 10V12Z" />
+    </symbol>
+    <!-- Thicker Right Arrow -->
+    <symbol id="arrow-long-right-icon" viewBox="0 0 24 24">
+        <path fill="currentColor" d="M12.5 12L7.5 17L9 18.5L16.5 11L9 3.5L7.5 5L12.5 10V12Z" />
+    </symbol>
+</svg>
+
+<!-- مثال ۱: ماژول اسلایدر محصولات پر تخفیف -->
+<div class="container py-5 amb-modules-slider">
+    <div class="row mb-4">
+        <div class="col-12">
+            <!-- بخش عنوان و دکمه‌ها -->
+            <div class="d-flex flex-wrap justify-content-between align-items-center">
+
+                <h2 class="mb-0 fs-4 text-dark fw-bold amb-modules-slider-title my-2 mx-2">
+                    محصولات پر تخفیف</h2>
+
+                    <!-- دکمه‌های ناوبری سفارشی (جهت LTR) -->
+                    <div class="amb-modules-slider-nav-wrapper d-flex  mx-4" data-testid="arrow-control">
+                    <!-- دکمه بعدی (Next) -->
+                    <button type="button" class="amb-modules-slider-nav-btn amb-modules-slider-next " aria-label="next" data-direction="right">
+                        <svg><use href="#arrow-long-left-icon"></use></svg>
+                    </button>
+
+                    <!-- دکمه قبلی (Prev) -->
+                    <button type="button" class="amb-modules-slider-nav-btn amb-modules-slider-prev me-2" aria-label="previous" data-direction="left">
+                        <svg><use href="#arrow-long-right-icon"></use></svg>
+                    </button>
+                    </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- بخش اسلایدر Swiper -->
+    <div class="row">
+        <div class="col-12">
+            <div class="swiper amb-modules-slider-swiper">
+                <!-- Wrapper -->
+                <div class="swiper-wrapper">
+
+                    <!-- محصول 1 (با تخفیف، با برچسب فروش ویژه و خرید قسطی) -->
+                    <div class="swiper-slide p-2">
+                        <a target="_blank" rel="noopener noreferrer" title="قرص جوشان ویتامین سی ۱۰۰۰ میلی گرم هانسال بسته ۲۰ عددی" href="#" class="text-decoration-none d-block">
+                            <article class="amb-modules-slider-product-card">
+                                <div class="amb-modules-slider-image-container">
+                                    <div class="amb-modules-slider-badge-base amb-modules-slider-badge-top-right amb-modules-slider-badge-special-sale">فروش ویژه</div>
+                                    <img src="https://cdn.snappshop.ir/70/81/0/product_image/zoodfood/6385cbf3d4ea4.jpg?q=75&amp;w=384" class="amb-modules-slider-card-img-top" alt="قرص جوشان ویتامین سی ۱۰۰۰ میلی گرم هانسال بسته ۲۰ عددی" loading="lazy">
+                                    <div class="amb-modules-slider-badge-base amb-modules-slider-badge-bottom-left amb-modules-slider-badge-installment amb-modules-slider-badge-shape-diagonal-right">خرید قسطی</div>
+                                </div>
+
+                                <div class="amb-modules-slider-card-body">
+                                    <h3 class="amb-modules-slider-product-title amb-modules-slider-line-clamp-2">قرص جوشان ویتامین سی ۱۰۰۰ میلی گرم هانسال بسته ۲۰ عددی</h3>
+
+                                    <!-- ساختار Flexbox دقیق برای قیمت -->
+                                    <div class="amb-modules-slider-price-container">
+
+                                        <!-- تخفیف (مرتب شده اول) -->
+                                        <div class="amb-modules-slider-discount-badge">٪۵۱</div>
+
+                                        <!-- قیمت‌ها (مرتب شده دوم) -->
+                                        <div class="amb-modules-slider-price-wrapper">
+                                            <!-- قیمت اولیه (بالا) -->
+                                            <span class="amb-modules-slider-price-old">۹۸,۵۲۹</span>
+
+                                            <!-- قیمت نهایی (پایین) -->
+                                            <div class="amb-modules-slider-price-current-group">
+                                                <span class="amb-modules-slider-price-current-value">۴۸,۰۰۰</span>
+                                                <span class="amb-modules-slider-price-current-toman">تومان</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </article>
+                        </a>
+                    </div>
+
+                    <!-- محصول 2 (با تخفیف، فقط برچسب خرید قسطی) -->
+                    <div class="swiper-slide p-2">
+                        <a target="_blank" rel="noopener noreferrer" title="شامپو موی آسیب دیده مدل پمپی بسته ۱۲ عددی" href="#" class="text-decoration-none d-block">
+                            <article class="amb-modules-slider-product-card">
+                                <div class="amb-modules-slider-image-container">
+                                    <div class="amb-modules-slider-badge-base amb-modules-slider-badge-bottom-left amb-modules-slider-badge-installment amb-modules-slider-badge-shape-diagonal-right">خرید قسطی</div>
+                                    <img src="https://placehold.co/400x400/adb5bd/ffffff?text=Product+2" class="amb-modules-slider-card-img-top" alt="محصول ۲" loading="lazy">
+                                </div>
+                                <div class="amb-modules-slider-card-body">
+                                    <h3 class="amb-modules-slider-product-title amb-modules-slider-line-clamp-2">شامپو موی آسیب دیده مدل پمپی بسته ۱۲ عددی با حجم زیاد</h3>
+                                    <div class="amb-modules-slider-price-container">
+                                        <div class="amb-modules-slider-discount-badge">٪۲۰</div>
+                                        <div class="amb-modules-slider-price-wrapper">
+                                            <span class="amb-modules-slider-price-old">۲۵۰,۰۰۰</span>
+                                            <div class="amb-modules-slider-price-current-group">
+                                                <span class="amb-modules-slider-price-current-value">۲۰۰,۰۰۰</span>
+                                                <span class="amb-modules-slider-price-current-toman">تومان</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </article>
+                        </a>
+                    </div>
+
+                    <!-- محصول 3 (فقط یک قیمت - باید وسط چین شود) -->
+                    <div class="swiper-slide p-2">
+                        <a target="_blank" rel="noopener noreferrer" title="ماسک صورت و گردن حاوی عصاره گل سرخ و ویتامین E" href="#" class="text-decoration-none d-block">
+                            <article class="amb-modules-slider-product-card">
+                                <div class="amb-modules-slider-image-container">
+                                    <img src="https://placehold.co/400x400/adb5bd/ffffff?text=Product+3" class="amb-modules-slider-card-img-top" alt="محصول ۳" loading="lazy">
+                                </div>
+                                <div class="amb-modules-slider-card-body">
+                                    <h3 class="amb-modules-slider-product-title amb-modules-slider-line-clamp-2">ماسک صورت و گردن حاوی عصاره گل سرخ و ویتامین E</h3>
+                                    <div class="amb-modules-slider-price-container">
+                                        <div class="amb-modules-slider-price-wrapper">
+                                            <div class="amb-modules-slider-price-current-group">
+                                                <span class="amb-modules-slider-price-current-value">۱۲۰,۰۰۰</span>
+                                                <span class="amb-modules-slider-price-current-toman">تومان</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </article>
+                        </a>
+                    </div>
+
+                    <!-- محصول 4 (با تخفیف، فقط برچسب فروش ویژه) -->
+                    <div class="swiper-slide p-2">
+                        <a target="_blank" rel="noopener noreferrer" title="کیف پول چرم طبیعی دست دوز طرح سنتی" href="#" class="text-decoration-none d-block">
+                            <article class="amb-modules-slider-product-card">
+                                <div class="amb-modules-slider-image-container">
+                                    <div class="amb-modules-slider-badge-base amb-modules-slider-badge-top-right amb-modules-slider-badge-special-sale">فروش ویژه</div>
+                                    <img src="https://placehold.co/400x400/adb5bd/ffffff?text=Product+4" class="amb-modules-slider-card-img-top" alt="محصول ۴" loading="lazy">
+                                </div>
+                                <div class="amb-modules-slider-card-body">
+                                    <h3 class="amb-modules-slider-product-title amb-modules-slider-line-clamp-2">کیف پول چرم طبیعی دست دوز طرح سنتی و زیبا با دوام بالا</h3>
+                                    <div class="amb-modules-slider-price-container">
+                                        <div class="amb-modules-slider-discount-badge">٪۵</div>
+                                        <div class="amb-modules-slider-price-wrapper">
+                                            <span class="amb-modules-slider-price-old">۴۰۰,۰۰۰</span>
+                                            <div class="amb-modules-slider-price-current-group">
+                                                <span class="amb-modules-slider-price-current-value">۳۸۰,۰۰۰</span>
+                                                <span class="amb-modules-slider-price-current-toman">تومان</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </article>
+                        </a>
+                    </div>
+
+                    <!-- محصول 5 (با تخفیف، بدون برچسب) -->
+                    <div class="swiper-slide p-2">
+                        <a target="_blank" rel="noopener noreferrer" title="ساعت هوشمند با قابلیت اندازه‌گیری ضربان قلب" href="#" class="text-decoration-none d-block">
+                            <article class="amb-modules-slider-product-card">
+                                <div class="amb-modules-slider-image-container">
+                                    <img src="https://placehold.co/400x400/adb5bd/ffffff?text=Product+5" class="amb-modules-slider-card-img-top" alt="محصول ۵" loading="lazy">
+                                </div>
+                                <div class="amb-modules-slider-card-body">
+                                    <h3 class="amb-modules-slider-product-title amb-modules-slider-line-clamp-2">ساعت هوشمند با قابلیت اندازه‌گیری ضربان قلب و اکسیژن خون</h3>
+                                    <div class="amb-modules-slider-price-container">
+                                        <div class="amb-modules-slider-discount-badge">٪۳۰</div>
+                                        <div class="amb-modules-slider-price-wrapper">
+                                            <span class="amb-modules-slider-price-old">۹۹۹,۰۰۰</span>
+                                            <div class="amb-modules-slider-price-current-group">
+                                                <span class="amb-modules-slider-price-current-value">۶۹۹,۳۰۰</span>
+                                                <span class="amb-modules-slider-price-current-toman">تومان</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </article>
+                        </a>
+                    </div>
+
+                    <!-- محصول 6 (فقط یک قیمت - باید وسط چین شود) -->
+                    <div class="swiper-slide p-2">
+                        <a target="_blank" rel="noopener noreferrer" title="هدفون بی‌سیم بلوتوثی مدل TWS-X8" href="#" class="text-decoration-none d-block">
+                            <article class="amb-modules-slider-product-card">
+                                <div class="amb-modules-slider-image-container">
+                                    <img src="https://placehold.co/400x400/adb5bd/ffffff?text=Product+6" class="amb-modules-slider-card-img-top" alt="محصول ۶" loading="lazy">
+                                </div>
+                                <div class="amb-modules-slider-card-body">
+                                    <h3 class="amb-modules-slider-product-title amb-modules-slider-line-clamp-2">هدفون بی‌سیم بلوتوثی مدل TWS-X8 با کیفیت صدای عالی و عمر باتری طولانی</h3>
+                                    <div class="amb-modules-slider-price-container">
+                                        <div class="amb-modules-slider-price-wrapper">
+                                            <div class="amb-modules-slider-price-current-group">
+                                                <span class="amb-modules-slider-price-current-value">۵۰۰,۰۰۰</span>
+                                                <span class="amb-modules-slider-price-current-toman">تومان</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </article>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,62 @@
+
+.faq-header{
+    background: linear-gradient(180deg,#e0e0e2,rgba(255, 255, 255, 0));
+
+    &-container{
+        background: url(../images/svg/faq-pattern.svg) no-repeat top  ;
+        background-size: contain;
+    }
+}
+
+.faq-search-Container{
+    max-width: 540px;
+    @include mq(lg){
+        background-color: $color-white;
+
+    }
+}
+
+.faq-categoryTitle-Icon{
+    background-color: rgba(15,171,198,.05);
+}
+
+.faq-categoryList{
+    --bs-columns:3;
+
+    @include mq(lg){
+    --bs-columns:6;
+
+    }
+
+    &-Item{
+        &:nth-child(3n)
+        {
+            border-left-width: 0;
+        }
+        @include mq(lg){
+            &:nth-child(3n)
+            {
+                border-left-width: 1px;
+            }
+            &:nth-child(6n)
+            {
+                border-left: none;
+            }
+        }
+        i::before{
+            font-size: 4rem;
+        }
+    }
+}
+
+.contactUs-form-UploadFile-Container{
+    border:  1px dashed $color-gray-100;
+}
+
+.contactUs-HolidayItem{
+    width: calc(50% - 8px);
+
+    @include mq(lg){
+        width: 20%;
+    }
+}

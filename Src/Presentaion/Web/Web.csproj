@@ -1,0 +1,51 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <UserSecretsId>6027ed7f-f7c3-4790-92b9-c49348177586</UserSecretsId>
+    <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
+    <DockerfileContext>..\..\..</DockerfileContext>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="10.0.5" />
+    <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.21.0" />
+	  <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="10.0.5">
+		  <PrivateAssets>all</PrivateAssets>
+		  <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+	  </PackageReference>
+	  <PackageReference Include="Scalar.AspNetCore" Version="2.13.18" />
+	  <PackageReference Include="WolverineFx.Http" Version="5.27.0" />
+	  <PackageReference Include="ClosedXML" Version="0.105.0" />
+	  <PackageReference Include="DocumentFormat.OpenXml" Version="3.3.0" />
+	  <PackageReference Include="LargeXlsx" Version="2.0.1" />
+  </ItemGroup>
+
+
+
+  <ItemGroup>
+
+    <ProjectReference Include="..\..\AppCore\AppCore.csproj" />
+    <ProjectReference Include="..\..\Modules\Framework\Framework.Aspc\Framework.Aspc.csproj" />
+    <ProjectReference Include="..\..\Modules\Framework\Framework\Framework.csproj" />
+  </ItemGroup>
+
+
+
+  <ItemGroup>
+    <Folder Include="Controllers\Features\" />
+    <Folder Include="Controllers\Shared\" />
+    <Folder Include="Feature\Auth\Models\" />
+    <Folder Include="Pages\AdminPanel\Shop\Product\Brands\" />
+    <Folder Include="Pages\AdminPanel\Shop\Product\Colors\" />
+    <Folder Include="Pages\AdminPanel\Shop\Product\Products\" />
+    <Folder Include="Pages\AdminPanel\Shop\Product\Tags\" />
+    <Folder Include="Pages\Layouts\Admin\Sections\Menu\MenuComponents\Vertical\" />
+    <Folder Include="Pages\Layouts\Client\Menu\" />
+    <Folder Include="wwwroot\client\assets\scss\css\" />
+    <Folder Include="wwwroot\auth\" />
+  </ItemGroup>
+
+</Project>

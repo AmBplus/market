@@ -1,0 +1,44 @@
+
+
+.tabs-item-border-b{
+    height: 4px;
+    width: calc(100% - 16px);
+    display: flex;
+    border-top-left-radius: $radius-small;
+    border-top-right-radius: $radius-small;
+    left: 50%;
+    transform: translateX(-50%);
+    display: none;
+}
+
+
+.tabs-item-badge {
+    width: 20px;
+    height: 20px;
+}
+
+
+.tabs-item{
+
+
+    &.active{
+        span{
+            color:$color-primary-500
+        }
+        .tabs-item-border-b{
+            display: flex;
+        }
+
+        .tabs-item-badge {
+            background-color: $color-primary-500
+        }
+    }
+}
+
+.tabs-content-item{
+    display: none;
+
+    &.active{
+        display: flex;
+    }
+}

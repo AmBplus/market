@@ -1,0 +1,12 @@
+
+.customRadio{
+    height: 20px;
+    min-width: 20px;
+    appearance: none;
+    border: 2px solid $color-gray-700;
+    border-radius: $radius-circle;
+    &:checked{
+        border: 5px solid $color-secondary-500;
+
+    }
+}

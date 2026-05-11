@@ -1,0 +1,35 @@
+
+
+.customCheckbox{
+    appearance: none;
+    border: 2px solid $color-gray-700;
+    height: 18px;
+    width: 18px;
+    border-radius: $radius-small;
+
+    &:checked{
+        background-color: $color-secondary-700;
+        border-color: $color-secondary-700;
+        background-image:  url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'><path fill='none' stroke='white' stroke-linecap='round' stroke-linejoin='round' stroke-width='3' d='m6 10 3 3 6-6'/></svg>");
+    }
+}
+
+.customSwitch{
+    appearance: none;
+    border: 2px solid $color-gray-400;
+    height: 20px;
+    width: 40px;
+    border-radius: $radius-u;
+    background-image:  url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'><circle r='3' fill='%23a1a3a8'/></svg>");
+    background-size: 14px;
+    background-repeat: no-repeat;
+    background-position: left center;
+    transition: all .2s;
+
+    &:checked{
+        background-image:  url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'><circle r='3' fill='%23fff'/></svg>");
+        background-color: $color-secondary-500;
+        border-color: $color-secondary-500;
+        background-position: right center;
+    }
+}

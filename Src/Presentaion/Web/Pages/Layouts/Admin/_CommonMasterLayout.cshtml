@@ -1,0 +1,168 @@
+
+@{
+    @* using this variables to load front pages assets *@
+    bool isFront = ViewData["isFront"] is bool isFrontValue ? isFrontValue : false;
+    ViewData["main"] = isFront ? "front-" : "";
+    ViewData["frontVar"] = isFront ? "Front" : "";
+    @* Compact/Fluid class *@
+    ViewData["contentType"] = ViewData["container"] is string container && container == "container-xxl" ? "layout-compact" : "layout-wide";
+}
+
+@inject IHttpContextAccessor httpContextAccessor
+
+<!DOCTYPE html>
+<html lang="en" class="@(ViewData["navbarType"] is string navbarType ? navbarType : "")
+@(ViewData["menuFixed"] is string menuFixed ? menuFixed : "")
+@(ViewData["menuCollapsed"] is string menuCollapsed ? menuCollapsed : "")
+@(ViewData["contentType"] is string contentType ? contentType : "")
+@(ViewData["footerFixed"] is string footerFixed ? footerFixed : "")
+@(ViewData["customizerHidden"] is string customizerHidden ? customizerHidden : "")" dir="ltr" data-skin="default" data-bs-theme="light" data-assets-path='@((httpContextAccessor.HttpContext?.Request.PathBase ?? "") + "/")' data-template='@(isFront ? "front-page" : (Convert.ToBoolean(TempData.Peek("menuHorizontal")?.ToString()) ? "horizontal-menu-template" : "vertical-menu-template"))'>
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0" />
+    <script src="~/admin/vendor/libs/jquery/jquery.dist.js" asp-append-version="true"></script>
+
+    @{
+        string title = ViewData["title"] as string ?? "";
+        string appName = TempData.Peek("appName") as string ?? "";
+    }
+    <title>@title | @appName</title>
+
+    <meta name="robots" content="noindex,follow" />
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="~/assets/images/logos/meshkatLogo.ico" />
+
+    <!-- Core Styles -->
+    @await Html.PartialAsync("Layouts/Admin/Sections/_Styles" + ViewData["frontVar"])
+
+
+    <!-- Vendor Styles -->
+    @RenderSection("VendorStyles", required: false)
+
+    <!-- Page Styles -->
+    @RenderSection("PageStyles", required: false)
+
+    <!-- Include Scripts for customizer, helper, analytics, config -->
+    @await Html.PartialAsync("Layouts/Admin/Sections/_ScriptsIncludes" + ViewData["frontVar"])
+</head>
+
+<body>
+    <partial name="Layouts/Admin/Sections/_DisplayToastMessages" />
+    <partial name="Layouts/Admin/Sections/_DisplayAlertMessages" />
+    <div class="modal fade" id="myFormModal" tabindex="-1" aria-labelledby="modalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <!-- You can load external content here if needed -->
+                    <div id="modal-content-form"></div>
+                    <div class=" d-grid mx-auto text-center">
+                        <button type="button" class="btn btn-outline-dribbble col-11 mx-auto text-center  " data-bs-dismiss="modal">بـسـتن</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Modal Structure -->
+    <div class="modal fade" id="loadingModal" tabindex="-1" data-bs-backdrop="static" data-bs-keyboard="false" aria-labelledby="loadingModalLabel">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-body text-center d-flex flex-column align-items-center justify-content-center" style="height: 200px;">
+                    <!-- Enhanced Loading Animation -->
+                    <div class="loading-animation"></div>
+                    <!-- Optional loading text -->
+                    <div class="mt-3">
+                        <p class="loading-text">لطفا صبر کنید ...</p>
+                    </div>
+                    <div class="mt-1">
+                        <p class="loading-text" id="loadingModalText"> </p>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Modal Structure -->
+    <div class="modal fade" id="myFormModal-lg" tabindex="-1" data-bs-backdrop="static"  aria-labelledby="loadingModalLabel">
+        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable  modal-lg">
+       
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p>در حال دریافت اطلاعات  ...</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Modal Structure -->
+    <div class="modal fade" id="myFormModal-xl" tabindex="-1" data-bs-backdrop="static"  aria-labelledby="loadingModalLabel">
+        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable  modal-xl ">
+        
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="rolesModalLabel"></h5>
+                    <button type="button" class="btn-close  border text-danger" data-bs-dismiss="modal" aria-label="Close"></button>
+                    
+                </div>
+                <div class="modal-body">
+                    <p>در حال دریافت اطلاعات  ...</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Modal Structure -->
+    <div class="modal fade" id="myFormModal-full" tabindex="-1" data-bs-backdrop="static" aria-labelledby="loadingModalLabel">
+        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-fullscreen">
+         
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p>در حال دریافت اطلاعات  ...</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Modal -->
+    <div class="modal fade" id="rolesModal" tabindex="-1" aria-labelledby="rolesModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+        
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="rolesModalLabel">نقش‌ها</h5>
+                    <button type="button" class="btn-close  border text-danger" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p>نقش فعلی : <span id="roleModalCurrentRole"></span></p>
+                    <input type="text" id="searchInput" class="form-control" placeholder="جستجو...">
+                    <ul id="rolesList" class="list-group mt-3" style="max-height: 300px; overflow-y: auto;"></ul>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-warning" data-bs-dismiss="modal">بستن</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Layout Content -->
+    @RenderBody()
+    <!--/ Layout Content -->
+    <!-- Core Scripts -->
+    @await Html.PartialAsync("Layouts/Admin/Sections/_Scripts" + ViewData["frontVar"])
+
+    <!-- Vendor Scripts -->
+    @RenderSection("VendorScripts", required: false)
+
+    <script src='~/admin/js/@ViewData["main"]main.dist.js'></script>
+
+    <!-- Page Scripts-->
+    @RenderSection("PageScripts", required: false)
+
+</body>
+
+</html>

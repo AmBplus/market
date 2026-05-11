@@ -1,0 +1,139 @@
+
+
+.main-services-item{
+    img{
+        height: 52px;
+        width: 52px;
+    }
+
+
+    .main-services-item-more{
+        height: 52px;
+        width: 52px;
+
+        .icon-moreHorizontal::before{
+            font-size: 3.2rem;
+        }
+    }
+}
+
+.baseOnvisit-products{
+
+    .baseOnvisit-products-item + .baseOnvisit-products-item{
+        border-top: 1px solid $color-gray-100;
+        @include mq(lg)
+        {
+            border: none;
+            border-right: 1px solid $color-gray-100;
+
+        }
+    }
+
+    &-item-grid{
+        gap: 1px;
+    }
+}
+
+.digiplus-widget{
+    &-rSide{
+        background: url("../images/plus-widget.png") no-repeat 0 100%;
+        background-size: contain;
+        height: 355px;
+
+        @include mq(lg)
+        {
+            height: auto;
+            background-size: 372px 279px;
+        }
+    }
+
+    &-product{
+        max-width: 116px;
+        max-height: 166px;
+
+        &-cashback{
+            max-height: 26px;
+            bottom: -2px;
+
+            .icon-toman::before{
+                font-size: 1.2rem;
+            }
+        }
+    }
+}
+
+.digiclub-widget{
+    background: linear-gradient(45deg,#35a6c8 33%,#007295 70%);
+
+    &-item{
+        padding: 2px;
+
+
+        img{
+            height: 60px;
+
+            @include mq(lg)
+            {
+                width: 170px;
+            }
+        }
+    }
+}
+
+.bestDiscount-widget-products{
+    --bs-columns:2;
+
+    @include mq(lg)
+    { --bs-columns:6}
+
+
+    .bestDiscount-widget-item{
+        border-left: 1px solid $color-gray-100;
+        border-bottom: 1px solid $color-gray-100;
+
+        &:nth-child(2n){
+            border-left: none;
+        }
+        
+        &:nth-last-child(-n+3):nth-child(2n)~*{
+            border-bottom: none;
+        }
+
+        @include mq(lg){
+            &:nth-child(2n){
+                border-left: 1px solid $color-gray-100;
+            }
+
+            &:nth-child(6n){
+                border-left: none;
+            }
+
+            &:nth-last-child(-n+7):nth-child(6n)~*{
+                border-bottom: none;
+            }
+        }
+
+        &-img{
+            height: 150px;
+            width: 150px;
+        }
+    }
+}
+
+.blog-widget-items{
+    --bs-columns:1;
+
+    @include mq(md)
+    {
+        --bs-columns:2
+    }
+    @include mq(lg)
+    {
+        --bs-columns:4
+    }
+
+    img{
+        aspect-ratio: 305/175;
+    }
+    
+}

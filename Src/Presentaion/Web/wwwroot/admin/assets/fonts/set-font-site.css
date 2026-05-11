@@ -1,0 +1,13 @@
+@import url(Vazirmatn-FD-NL-font-face.css);
+/*@import url(estedad-font-face.css);*/
+@import url(stylesheet-iran-nastaligh.css);
+
+body {
+  font-family: 'Vazirmatn FD','Vazirmatn','Estedad-FD','IRANYekanWebFn','sans-serif' !important ;
+  font-weight : 400;
+}
+
+h1, h2, h3, h4, h5, h6, input, textarea, p, span {
+  font-family: 'Vazirmatn FD','Vazirmatn','Estedad-FD','IRANYekanWebFn','sans-serif' !important;
+}
+

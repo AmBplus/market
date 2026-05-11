@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<DocumentElement>
+	<Shebalist>
+		<Name> </Name>
+		<Sheba>لطفا انتخاب کنید</Sheba>
+	</Shebalist>
+  
+
+	<BaseAddress >
+
+		<payment>https://ikc.shaparak.ir/iuiv3/IPG/Index</payment>
+		<token>https://ikc.shaparak.ir/api/v3/tokenization/make</token>
+		<verify>https://ikc.shaparak.ir/api/v3/confirmation/purchase</verify>
+		<inquery>https://ikc.shaparak.ir/api/v3/inquiry/single</inquery>
+									
+	</BaseAddress>
+
+ 
+
+
+	<IPGData>
+		
+
+    	<TerminalId></TerminalId>
+		<AcceptorId></AcceptorId>
+		<PassPhrase></PassPhrase>
+		<URL>http://localhost:6001/Verifypage/Verify</URL>
+		<RSAPublicKey></RSAPublicKey>
+		<CmsPreservationId></CmsPreservationId>
+
+
+
+	
+	
+	</IPGData>
+
+</DocumentElement>

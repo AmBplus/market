@@ -1,0 +1,69 @@
+/*
+* Prefixed by https://autoprefixer.github.io
+* PostCSS: v8.4.14,
+* Autoprefixer: v10.4.7
+* Browsers: since 2017
+*/
+
+
+@media (min-width:1230px) {
+  .search-box {
+    width: 16.66666666666667% !important;
+  }
+}
+/* تغییر فونت placeholder */
+
+
+
+@media (min-width:790px) AND (max-width:1230px) {
+  .search-box {
+    width: 33% !important;
+  }
+}
+
+@media (max-width:790px) AND (min-width:500px) {
+  .search-box {
+    width: 50% !important;
+  }
+}
+
+@media (max-width:350px) {
+  input::placeholder {
+    font-size: 8px !important; /* اندازه فونت */
+  }
+}
+@media (max-width:500px) and (min-width:350px){
+  input::placeholder {
+    font-size: 11.5px !important; /* اندازه فونت */
+  }
+}
+
+.light-style .search-box {
+}
+
+.dark-style.search-box {
+}
+
+.light-style body {
+  background-color: transparent !important;
+}
+
+.light-style .showMoreResultBtn {
+  background-color: #0c6099;
+  color: aliceblue
+}
+
+  .light-style .showMoreResultBtn:hover {
+    background-color: #00549f;
+    color: aliceblue
+  }
+
+.dark-style .showMoreResultBtn {
+  background-color: #0c6099;
+  color: aliceblue
+}
+
+  .dark-style .showMoreResultBtn:hover {
+    background-color: #00549f;
+    color: aliceblue
+  }
