@@ -109,9 +109,9 @@ public class AppDbContext : DbContext
 
     private void SetAuditFields()
     {
+        var now = DateTime.UtcNow;
         foreach (var entry in ChangeTracker.Entries<AuditableEntity>())
         {
-            var now = DateTime.UtcNow;
             switch (entry.State)
             {
                 case EntityState.Added:
@@ -130,7 +130,7 @@ public class AppDbContext : DbContext
             {
                 entry.State = EntityState.Modified;
                 entry.Entity.IsDeleted = true;
-                entry.Entity.DeletedAt = DateTime.UtcNow;
+                entry.Entity.DeletedAt = now;
             }
         }
     }

@@ -10,70 +10,42 @@ public class UserConfiguration : IEntityTypeConfiguration<User>
     {
         builder.ToTable("Users", "Identity");
 
-        builder.Property(u => u.UserName)
-            .IsRequired()
-            .HasMaxLength(100);
-
-        builder.Property(u => u.Email)
-            .HasMaxLength(200);
-
-        builder.Property(u => u.PhoneNumber)
-            .HasMaxLength(20);
-
-        builder.Property(u => u.PasswordHash)
-            .IsRequired()
-            .HasMaxLength(500);
-
-        builder.Property(u => u.PasswordSalt)
-            .IsRequired()
-            .HasMaxLength(500);
-
-        builder.Property(u => u.FirstName)
-            .IsRequired()
-            .HasMaxLength(100);
-
-        builder.Property(u => u.LastName)
-            .IsRequired()
-            .HasMaxLength(100);
-
+        builder.Property(u => u.UserName).IsRequired().HasMaxLength(100);
+        builder.Property(u => u.Email).HasMaxLength(200);
+        builder.Property(u => u.PhoneNumber).HasMaxLength(20);
+        builder.Property(u => u.PasswordHash).IsRequired().HasMaxLength(500);
+        builder.Property(u => u.PasswordSalt).IsRequired().HasMaxLength(500);
+        builder.Property(u => u.FirstName).IsRequired().HasMaxLength(100);
+        builder.Property(u => u.LastName).IsRequired().HasMaxLength(100);
         builder.Property(u => u.FatherName).HasMaxLength(100);
-
         builder.Property(u => u.PassportNumber).HasMaxLength(50);
-
         builder.Property(u => u.Nationality).HasMaxLength(100);
-
         builder.Property(u => u.Avatar).HasMaxLength(500);
-
-        builder.Property(u => u.NationalCode)
-            .HasMaxLength(10);
-
-        builder.Property(u => u.DefaultAddressesJson)
-            .HasColumnType("nvarchar(max)");
-
-        builder.Property(u => u.IsActive)
-            .HasDefaultValue(true);
+        builder.Property(u => u.NationalCode).HasMaxLength(10);
+        builder.Property(u => u.DefaultAddressesJson).HasColumnType("nvarchar(max)");
+        builder.Property(u => u.IsActive).HasDefaultValue(true);
 
         builder.HasIndex(u => u.UserName)
             .IsUnique()
+            .HasFilter("[IsDeleted] = 0")
             .HasDatabaseName("IX_Users_UserName");
 
         builder.HasIndex(u => u.Email)
             .IsUnique()
-            .HasFilter("[Email] IS NOT NULL")
+            .HasFilter("[Email] IS NOT NULL AND [IsDeleted] = 0")
             .HasDatabaseName("IX_Users_Email");
 
         builder.HasIndex(u => u.PhoneNumber)
             .IsUnique()
-            .HasFilter("[PhoneNumber] IS NOT NULL")
+            .HasFilter("[PhoneNumber] IS NOT NULL AND [IsDeleted] = 0")
             .HasDatabaseName("IX_Users_PhoneNumber");
 
         builder.HasIndex(u => u.NationalCode)
             .IsUnique()
-            .HasFilter("[NationalCode] IS NOT NULL")
+            .HasFilter("[NationalCode] IS NOT NULL AND [IsDeleted] = 0")
             .HasDatabaseName("IX_Users_NationalCode");
 
-        builder.HasIndex(u => u.IsActive)
-            .HasDatabaseName("IX_Users_IsActive");
+        builder.HasIndex(u => u.IsActive).HasDatabaseName("IX_Users_IsActive");
 
         builder.HasMany(u => u.UserRoles)
             .WithOne(ur => ur.User)

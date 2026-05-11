@@ -14,7 +14,7 @@ public class PriceConfiguration : IEntityTypeConfiguration<Price>
             .HasPrecision(18, 2);
 
         // Critical composite index: ProductVariantId + PriceType + EndedAt (filtered NULL) for finding active price
-        builder.HasIndex(p => new { p.ProductVariantId, p.PriceType, p.EndedAt })
+        builder.HasIndex(p => new { p.ProductVariantId, p.PriceType })
             .HasFilter("[EndedAt] IS NULL")
             .HasDatabaseName("IX_Prices_ProductVariantId_PriceType_EndedAt_Active");
 
