@@ -1,69 +1,67 @@
 using AppCore.Data;
 using Framework.DatatableModels;
 using Framework.ResultHelper;
-
 using Microsoft.EntityFrameworkCore;
 
-namespace AppCore.Features.Shop.ProductAgg.GuaranteeServices.Queries.GetGuaranteesDataTableQuery
+namespace AppCore.Features.Shop.ProductAgg.GuaranteeServices.Queries.GetGuaranteesDataTableQuery;
+
+public class GetGuaranteesDataTableQuery : DatatableFullRequest
 {
-    public class GetGuaranteesDataTableQuery : DatatableFullRequest
+    public string? SearchTitle { get; set; }
+}
+
+public class GuaranteeListDto
+{
+    public long Id { get; set; }
+    public string Title { get; set; } = string.Empty;
+    public bool IsActive { get; set; }
+    public DateTime CreatedAt { get; set; }
+}
+
+public class GetGuaranteesDataTableHandler
+{
+    private readonly AppDbContext _context;
+
+    public GetGuaranteesDataTableHandler(AppDbContext context)
     {
-        public string? SearchTitle { get; set; }
+        _context = context;
     }
 
-    public class GuaranteeListDto
+    public async Task<ResultOperation<DataTableResponse<GuaranteeListDto>>> Handle(GetGuaranteesDataTableQuery query, CancellationToken cancellationToken)
     {
-        public long Id { get; set; }
-        public string Title { get; set; } = string.Empty;
-        public bool IsActive { get; set; }
-        public DateTime CreatedAt { get; set; }
-    }
+        var baseQuery = _context.Guarantees
+            .AsNoTracking()
+            .Where(t => !t.IsDeleted)
+            .AsQueryable();
 
-    public class GetGuaranteesDataTableHandler
-    {
-        private readonly AppDbContext _context;
+        if (!string.IsNullOrWhiteSpace(query.SearchTitle))
+            baseQuery = baseQuery.Where(g => g.Title.Contains(query.SearchTitle));
 
-        public GetGuaranteesDataTableHandler(AppDbContext context)
+        var filteredCount = await baseQuery.CountAsync(cancellationToken);
+
+        var dtoQuery = baseQuery.Select(g => new GuaranteeListDto
         {
-            _context = context;
-        }
+            Id = g.Id,
+            Title = g.Title,
+            IsActive = g.IsActive,
+            CreatedAt = g.CreatedAt
+        });
 
-        public async Task<ResultOperation<DataTableResponse<GuaranteeListDto>>> Handle(GetGuaranteesDataTableQuery query, CancellationToken cancellationToken)
+        var orderedQuery = dtoQuery.ApplyDataTableOrdering(query);
+
+        var guarantees = await orderedQuery
+            .Skip(query.start)
+            .Take(query.length)
+            .ToListAsync(cancellationToken);
+
+        var response = new DataTableResponse<GuaranteeListDto>
         {
-            var baseQuery = _context.Guarantees
-                .AsNoTracking()
-                .Where(t => !t.IsDelete)
-                .AsQueryable();
+            Draw = query.draw,
+            RecordsTotal = filteredCount,
+            RecordsFiltered = filteredCount,
+            Data = guarantees
+        };
 
-            if (!string.IsNullOrWhiteSpace(query.SearchTitle))
-                baseQuery = baseQuery.Where(g => g.Title.Contains(query.SearchTitle));
-
-            var filteredCount = await baseQuery.CountAsync(cancellationToken);
-
-            var dtoQuery = baseQuery.Select(g => new GuaranteeListDto
-            {
-                Id = g.Id,
-                Title = g.Title,
-                IsActive = g.IsActive,
-                CreatedAt = g.CreatedAt
-            });
-
-            var orderedQuery = dtoQuery.ApplyDataTableOrdering(query);
-
-            var guarantees = await orderedQuery
-                .Skip(query.start)
-                .Take(query.length)
-                .ToListAsync(cancellationToken);
-
-            var response = new DataTableResponse<GuaranteeListDto>
-            {
-                Draw = query.draw,
-                RecordsTotal = filteredCount,
-                RecordsFiltered = filteredCount,
-                Data = guarantees
-            };
-
-            return ResultOperation<DataTableResponse<GuaranteeListDto>>.ToSuccessResult(response);
-        }
+        return ResultOperation<DataTableResponse<GuaranteeListDto>>.ToSuccessResult(response);
     }
 }

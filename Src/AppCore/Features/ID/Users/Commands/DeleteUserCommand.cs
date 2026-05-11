@@ -1,40 +1,42 @@
-﻿using AppCore.Data;
-using AppCore.Features.Shop.ProductAgg.Tag.Commands;
+using AppCore.Data;
+using AppCore.Domains.Identity;
 using Framework.ResultHelper;
 using Microsoft.EntityFrameworkCore;
 
+namespace AppCore.Features.Identity.Users.Commands;
 
-namespace AppCore.Features.ID.Users.Commands
+public class DeleteUserCommand
 {
-    public record DeleteUserCommand(long Id,long? DeletedBy);
+    public long Id { get; set; }
+    public long? DeletedBy { get; set; }
+}
 
+public class DeleteUserHandler
+{
+    private readonly AppDbContext _context;
+    public DeleteUserHandler(AppDbContext context) => _context = context;
 
-    public class DeleteTagHandler
+    public async Task<ResultOperation> Handle(DeleteUserCommand command, CancellationToken ct)
     {
-        private readonly AppDbContext _context;
+        if (command.Id <= 0)
+            return ResultOperation.ToFailedResult("شناسه کاربر نامعتبر است");
 
-        public DeleteTagHandler(AppDbContext context)
-        {
-            _context = context;
-        }
+        var user = await _context.Users.FindAsync(new object[] { command.Id }, ct);
+        if (user is null)
+            return ResultOperation.ToFailedResult("کاربر یافت نشد");
 
-        public async Task<ResultOperation> Handle(DeleteUserCommand command)
-        {
-            var user = await _context.Users
-                .FirstOrDefaultAsync(t => t.Id == command.Id && !t.IsDelete);
+        var userRoles = await _context.UserRoles
+            .Where(ur => ur.UserId == command.Id)
+            .ToListAsync(ct);
 
-            if (user is null)
-                return ResultOperation.ToFailedResult("کاربر مورد نظر پیدا نشد.");
+        _context.UserRoles.RemoveRange(userRoles);
 
-            user.IsDelete = true;
-            user.IsActive = false;
-            user.UpdatedAt = DateTime.UtcNow;
-            user.UpdatedBy = command.DeletedBy;
+        user.IsDeleted = true;
+        user.DeletedAt = DateTime.UtcNow;
+        user.DeletedBy = command.DeletedBy;
 
-            await _context.SaveChangesAsync();
+        await _context.SaveChangesAsync(ct);
 
-            return ResultOperation.ToSuccessResult("کاربر با موفقیت حذف شد.");
-        }
+        return ResultOperation.ToSuccessResult("کاربر با موفقیت حذف شد");
     }
-
 }
